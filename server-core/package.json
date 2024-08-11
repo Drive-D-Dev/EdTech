@@ -2,7 +2,8 @@
   "name": "server-core",
   "scripts": {
     "dev": "bun run --hot src/index.ts",
-    "test": "jest"
+    "test": "jest",
+    "bundle": "bun build src/index.ts --outdir dist"
   },
   "dependencies": {
     "hono": "^4.5.4",

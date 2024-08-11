@@ -1,0 +1,20 @@
+FROM oven/bun as builder
+
+WORKDIR /mnt
+
+COPY package.json .
+
+RUN bun install --silent
+
+COPY . .
+
+RUN bun bundle
+
+FROM builder as worker
+
+WORKDIR /mnt
+
+COPY --from=builder /mnt/dist/index.js .
+
+EXPOSE 8000
+ENTRYPOINT [ "bun", "index.js" ]
