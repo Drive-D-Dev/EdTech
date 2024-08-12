@@ -21,7 +21,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <head />
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
+          "min-h-screen bg-background font-sans antialiased ",
           fontSans.variable
         )}
       >
@@ -31,8 +31,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
           enableSystem
           disableTransitionOnChange
         >
+          <Navbar />
           <div vaul-drawer-wrapper="" className="">
-            <Navbar />
             {children}
           </div>
         </ThemeProvider>
