@@ -17,8 +17,10 @@ import { Button } from "@/components/ui/button"
 export function UserAvatar() {
     return (
         <DropdownMenu>
-            <DropdownMenuTrigger>
-                <AvatarTrigger />
+            <DropdownMenuTrigger asChild>
+                <span>
+                    <AvatarTrigger />
+                </span>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>

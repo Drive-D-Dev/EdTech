@@ -18,7 +18,7 @@ const scrolledStyle: React.CSSProperties = {
   maxWidth: "min(1024px, 96%)",
   marginLeft: "auto",
   marginRight: "auto",
-  padding: "1rem 1.4rem",
+  padding: "1rem 1%",
   boxShadow: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
   borderWidth: "1px",
 }
