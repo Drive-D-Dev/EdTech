@@ -14,6 +14,9 @@ import {
 import { ChevronDownIcon } from "@radix-ui/react-icons"
 import { Button } from "@/components/ui/button"
 
+// TODO: update dropdown menu
+// TODO: add mode toggle to menu
+
 export function AvatarDropdown() {
     return (
         <DropdownMenu>
