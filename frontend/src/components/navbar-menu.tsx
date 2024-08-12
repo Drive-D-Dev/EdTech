@@ -12,10 +12,12 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet"
+import useIsMobile from '@/hooks/use-is-mobile';
 
-const isMobile = true
 
 export const NavbarMenu = () => {
+    const isMobile = useIsMobile()
+
     if (isMobile) {
         return <MobileMenu />
     }
