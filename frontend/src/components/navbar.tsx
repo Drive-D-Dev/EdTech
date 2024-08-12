@@ -6,10 +6,11 @@ import { ModeToggle } from "@/components/ui/mode-toggle";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "./ui/button";
 import useScrollThreshold from "@/hooks/use-scroll-threshold";
+import { UserAvatar } from "@/components/user-avatar";
 
 
 // TODO: check whether or not user is sign in.
-const session = false
+const session = true
 
 const scrolledStyle: React.CSSProperties = {
   borderRadius: "9999px",
@@ -67,8 +68,8 @@ const SignInWrapper = () => {
 const ProfileWrapper = () => {
   return (
     <>
-      <Avatar>
-      </Avatar>
+      <UserAvatar>
+      </UserAvatar>
     </>
   )
 }
