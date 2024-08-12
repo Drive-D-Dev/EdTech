@@ -14,7 +14,7 @@ import {
 import { ChevronDownIcon } from "@radix-ui/react-icons"
 import { Button } from "@/components/ui/button"
 
-export function UserAvatar() {
+export function AvatarDropdown() {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>

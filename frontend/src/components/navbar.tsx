@@ -1,12 +1,12 @@
 "use client"
 import React from "react";
-import { LOGO_IMG, NAV_LINKS } from "@/constant/global";
+import { LOGO_IMG } from "@/constant/global";
 import Link from 'next/link'
 import { ModeToggle } from "@/components/ui/mode-toggle";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "./ui/button";
 import useScrollThreshold from "@/hooks/use-scroll-threshold";
-import { UserAvatar } from "@/components/user-avatar";
+import { AvatarDropdown } from "@/components/avatar-dropdown";
+import { NavbarMenu } from "@/components/navbar-menu";
 
 
 // TODO: check whether or not user is sign in.
@@ -23,7 +23,7 @@ const scrolledStyle: React.CSSProperties = {
   borderWidth: "1px",
 }
 
-const Navbar = () => {
+export const Navbar = () => {
   // handle cool on scroll animation
   // add scrolledStyle styling to <nav /> when user scroll pass a certain threshold
   const isScrolled = useScrollThreshold()
@@ -38,15 +38,7 @@ const Navbar = () => {
           <img src={LOGO_IMG.src} alt={LOGO_IMG.alt} height={64} width={64} />
         </Link>
         <div className="flex justify-center items-center gap-4">
-          {
-            NAV_LINKS.map((link) => (
-              <Link href={link.href}>
-                <Button variant="ghost">
-                  {link.title}
-                </Button>
-              </Link>
-            ))
-          }
+          <NavbarMenu />
           {
             session ?
               <ProfileWrapper /> :
@@ -72,10 +64,8 @@ const SignInWrapper = () => {
 const ProfileWrapper = () => {
   return (
     <>
-      <UserAvatar>
-      </UserAvatar>
+      <AvatarDropdown />
     </>
   )
 }
 
-export default Navbar;
