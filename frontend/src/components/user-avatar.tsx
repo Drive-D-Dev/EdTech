@@ -18,6 +18,12 @@ export function UserAvatar() {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
+                {/* 
+                    Avoid hydration error
+                    by using 'asChild' on DropdownMenuTrigger, 
+                    however this need to be use in corraspond with <span /> 
+                    avoiding DropdownMenu not trigger
+                */}
                 <span>
                     <AvatarTrigger />
                 </span>

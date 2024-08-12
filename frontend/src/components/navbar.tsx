@@ -24,6 +24,8 @@ const scrolledStyle: React.CSSProperties = {
 }
 
 const Navbar = () => {
+  // handle cool on scroll animation
+  // add scrolledStyle styling to <nav /> when user scroll pass a certain threshold
   const isScrolled = useScrollThreshold()
 
   return (
@@ -56,6 +58,7 @@ const Navbar = () => {
   );
 };
 
+// show when user is not sign in
 const SignInWrapper = () => {
   return (
     <>
@@ -65,6 +68,7 @@ const SignInWrapper = () => {
   )
 }
 
+// show when user is sign in
 const ProfileWrapper = () => {
   return (
     <>
