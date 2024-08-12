@@ -35,7 +35,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <Navbar />
             {children}
           </ThemeProvider>
-
         </div>
         <Toaster />
       </body>
