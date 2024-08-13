@@ -25,17 +25,17 @@ export default function RootLayout({ children }: RootLayoutProps) {
           fontSans.variable
         )}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Navbar />
-          <div vaul-drawer-wrapper="" className="">
+        <div vaul-drawer-wrapper="" >
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Navbar />
             {children}
-          </div>
-        </ThemeProvider>
+          </ThemeProvider>
+        </div>
         <Toaster />
       </body>
     </html>
