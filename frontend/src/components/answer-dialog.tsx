@@ -1,6 +1,8 @@
 import * as React from "react"
 import { cn } from "@/lib/utils"
 import { MdOutlineLightbulb } from "react-icons/md";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 import { Button } from "@/components/ui/button"
 import {
@@ -85,7 +87,7 @@ export function AnswerDialog() {
 function AnswerContent({ className }: React.ComponentProps<"div">) {
     return (
         <div className={cn("h-[60vh] overflow-y-auto", className)}>
-            {answerContent.description}
+            {answerContent.description || <Skeleton count={6} />}
         </div>
     )
 }
