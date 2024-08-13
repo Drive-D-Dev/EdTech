@@ -27,8 +27,9 @@ import useIsMobile from "@/hooks/use-is-mobile"
 
 const answerContent = {
     question: "How is the weather today?",
-    description: "the weather is great"
+    description: "The weather today is expected to be [partly cloudy] with a high of [75°F] and a low of [60°F]. There is a [20% chance of rain] in the afternoon, so you might want to keep an umbrella handy. Winds are coming from the [northwest] at around [10 mph], bringing a slight breeze throughout the day. Overall, it's a [mild] day perfect for outdoor activities, but be prepared for a few showers later in the day.The weather today is expected to be [partly cloudy] with a high of [75°F] and a low of [60°F]."
 }
+
 export function AnswerDialog() {
     const [open, setOpen] = React.useState(false)
     const isMobile = useIsMobile()
@@ -51,10 +52,9 @@ export function AnswerDialog() {
                 <DrawerContent>
                     <DrawerHeader className="text-left">
                         <DrawerTitle>{answerContent.question}</DrawerTitle>
-
                     </DrawerHeader>
                     <AnswerContent className="px-4" />
-                    <DrawerFooter className="pt-2">
+                    <DrawerFooter className="pt-8">
                         <DrawerClose asChild>
                             <Button variant="outline">Close</Button>
                         </DrawerClose>
@@ -71,7 +71,7 @@ export function AnswerDialog() {
                     <Trigger />
                 </span>
             </DialogTrigger>
-            <DialogContent className="">
+            <DialogContent>
                 <DialogHeader>
                     <DialogTitle>{answerContent.question}</DialogTitle>
                 </DialogHeader>
@@ -84,7 +84,7 @@ export function AnswerDialog() {
 
 function AnswerContent({ className }: React.ComponentProps<"div">) {
     return (
-        <div className={cn(className)}>
+        <div className={cn("h-[60vh] overflow-y-auto", className)}>
             {answerContent.description}
         </div>
     )
