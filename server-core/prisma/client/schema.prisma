@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./client"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Choice {
+  id          Int      @id @default(autoincrement())
+  content     String   @db.Text
+  number      Int
+  question_id Int
+  Question    Question @relation(fields: [question_id], references: [id], onUpdate: Restrict, map: "Choice_Question_id_fk")
+
+  @@index([question_id], map: "Choice_Question_id_fk")
+}
+
+model Question {
+  id                       Int                        @id @default(autoincrement())
+  content                  String                     @db.Text
+  explanation              String                     @db.Text
+  accuracy_percentage      Decimal                    @db.Decimal(5, 2)
+  Choice                   Choice[]
+  Study_Set_Questions_List Study_Set_Questions_List[]
+}
+
+model Study_Set {
+  id                       Int                        @id @default(autoincrement())
+  stage                    String                     @db.VarChar(20)
+  label                    String                     @db.VarChar(255)
+  Study_Set_Questions_List Study_Set_Questions_List[]
+}
+
+model Study_Set_Questions_List {
+  id          Int        @id @default(autoincrement())
+  question_id Int
+  studyset_id Int?
+  Question    Question   @relation(fields: [question_id], references: [id], onUpdate: Restrict, map: "Study_Set_Questions_List_Question_id_fk")
+  Study_Set   Study_Set? @relation(fields: [studyset_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "Study_Set_Questions_List_Study_Set_id_fk")
+
+  @@index([question_id], map: "Study_Set_Questions_List_Question_id_fk")
+  @@index([studyset_id], map: "Study_Set_Questions_List_Study_Set_id_fk")
+}
