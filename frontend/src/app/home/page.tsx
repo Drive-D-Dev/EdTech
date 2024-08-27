@@ -1,7 +1,16 @@
 "use client"; // Ensure this is a Client Component
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 // Mock Data
 const mockQuestions = [
@@ -28,37 +37,58 @@ const HomePage = () => {
     setIsVisible(false);
   };
 
-  return (
-    <div className="flex justify-center h-screen">
-      <div className="flex flex-col space-y-4 w-[70%]">
-        {isVisible && (
-          <div className="relative flex flex-col justify-center items-center w-full h-fit p-10 bg-gray-100 shadow-lg rounded-md">
+  const router = useRouter();
 
+  const handleNavigate = () => {
+    router.push("/mock");
+  };
+
+  return (
+    <main className="container flex flex-col justify-center">
+      <div className="flex flex-col space-y-4">
+        {isVisible && (
+          // <Dialog open={isVisible} onOpenChange={setIsVisible}>
+          //   <DialogContent>
+          //     <button
+          //       onClick={handleClose}
+          //       className="absolute top-2 right-2 text-black text-lg font-bold"
+          //     >
+          //       ×
+          //     </button>
+          //     <p className="text-black text-lg font-semibold text-center">
+          //       Your goal within reach.
+          //     </p>
+
+          //     <p className="text-black text-lg font-semibold text-center">
+          //       Do mock exams, practice questions, get answers all in one app.
+          //     </p>
+          //   </DialogContent>
+          // </Dialog>
+
+          <div className="box relative flex flex-col items-center space-y-6 pt-6">
             <Button
               onClick={handleClose}
-              className="absolute top-2 right-2 text-black text-lg font-bold"
+              className="absolute top-0 right-0 m-2"
               variant={"ghost"}
             >
               ×
             </Button>
-
             <p className="text-black text-lg font-semibold text-center">
-              Your goal within reach
+              Your goal within reach.
             </p>
             <p className="text-black text-lg font-semibold text-center">
-              Do mock exams, practice questions, get answers all in one app
+              Do mock exams, practice questions, get answers all in one app.
             </p>
           </div>
         )}
 
-        <div className="flex flex-col justify-center items-center w-full h-fit p-10 bg-gray-100 shadow-lg space-y-4 rounded-md">
-          <p className="text-black text-lg font-semibold">Top questions</p>
+        <div className="box flex flex-col items-center space-y-6">
+          <p className="text-black text-lg font-semibold text-center">
+            Top questions
+          </p>
 
           {visibleQuestions.map((item) => (
-            <div
-              key={item.id}
-              className="flex justify-between items-center bg-white w-full h-fit p-4 border border-gray-300 rounded-md"
-            >
+            <div key={item.id} className="box flex justify-between w-full">
               <div className="flex items-center space-x-2">
                 <input
                   type="checkbox"
@@ -71,19 +101,21 @@ const HomePage = () => {
           ))}
 
           <p
-            className="text-black text-sm cursor-pointer"
+            className="text-black text-sm cursor-pointer text-center"
             onClick={toggleShowAll}
           >
             {showAll ? "See less" : "See more"}
           </p>
         </div>
 
-        <div className="flex flex-col justify-center items-center w-full h-fit p-10 bg-gray-100 shadow-lg space-y-4 rounded-md">
+        <div className="box flex flex-col items-center space-y-4">
           <p className="text-black text-sm">Do mock exam</p>
-          <Button variant={"default"}>Start</Button>
+          <Button variant={"default"} onClick={handleNavigate}>
+            Start
+          </Button>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 
