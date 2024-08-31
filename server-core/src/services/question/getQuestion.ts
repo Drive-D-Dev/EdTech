@@ -11,4 +11,18 @@ const getQuestionSortByAccuracy = async (amount: number) => {
 	return data;
 };
 
-export { getQuestionSortByAccuracy };
+const getQuestionSortByAccuracyWithChoice = async (amount: number) => {
+	const data = await prisma.question.findMany({
+		take: amount,
+		orderBy: {
+			accuracy_percentage: 'desc',
+		},
+		include: {
+			Choice: true,
+		},
+	});
+
+	return data;
+};
+
+export { getQuestionSortByAccuracy, getQuestionSortByAccuracyWithChoice };
