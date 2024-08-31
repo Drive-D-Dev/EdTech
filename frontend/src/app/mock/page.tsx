@@ -1,8 +1,18 @@
 "use client";
-
+import * as React from "react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import ChoiceBox from "@/components/choicebox";
+
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 // Mock Data
 const mockExam = [
@@ -50,6 +60,19 @@ const MockPage = () => {
     }));
   };
 
+  const [open, setOpen] = React.useState(false);
+  const Trigger = () => (
+    <Button variant="secondary" className="flex justify-end w-full p-2">
+      <p>Finish123</p>
+    </Button>
+  );
+
+  const handleFinishExam = () => {
+    // Implement what should happen when the user confirms they want to finish the exam
+    console.log("Exam finished!");
+    setOpen(false); // Close the dialog after finishing the exam
+  };
+
   return (
     <div className="container flex flex-col justify-center items-center space-y-4">
       <div className="box flex flex-col justify-center items-center w-fit">
@@ -66,7 +89,10 @@ const MockPage = () => {
           className="box flex flex-col justify-center items-center w-full space-y-4"
         >
           <div className="w-full flex justify-start">
-            <p className="text-black text-md font-normal">{exam.id+". "}{exam.question}</p>
+            <p className="text-black text-md font-normal">
+              {exam.id + ". "}
+              {exam.question}
+            </p>
           </div>
 
           {exam.choice.map((choice, index) => (
@@ -80,11 +106,30 @@ const MockPage = () => {
           ))}
         </div>
       ))}
-
-      <div className="w-full flex justify-end">
-        <Button variant={"secondary"} className="">
-          Finish
-        </Button>
+      <div className="w-full flex justify-end pr-4">
+        <Dialog open={open} onOpenChange={setOpen}>
+          <DialogTrigger asChild>
+            <span>
+              <Trigger />
+            </span>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Finish</DialogTitle>
+            </DialogHeader>
+            <DialogDescription>
+              Are you sure you want to finish the exam?
+            </DialogDescription>
+            <DialogFooter>
+              <Button variant="outline" onClick={() => setOpen(false)}>
+                Cancel
+              </Button>
+              <Button onClick={handleFinishExam}>
+                Yes
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 "use client";
+import { AnswerDialog } from "@/components/answer-dialog";
 
 // Mock Data
 const mockExam = [
@@ -122,16 +123,26 @@ const MockAnswerPage = () => {
                 );
               })}
             </div>
-            {!isSelectedCorrect && (
-              <div className="w-full pl-4 space-y-3">
-                <p className="text-red-600 text-sm">
+            <div className="flex justify-between space-y-2 w-full pl-4">
+              <div className="flex flex-col space-y-2 w-full">
+                <p
+                  className={`text-sm ${
+                    isSelectedCorrect ? "text-green-600" : "text-red-600"
+                  }`}
+                >
                   Your answer: {selectedChoice?.choice}
                 </p>
-                <p className="text-green-600 text-sm">
-                  Correct answer: {exam.correct}
-                </p>
+                {!isSelectedCorrect && (
+                  <p className="text-green-600 text-sm">
+                    Correct answer: {exam.correct}
+                  </p>
+                )}
               </div>
-            )}
+
+              <div className="mt-2">
+                <AnswerDialog />
+              </div>
+            </div>
           </div>
         );
       })}
