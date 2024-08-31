@@ -10,26 +10,31 @@ const mockExam = [
     id: "1",
     question: "Some question about law1.",
     choice: ["choice1", "choice2", "choice3", "choice4"],
+    correct: "1",
   },
   {
     id: "2",
     question: "Some question about law2.",
     choice: ["choice1", "choice2", "choice3", "choice4"],
+    correct: "4",
   },
   {
     id: "3",
     question: "Some question about law3.",
     choice: ["choice1", "choice2", "choice3", "choice4"],
+    correct: "4",
   },
   {
     id: "4",
     question: "Some question about law4.",
     choice: ["choice1", "choice2", "choice3", "choice4"],
+    correct: "2",
   },
   {
     id: "5",
     question: "Some question about law5.",
     choice: ["choice1", "choice2", "choice3", "choice4"],
+    correct: "3",
   },
 ];
 
@@ -78,7 +83,7 @@ const MockPage = () => {
 
       <div className="w-full flex justify-end">
         <Button variant={"secondary"} className="">
-          Next
+          Finish
         </Button>
       </div>
     </div>
