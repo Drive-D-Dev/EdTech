@@ -1,7 +1,7 @@
 import { Context } from 'hono';
 import { getQuestionSortByAccuracyWithChoice } from '../../services/question/getQuestion';
 
-const getTopQuestionController = async (c: Context) => {
+const getQuestionByAccController = async (c: Context) => {
 	try {
 		const { amount } = c.req.param();
 		const questions = await getQuestionSortByAccuracyWithChoice(parseInt(amount));
@@ -19,4 +19,4 @@ const getTopQuestionController = async (c: Context) => {
 	}
 };
 
-export { getTopQuestionController };
+export { getQuestionByAccController };
