@@ -1,8 +1,9 @@
 import { Hono } from 'hono';
-import { getTopQuestionController } from '../controllers/question/getTopQuestion';
+import { getQuestionByAccController } from '../controllers/question/getQuestionByAcc';
 
 const questionRouter = new Hono();
 
-questionRouter.get('/acc/:amount', getTopQuestionController);
+questionRouter.get('/acc', getQuestionByAccController);
+questionRouter.get('/acc/:amount', getQuestionByAccController);
 
 export { questionRouter };
