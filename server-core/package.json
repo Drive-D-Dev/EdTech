@@ -8,7 +8,7 @@
   "dependencies": {
     "@prisma/client": "5.18.0",
     "hono": "^4.5.4",
-    "prisma": "^5.18.0"
+    "prisma": "^5.19.1"
   },
   "devDependencies": {
     "@types/bun": "latest",
