@@ -133,6 +133,11 @@ exports.Prisma.QuestionScalarFieldEnum = {
   accuracy_percentage: 'accuracy_percentage'
 };
 
+exports.Prisma.AnswerScalarFieldEnum = {
+  question_id: 'question_id',
+  choice_id: 'choice_id'
+};
+
 exports.Prisma.Study_SetScalarFieldEnum = {
   id: 'id',
   stage: 'stage',
@@ -159,6 +164,7 @@ exports.Prisma.NullsOrder = {
 exports.Prisma.ModelName = {
   Choice: 'Choice',
   Question: 'Question',
+  Answer: 'Answer',
   Study_Set: 'Study_Set',
   Study_Set_Questions_List: 'Study_Set_Questions_List'
 };
