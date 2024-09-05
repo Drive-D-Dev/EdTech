@@ -15,6 +15,7 @@ model Choice {
   number      Int
   question_id Int
   Question    Question @relation(fields: [question_id], references: [id], onUpdate: Restrict, map: "Choice_Question_id_fk")
+  Answer      Answer[]
 
   @@index([question_id], map: "Choice_Question_id_fk")
 }
@@ -26,6 +27,17 @@ model Question {
   accuracy_percentage      Decimal                    @db.Decimal(5, 2)
   Choice                   Choice[]
   Study_Set_Questions_List Study_Set_Questions_List[]
+  Answer                   Answer[]
+}
+
+model Answer {
+  question_id Int      @unique
+  choice_id   Int
+  Question    Question @relation(fields: [question_id], references: [id], onUpdate: Restrict, map: "Answer_Question_id_fk")
+  Choice      Choice   @relation(fields: [choice_id], references: [id], onUpdate: Restrict, map: "Answer_Choice_id_fk")
+
+  @@index([question_id], map: "Answer_Question_id_fk")
+  @@index([choice_id], map: "Answer_Choice_id_fk")
 }
 
 model Study_Set {
