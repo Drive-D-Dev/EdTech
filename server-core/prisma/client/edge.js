@@ -32,11 +32,11 @@ exports.$Enums = {}
 
 /**
  * Prisma Client JS version: 5.18.0
- * Query Engine version: 4c784e32044a8a016d99474bd02a3b6123742169
+ * Query Engine version: 69d742ee20b815d88e17e54db4a2a7a3b30324e3
  */
 Prisma.prismaVersion = {
   client: "5.18.0",
-  engine: "4c784e32044a8a016d99474bd02a3b6123742169"
+  engine: "69d742ee20b815d88e17e54db4a2a7a3b30324e3"
 }
 
 Prisma.PrismaClientKnownRequestError = PrismaClientKnownRequestError;
@@ -159,17 +159,16 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../.env",
+    "rootEnvPath": null,
     "schemaEnvPath": "../../.env"
   },
   "relativePath": "..",
   "clientVersion": "5.18.0",
-  "engineVersion": "4c784e32044a8a016d99474bd02a3b6123742169",
+  "engineVersion": "69d742ee20b815d88e17e54db4a2a7a3b30324e3",
   "datasourceNames": [
     "db"
   ],
   "activeProvider": "mysql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -178,8 +177,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"./client\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Choice {\n  id          Int      @id @default(autoincrement())\n  content     String   @db.Text\n  number      Int\n  question_id Int\n  Question    Question @relation(fields: [question_id], references: [id], onUpdate: Restrict, map: \"Choice_Question_id_fk\")\n\n  @@index([question_id], map: \"Choice_Question_id_fk\")\n}\n\nmodel Question {\n  id                       Int                        @id @default(autoincrement())\n  content                  String                     @db.Text\n  explanation              String                     @db.Text\n  accuracy_percentage      Decimal                    @db.Decimal(5, 2)\n  Choice                   Choice[]\n  Study_Set_Questions_List Study_Set_Questions_List[]\n}\n\nmodel Study_Set {\n  id                       Int                        @id @default(autoincrement())\n  stage                    String                     @db.VarChar(20)\n  label                    String                     @db.VarChar(255)\n  Study_Set_Questions_List Study_Set_Questions_List[]\n}\n\nmodel Study_Set_Questions_List {\n  id          Int        @id @default(autoincrement())\n  question_id Int\n  studyset_id Int?\n  Question    Question   @relation(fields: [question_id], references: [id], onUpdate: Restrict, map: \"Study_Set_Questions_List_Question_id_fk\")\n  Study_Set   Study_Set? @relation(fields: [studyset_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: \"Study_Set_Questions_List_Study_Set_id_fk\")\n\n  @@index([question_id], map: \"Study_Set_Questions_List_Question_id_fk\")\n  @@index([studyset_id], map: \"Study_Set_Questions_List_Study_Set_id_fk\")\n}\n",
-  "inlineSchemaHash": "6781312c6a245e7eca9ebb18ca3f392a72702ebe6a70e6fd4165e9df5362574a",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"./client\"\n}\n\ndatasource db {\n  provider          = \"mysql\"\n  url               = env(\"DATABASE_URL\")\n  shadowDatabaseUrl = env(\"SHADOW_DATABASE_URL\")\n}\n\nmodel Choice {\n  id          Int      @id @default(autoincrement())\n  content     String   @db.Text\n  number      Int\n  question_id Int\n  Question    Question @relation(fields: [question_id], references: [id], onUpdate: Restrict, map: \"Choice_Question_id_fk\")\n\n  @@index([question_id], map: \"Choice_Question_id_fk\")\n}\n\nmodel Question {\n  id                       Int                        @id @default(autoincrement())\n  content                  String                     @db.Text\n  explanation              String                     @db.Text\n  accuracy_percentage      Decimal                    @db.Decimal(5, 2)\n  Choice                   Choice[]\n  Study_Set_Questions_List Study_Set_Questions_List[]\n}\n\nmodel Study_Set {\n  id                       Int                        @id @default(autoincrement())\n  stage                    String                     @db.VarChar(20)\n  label                    String                     @db.VarChar(255)\n  Study_Set_Questions_List Study_Set_Questions_List[]\n}\n\nmodel Study_Set_Questions_List {\n  id          Int        @id @default(autoincrement())\n  question_id Int\n  studyset_id Int?\n  Question    Question   @relation(fields: [question_id], references: [id], onUpdate: Restrict, map: \"Study_Set_Questions_List_Question_id_fk\")\n  Study_Set   Study_Set? @relation(fields: [studyset_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: \"Study_Set_Questions_List_Study_Set_id_fk\")\n\n  @@index([question_id], map: \"Study_Set_Questions_List_Question_id_fk\")\n  @@index([studyset_id], map: \"Study_Set_Questions_List_Study_Set_id_fk\")\n}\n",
+  "inlineSchemaHash": "2b4defe9e537761932828c005c636b85a38fcd23d30aed9e4fdfa12243e58edb",
   "copyEngine": true
 }
 config.dirname = '/'
