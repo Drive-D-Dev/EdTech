@@ -4,9 +4,8 @@ generator client {
 }
 
 datasource db {
-  provider          = "mysql"
-  url               = env("DATABASE_URL")
-  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Choice {
@@ -14,7 +13,7 @@ model Choice {
   content     String   @db.Text
   number      Int
   question_id Int
-  Question    Question @relation(fields: [question_id], references: [id], onUpdate: Restrict, map: "Choice_Question_id_fk")
+  Question    Question @relation(fields: [question_id], references: [id], onUpdate: Restrict)
   Answer      Answer[]
 
   @@index([question_id], map: "Choice_Question_id_fk")
@@ -33,8 +32,8 @@ model Question {
 model Answer {
   question_id Int      @unique
   choice_id   Int
-  Question    Question @relation(fields: [question_id], references: [id], onUpdate: Restrict, map: "Answer_Question_id_fk")
-  Choice      Choice   @relation(fields: [choice_id], references: [id], onUpdate: Restrict, map: "Answer_Choice_id_fk")
+  Question    Question @relation(fields: [question_id], references: [id], onUpdate: Restrict)
+  Choice      Choice   @relation(fields: [choice_id], references: [id], onUpdate: Restrict)
 
   @@index([question_id], map: "Answer_Question_id_fk")
   @@index([choice_id], map: "Answer_Choice_id_fk")
@@ -51,8 +50,8 @@ model Study_Set_Questions_List {
   id          Int        @id @default(autoincrement())
   question_id Int
   studyset_id Int?
-  Question    Question   @relation(fields: [question_id], references: [id], onUpdate: Restrict, map: "Study_Set_Questions_List_Question_id_fk")
-  Study_Set   Study_Set? @relation(fields: [studyset_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "Study_Set_Questions_List_Study_Set_id_fk")
+  Question    Question   @relation(fields: [question_id], references: [id], onUpdate: Restrict)
+  Study_Set   Study_Set? @relation(fields: [studyset_id], references: [id], onDelete: Restrict, onUpdate: Restrict)
 
   @@index([question_id], map: "Study_Set_Questions_List_Question_id_fk")
   @@index([studyset_id], map: "Study_Set_Questions_List_Study_Set_id_fk")

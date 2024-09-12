@@ -123,6 +123,11 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
+exports.Prisma.QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+};
+
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
@@ -165,7 +170,7 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
+    "rootEnvPath": "../../.env",
     "schemaEnvPath": "../../.env"
   },
   "relativePath": "..",
@@ -174,7 +179,7 @@ const config = {
   "datasourceNames": [
     "db"
   ],
-  "activeProvider": "mysql",
+  "activeProvider": "postgresql",
   "inlineDatasources": {
     "db": {
       "url": {
@@ -183,8 +188,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"./client\"\n}\n\ndatasource db {\n  provider          = \"mysql\"\n  url               = env(\"DATABASE_URL\")\n  shadowDatabaseUrl = env(\"SHADOW_DATABASE_URL\")\n}\n\nmodel Choice {\n  id          Int      @id @default(autoincrement())\n  content     String   @db.Text\n  number      Int\n  question_id Int\n  Question    Question @relation(fields: [question_id], references: [id], onUpdate: Restrict, map: \"Choice_Question_id_fk\")\n  Answer      Answer[]\n\n  @@index([question_id], map: \"Choice_Question_id_fk\")\n}\n\nmodel Question {\n  id                       Int                        @id @default(autoincrement())\n  content                  String                     @db.Text\n  explanation              String                     @db.Text\n  accuracy_percentage      Decimal                    @db.Decimal(5, 2)\n  Choice                   Choice[]\n  Study_Set_Questions_List Study_Set_Questions_List[]\n  Answer                   Answer[]\n}\n\nmodel Answer {\n  question_id Int      @unique\n  choice_id   Int\n  Question    Question @relation(fields: [question_id], references: [id], onUpdate: Restrict, map: \"Answer_Question_id_fk\")\n  Choice      Choice   @relation(fields: [choice_id], references: [id], onUpdate: Restrict, map: \"Answer_Choice_id_fk\")\n\n  @@index([question_id], map: \"Answer_Question_id_fk\")\n  @@index([choice_id], map: \"Answer_Choice_id_fk\")\n}\n\nmodel Study_Set {\n  id                       Int                        @id @default(autoincrement())\n  stage                    String                     @db.VarChar(20)\n  label                    String                     @db.VarChar(255)\n  Study_Set_Questions_List Study_Set_Questions_List[]\n}\n\nmodel Study_Set_Questions_List {\n  id          Int        @id @default(autoincrement())\n  question_id Int\n  studyset_id Int?\n  Question    Question   @relation(fields: [question_id], references: [id], onUpdate: Restrict, map: \"Study_Set_Questions_List_Question_id_fk\")\n  Study_Set   Study_Set? @relation(fields: [studyset_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: \"Study_Set_Questions_List_Study_Set_id_fk\")\n\n  @@index([question_id], map: \"Study_Set_Questions_List_Question_id_fk\")\n  @@index([studyset_id], map: \"Study_Set_Questions_List_Study_Set_id_fk\")\n}\n",
-  "inlineSchemaHash": "0346c4939f09f87cf3fa3beb8fc51a4840f60c4fafb6a18107a748cfd8b8e3d5",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"./client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Choice {\n  id          Int      @id @default(autoincrement())\n  content     String   @db.Text\n  number      Int\n  question_id Int\n  Question    Question @relation(fields: [question_id], references: [id], onUpdate: Restrict)\n  Answer      Answer[]\n\n  @@index([question_id], map: \"Choice_Question_id_fk\")\n}\n\nmodel Question {\n  id                       Int                        @id @default(autoincrement())\n  content                  String                     @db.Text\n  explanation              String                     @db.Text\n  accuracy_percentage      Decimal                    @db.Decimal(5, 2)\n  Choice                   Choice[]\n  Study_Set_Questions_List Study_Set_Questions_List[]\n  Answer                   Answer[]\n}\n\nmodel Answer {\n  question_id Int      @unique\n  choice_id   Int\n  Question    Question @relation(fields: [question_id], references: [id], onUpdate: Restrict)\n  Choice      Choice   @relation(fields: [choice_id], references: [id], onUpdate: Restrict)\n\n  @@index([question_id], map: \"Answer_Question_id_fk\")\n  @@index([choice_id], map: \"Answer_Choice_id_fk\")\n}\n\nmodel Study_Set {\n  id                       Int                        @id @default(autoincrement())\n  stage                    String                     @db.VarChar(20)\n  label                    String                     @db.VarChar(255)\n  Study_Set_Questions_List Study_Set_Questions_List[]\n}\n\nmodel Study_Set_Questions_List {\n  id          Int        @id @default(autoincrement())\n  question_id Int\n  studyset_id Int?\n  Question    Question   @relation(fields: [question_id], references: [id], onUpdate: Restrict)\n  Study_Set   Study_Set? @relation(fields: [studyset_id], references: [id], onDelete: Restrict, onUpdate: Restrict)\n\n  @@index([question_id], map: \"Study_Set_Questions_List_Question_id_fk\")\n  @@index([studyset_id], map: \"Study_Set_Questions_List_Study_Set_id_fk\")\n}\n",
+  "inlineSchemaHash": "762ab26f270d3ea607511f4694f35eff836cbdbb31bb48a379bbde866e2031dd",
   "copyEngine": true
 }
 config.dirname = '/'
