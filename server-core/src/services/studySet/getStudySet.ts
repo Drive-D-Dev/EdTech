@@ -5,4 +5,12 @@ const getAllStudySet = async () => {
 	return data;
 };
 
-export { getAllStudySet };
+const getStudySet = async (setId: number) => {
+	const data = await prisma.study_Set.findUnique({
+		where: {
+			id: setId,
+	  },});
+	return data;
+}
+
+export { getAllStudySet, getStudySet };
