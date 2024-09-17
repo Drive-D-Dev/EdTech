@@ -32,7 +32,10 @@ const SignInWrapper = () => {
       <Button variant={"outline"} asChild>
         <Link href={"/auth/register"}>สมัครสมาชิก</Link>
       </Button>
-      <Button>เข้าสู่ระบบ</Button>
+      <Button>
+        {" "}
+        <Link href={"/auth/login"}>เข้าสู่ระบบ</Link>
+      </Button>
     </>
   );
 };

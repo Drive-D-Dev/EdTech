@@ -42,10 +42,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <main className="bg-background w-full rounded-2xl min-h-full p-6 overflow-y-auto">
               <ProfileNav />
               {children}
+              <Toaster />
             </main>
           </ThemeProvider>
         </div>
-        <Toaster />
       </body>
     </html>
   );

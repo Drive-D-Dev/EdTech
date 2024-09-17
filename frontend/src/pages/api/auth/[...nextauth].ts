@@ -9,15 +9,17 @@ export const authOptions: NextAuthOptions = {
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        username: { label: "Username", type: "text" },
+        email: { label: "Username", type: "text" },
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials) {
-        if (!credentials?.username || !credentials?.password) {
-          return null
+        if (!credentials?.email || !credentials?.password) {
+          throw new Error("Please enter both email and password")
         }
+        const email = credentials.email
+        const password = credentials.password
 
-        const user = await fetch(BACKEND_URL+'/auth/login', {
+        const response = await fetch(BACKEND_URL+'/auth/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -25,14 +27,14 @@ export const authOptions: NextAuthOptions = {
           body: JSON.stringify({ email, password }),
         })
 
-        if (!user) {
-          return null
-        }
-        const isPasswordValid = await bcrypt.compare(credentials.password, user.password)
-        if (!isPasswordValid) {
-          return null
-        }
-        return { id: user.id, name: user.name, username: user.username }
+        if (!response.ok) {
+          const json = await response.json()
+          throw new Error(json.message)       
+       }
+
+        const user = await response.json()
+  
+        return { name: user.name }
       }
     })
   ],
