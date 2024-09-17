@@ -2,12 +2,16 @@ import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { PanelsLeftBottom, Star } from "lucide-react";
+import { LOGO_IMG } from "@/constant/global";
+import Link from "next/link";
 
 const SideNav = () => {
   const customButtonStyle = "w-full flex justify-start items-center gap-2";
   return (
-    <div className="flex flex-col h-full gap-5 justify-start items-start">
-      <Image src="/next.svg" width={100} height={100} alt="Next.js Logo" />
+    <div className="flex flex-col h-full gap-5 justify-start items-start p-3">
+      <Link href="/">
+        <img src={LOGO_IMG.src} alt={LOGO_IMG.alt} height={64} width={64} />
+      </Link>
       <ul className="w-full mt-5">
         <li>
           <Button variant="ghost" className={customButtonStyle}>
