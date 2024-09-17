@@ -19,7 +19,7 @@ const ChoiceButton: React.FC<ChoiceButtonProps> = ({
   };
 
   return (
-    <div className="flex items-center space-x-5 p-2">
+    <div className="flex flex-col items-center space-x-5 p-2 w-full">
       <Button
         onClick={handleClick}
         style={{
@@ -30,9 +30,13 @@ const ChoiceButton: React.FC<ChoiceButtonProps> = ({
           color: isSelected ? "#1a1a1a" : "#3d3d3d",
           transition: "border-color 0.3s ease, color 0.3s ease",
           cursor: "pointer",
-          width: "100dvw",
+          width: "100%",
           textAlign: "center",
           margin: "5px",
+          whiteSpace: "normal",
+          wordWrap: "break-word",
+          height: "auto",
+          display: "block",
         }}
       >
         {label}
