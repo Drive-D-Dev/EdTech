@@ -79,9 +79,7 @@ export default function ExamplePage() {
                 <div
                   key={question.id}
                   className={`flex items-center justify-center w-10 h-10 text-center rounded cursor-pointer ${
-                    selectedChoices[question.id]
-                      ? "bg-orange-300"
-                      : "bg-gray-300"
+                    selectedChoices[question.id] ? "bg-blue-300" : "bg-gray-300"
                   }`}
                 >
                   <p className="text-black">{question.id}</p>
