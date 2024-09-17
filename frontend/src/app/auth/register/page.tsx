@@ -15,6 +15,7 @@ import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { loginAPI } from "@/api/login";
 import { toast } from "sonner";
+import Link from "next/link";
 
 export default function RegisterForm() {
   const router = useRouter();
@@ -42,7 +43,7 @@ export default function RegisterForm() {
 
   return (
     <div className="flex items-center justify-center mt-40">
-      <Card className="w-full max-w-md">
+      <Card className="w-full max-w-md pb-4">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl font-bold text-center">
             Create an account
@@ -108,6 +109,15 @@ export default function RegisterForm() {
             </Button>
           </CardFooter>
         </form>
+        <p className="text-sm text-center">
+          Already have an account?{" "}
+          <Link
+            href="/auth/login"
+            className="text-primary hover:underline"
+          >
+            Login
+          </Link>
+        </p>
       </Card>
     </div>
   );

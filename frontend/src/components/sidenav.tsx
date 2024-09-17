@@ -14,14 +14,18 @@ const SideNav = () => {
       </Link>
       <ul className="w-full mt-5">
         <li>
-          <Button variant="ghost" className={customButtonStyle}>
-            <PanelsLeftBottom size={16} /> หน้าหลัก
+          <Button variant="ghost" size="lg" className={customButtonStyle} asChild>
+            <Link href={"/"}>
+              <PanelsLeftBottom size={16} /> หน้าหลัก
+            </Link>
           </Button>
         </li>
         <li>
-          <Button variant="ghost" className={customButtonStyle}>
-            <Star size={16} />
-            อีเว้น
+          <Button variant="ghost" size="lg" className={customButtonStyle} asChild>
+            <Link href={"/upcomming"}>
+              <Star size={16} />
+              อีเว้น
+            </Link>
           </Button>
         </li>
       </ul>
