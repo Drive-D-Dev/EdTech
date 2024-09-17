@@ -66,7 +66,7 @@ const MockAnswerPage = () => {
       <CardSummary />
       <div className="flex flex-row space-x-2">
         <Button className="bg-[#DB7801]">ข้อถูก</Button>
-        <Button>ข้อผิด</Button>
+        <Button variant="ghost">ข้อผิด</Button>
       </div>
       <AnswerCard />
     </div>
