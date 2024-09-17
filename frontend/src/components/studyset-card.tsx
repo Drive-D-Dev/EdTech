@@ -8,6 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const StudySetCard = () => {
   return (
@@ -57,5 +58,36 @@ const StudySetCard = () => {
     </Card>
   );
 };
+
+StudySetCard.Skeleton = MySkeleton;
+
+function MySkeleton() {
+  return (
+    <Card className="w-[300px]">
+      <CardHeader>
+        <Skeleton className="h-6 w-3/4" />
+        <div className="flex items-center mt-2">
+          <Skeleton className="h-4 w-24" />
+          <Skeleton className="h-4 w-4 ml-2 rounded-full" />
+        </div>
+      </CardHeader>
+      <CardContent>
+        {[0, 1, 2].map((index) => (
+          <div key={index} className="flex items-center justify-between mb-2">
+            <span className="flex items-center">
+              <Skeleton className="h-6 w-6 rounded-full mr-2" />
+              <Skeleton className="h-4 w-20" />
+            </span>
+            <Skeleton className="h-4 w-10" />
+          </div>
+        ))}
+      </CardContent>
+      <CardFooter className="flex flex-col gap-2">
+        <Skeleton className="h-9 w-full" />
+        <Skeleton className="h-9 w-full" />
+      </CardFooter>
+    </Card>
+  );
+}
 
 export default StudySetCard;
