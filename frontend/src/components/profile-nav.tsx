@@ -8,7 +8,7 @@ import { AvatarDropdown } from "@/components/avatar-dropdown";
 import { NavbarMenu } from "@/components/navbar-menu";
 
 // TODO: check whether or not user is sign in.
-const session = true;
+const session = false;
 
 export const ProfileNav = () => {
   // handle cool on scroll animation
@@ -29,7 +29,10 @@ export const ProfileNav = () => {
 const SignInWrapper = () => {
   return (
     <>
-      <Button>Sign In</Button>
+      <Button variant={"outline"} asChild>
+        <Link href={"/auth/register"}>สมัครสมาชิก</Link>
+      </Button>
+      <Button>เข้าสู่ระบบ</Button>
     </>
   );
 };
