@@ -21,18 +21,6 @@ export default function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    const response = await fetch(BACKEND_URL + "/auth/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-        name: name,
-      }),
-    });
-
     console.log("Form submitted", response);
   };
 
