@@ -5,6 +5,7 @@ import { Navbar } from "@/components/navbar";
 
 import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
+import SideNav from "@/components/sidenav";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -12,7 +13,7 @@ const fontSans = FontSans({
 });
 
 interface RootLayoutProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
@@ -21,19 +22,24 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <head />
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased ",
+          "min-h-screen font-sans antialiased bg-[#E2E8EC]",
           fontSans.variable
         )}
       >
-        <div vaul-drawer-wrapper="" >
+        <div
+          vaul-drawer-wrapper=""
+          className="flex flex-row max-w-screen-xl mx-auto px-6 py-4 h-screen gap-4"
+        >
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
           >
-            <Navbar />
-            {children}
+            <SideNav />
+            <main className="bg-white w-full rounded-lg min-h-full p-4">
+              {children}
+            </main>
           </ThemeProvider>
         </div>
         <Toaster />
