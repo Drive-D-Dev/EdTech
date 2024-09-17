@@ -3,7 +3,8 @@ import { getAllStudySet } from '../../services/studySet/getStudySet';
 
 const getMultipleStudySetController = async (c: Context) => {
 	try {
-		const data = await getAllStudySet();
+		const { amount } = c.req.param();
+		const data = await getAllStudySet(parseInt(amount));
 		return c.json({
 			success: true,
 			data: data,
