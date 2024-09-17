@@ -1,10 +1,11 @@
 import { Hono } from 'hono';
-import { getAllStudySetController } from '../controllers/studyset/getAllStudySet';
-import { getStudySetController } from '../controllers/studyset/getStudySet';
+import { getMultipleStudySetController } from '../controllers/studyset/getMultipleStudySet';
+import { getStudySetController } from '../controllers/studyset/getStudySetById';
 
-const studySetRouter = new Hono();
+const studySetRouter = new Hono({ strict: false });
 
-studySetRouter.get('/', getAllStudySetController);
-studySetRouter.get('/:setId', getStudySetController);
+studySetRouter.get('/', getMultipleStudySetController);
+studySetRouter.get('/:amount', getMultipleStudySetController);
+studySetRouter.get('/byId/:setId', getStudySetController);
 
 export { studySetRouter };
