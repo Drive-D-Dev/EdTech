@@ -148,7 +148,6 @@ exports.Prisma.AnswerScalarFieldEnum = {
 
 exports.Prisma.Study_SetScalarFieldEnum = {
   id: 'id',
-  stage: 'stage',
   label: 'label'
 };
 

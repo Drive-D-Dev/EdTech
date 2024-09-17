@@ -5321,19 +5321,16 @@ export namespace Prisma {
 
   export type Study_SetMinAggregateOutputType = {
     id: number | null
-    stage: string | null
     label: string | null
   }
 
   export type Study_SetMaxAggregateOutputType = {
     id: number | null
-    stage: string | null
     label: string | null
   }
 
   export type Study_SetCountAggregateOutputType = {
     id: number
-    stage: number
     label: number
     _all: number
   }
@@ -5349,19 +5346,16 @@ export namespace Prisma {
 
   export type Study_SetMinAggregateInputType = {
     id?: true
-    stage?: true
     label?: true
   }
 
   export type Study_SetMaxAggregateInputType = {
     id?: true
-    stage?: true
     label?: true
   }
 
   export type Study_SetCountAggregateInputType = {
     id?: true
-    stage?: true
     label?: true
     _all?: true
   }
@@ -5454,7 +5448,6 @@ export namespace Prisma {
 
   export type Study_SetGroupByOutputType = {
     id: number
-    stage: string
     label: string
     _count: Study_SetCountAggregateOutputType | null
     _avg: Study_SetAvgAggregateOutputType | null
@@ -5479,7 +5472,6 @@ export namespace Prisma {
 
   export type Study_SetSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    stage?: boolean
     label?: boolean
     Study_Set_Questions_List?: boolean | Study_Set$Study_Set_Questions_ListArgs<ExtArgs>
     _count?: boolean | Study_SetCountOutputTypeDefaultArgs<ExtArgs>
@@ -5487,13 +5479,11 @@ export namespace Prisma {
 
   export type Study_SetSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    stage?: boolean
     label?: boolean
   }, ExtArgs["result"]["study_Set"]>
 
   export type Study_SetSelectScalar = {
     id?: boolean
-    stage?: boolean
     label?: boolean
   }
 
@@ -5510,7 +5500,6 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      stage: string
       label: string
     }, ExtArgs["result"]["study_Set"]>
     composites: {}
@@ -5907,7 +5896,6 @@ export namespace Prisma {
    */ 
   interface Study_SetFieldRefs {
     readonly id: FieldRef<"Study_Set", 'Int'>
-    readonly stage: FieldRef<"Study_Set", 'String'>
     readonly label: FieldRef<"Study_Set", 'String'>
   }
     
@@ -7284,7 +7272,6 @@ export namespace Prisma {
 
   export const Study_SetScalarFieldEnum: {
     id: 'id',
-    stage: 'stage',
     label: 'label'
   };
 
@@ -7619,14 +7606,12 @@ export namespace Prisma {
     OR?: Study_SetWhereInput[]
     NOT?: Study_SetWhereInput | Study_SetWhereInput[]
     id?: IntFilter<"Study_Set"> | number
-    stage?: StringFilter<"Study_Set"> | string
     label?: StringFilter<"Study_Set"> | string
     Study_Set_Questions_List?: Study_Set_Questions_ListListRelationFilter
   }
 
   export type Study_SetOrderByWithRelationInput = {
     id?: SortOrder
-    stage?: SortOrder
     label?: SortOrder
     Study_Set_Questions_List?: Study_Set_Questions_ListOrderByRelationAggregateInput
   }
@@ -7636,14 +7621,12 @@ export namespace Prisma {
     AND?: Study_SetWhereInput | Study_SetWhereInput[]
     OR?: Study_SetWhereInput[]
     NOT?: Study_SetWhereInput | Study_SetWhereInput[]
-    stage?: StringFilter<"Study_Set"> | string
     label?: StringFilter<"Study_Set"> | string
     Study_Set_Questions_List?: Study_Set_Questions_ListListRelationFilter
   }, "id">
 
   export type Study_SetOrderByWithAggregationInput = {
     id?: SortOrder
-    stage?: SortOrder
     label?: SortOrder
     _count?: Study_SetCountOrderByAggregateInput
     _avg?: Study_SetAvgOrderByAggregateInput
@@ -7657,7 +7640,6 @@ export namespace Prisma {
     OR?: Study_SetScalarWhereWithAggregatesInput[]
     NOT?: Study_SetScalarWhereWithAggregatesInput | Study_SetScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Study_Set"> | number
-    stage?: StringWithAggregatesFilter<"Study_Set"> | string
     label?: StringWithAggregatesFilter<"Study_Set"> | string
   }
 
@@ -7906,45 +7888,38 @@ export namespace Prisma {
   }
 
   export type Study_SetCreateInput = {
-    stage: string
     label: string
     Study_Set_Questions_List?: Study_Set_Questions_ListCreateNestedManyWithoutStudy_SetInput
   }
 
   export type Study_SetUncheckedCreateInput = {
     id?: number
-    stage: string
     label: string
     Study_Set_Questions_List?: Study_Set_Questions_ListUncheckedCreateNestedManyWithoutStudy_SetInput
   }
 
   export type Study_SetUpdateInput = {
-    stage?: StringFieldUpdateOperationsInput | string
     label?: StringFieldUpdateOperationsInput | string
     Study_Set_Questions_List?: Study_Set_Questions_ListUpdateManyWithoutStudy_SetNestedInput
   }
 
   export type Study_SetUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    stage?: StringFieldUpdateOperationsInput | string
     label?: StringFieldUpdateOperationsInput | string
     Study_Set_Questions_List?: Study_Set_Questions_ListUncheckedUpdateManyWithoutStudy_SetNestedInput
   }
 
   export type Study_SetCreateManyInput = {
     id?: number
-    stage: string
     label: string
   }
 
   export type Study_SetUpdateManyMutationInput = {
-    stage?: StringFieldUpdateOperationsInput | string
     label?: StringFieldUpdateOperationsInput | string
   }
 
   export type Study_SetUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    stage?: StringFieldUpdateOperationsInput | string
     label?: StringFieldUpdateOperationsInput | string
   }
 
@@ -8253,7 +8228,6 @@ export namespace Prisma {
 
   export type Study_SetCountOrderByAggregateInput = {
     id?: SortOrder
-    stage?: SortOrder
     label?: SortOrder
   }
 
@@ -8263,13 +8237,11 @@ export namespace Prisma {
 
   export type Study_SetMaxOrderByAggregateInput = {
     id?: SortOrder
-    stage?: SortOrder
     label?: SortOrder
   }
 
   export type Study_SetMinOrderByAggregateInput = {
     id?: SortOrder
-    stage?: SortOrder
     label?: SortOrder
   }
 
@@ -9178,13 +9150,11 @@ export namespace Prisma {
   }
 
   export type Study_SetCreateWithoutStudy_Set_Questions_ListInput = {
-    stage: string
     label: string
   }
 
   export type Study_SetUncheckedCreateWithoutStudy_Set_Questions_ListInput = {
     id?: number
-    stage: string
     label: string
   }
 
@@ -9233,13 +9203,11 @@ export namespace Prisma {
   }
 
   export type Study_SetUpdateWithoutStudy_Set_Questions_ListInput = {
-    stage?: StringFieldUpdateOperationsInput | string
     label?: StringFieldUpdateOperationsInput | string
   }
 
   export type Study_SetUncheckedUpdateWithoutStudy_Set_Questions_ListInput = {
     id?: IntFieldUpdateOperationsInput | number
-    stage?: StringFieldUpdateOperationsInput | string
     label?: StringFieldUpdateOperationsInput | string
   }
 
