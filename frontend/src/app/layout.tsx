@@ -12,7 +12,7 @@ const fontSans = FontSans({
 });
 
 interface RootLayoutProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
@@ -21,11 +21,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <head />
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased ",
+          "min-h-screen bg-background font-sans antialiased bg-white",
           fontSans.variable
         )}
       >
-        <div vaul-drawer-wrapper="" >
+        <div vaul-drawer-wrapper="">
           <ThemeProvider
             attribute="class"
             defaultTheme="system"

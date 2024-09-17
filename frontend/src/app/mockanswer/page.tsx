@@ -1,65 +1,35 @@
 "use client";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import { AnswerDialog } from "@/components/answer-dialog";
 
-// Mock Data
-const mockExam = [
-  {
-    id: "1",
-    question: "Some question about law1.",
-    choice: ["choice1", "choice2", "choice3", "choice4"],
-    correct: "choice1",
-  },
-  {
-    id: "2",
-    question: "Some question about law2.",
-    choice: ["choice1", "choice2", "choice3", "choice4"],
-    correct: "choice4",
-  },
-  {
-    id: "3",
-    question: "Some question about law3.",
-    choice: ["choice1", "choice2", "choice3", "choice4"],
-    correct: "choice4",
-  },
-  {
-    id: "4",
-    question: "Some question about law4.",
-    choice: ["choice1", "choice2", "choice3", "choice4"],
-    correct: "choice2",
-  },
-  {
-    id: "5",
-    question: "Some question about law5.",
-    choice: ["choice1", "choice2", "choice3", "choice4"],
-    correct: "choice3",
-  },
-];
-
-const MockSelectedChoice = [
-  { id: "1", choice: "choice2" },
-  { id: "2", choice: "choice4" },
-  { id: "3", choice: "choice1" },
-  { id: "4", choice: "choice2" },
-  { id: "5", choice: "choice3" },
-];
+import { mockExam } from "@/data/mockData";
 
 const MockAnswerPage = () => {
-  // Calculate total questions
+  const searchParams = useSearchParams();
+  const [selectedChoices, setSelectedChoices] = useState<{
+    [key: string]: string | null;
+  }>({});
+
+  useEffect(() => {
+    const answers = searchParams.get("answers");
+    if (answers) {
+      setSelectedChoices(JSON.parse(answers));
+    }
+  }, [searchParams]);
+
   const totalQuestions = mockExam.length;
 
-  // Calculate the number of correct answers
   const correctAnswersCount = mockExam.reduce((count, exam) => {
-    const selectedChoice = MockSelectedChoice.find(
-      (choice) => choice.id === exam.id
-    );
-    if (selectedChoice && selectedChoice.choice === exam.correct) {
+    const selectedChoice = selectedChoices[exam.id];
+    if (selectedChoice === exam.correct) {
       return count + 1;
     }
     return count;
   }, 0);
 
   return (
-    <div className="container flex flex-col justify-center items-center space-y-4">
+    <div className="container flex flex-col justify-center items-center space-y-4 bg-white mt-10">
       <div className="flex flex-col justify-center items-center">
         <p className="text-black text-lg font-semibold">
           {correctAnswersCount}/{totalQuestions}
@@ -69,13 +39,8 @@ const MockAnswerPage = () => {
         <p className="text-black text-lg font-normal">Review</p>
       </div>
       {mockExam.map((exam) => {
-        // Find the selected choice for this exam question
-        const selectedChoice = MockSelectedChoice.find(
-          (choice) => choice.id === exam.id
-        );
-
-        const isSelectedCorrect =
-          selectedChoice && selectedChoice.choice === exam.correct;
+        const selectedChoice = selectedChoices[exam.id];
+        const isSelectedCorrect = selectedChoice === exam.correct;
 
         return (
           <div
@@ -99,11 +64,8 @@ const MockAnswerPage = () => {
             </div>
             <div className="flex flex-col w-full space-y-2 pl-4">
               {exam.choice.map((choice, index) => {
-                // Determine if the current choice is correct
                 const isCorrect = choice === exam.correct;
-                // Determine if the current choice is the one selected by the user
-                const isSelected =
-                  selectedChoice && selectedChoice.choice === choice;
+                const isSelected = selectedChoice === choice;
 
                 return (
                   <div
@@ -130,7 +92,7 @@ const MockAnswerPage = () => {
                     isSelectedCorrect ? "text-green-600" : "text-red-600"
                   }`}
                 >
-                  Your answer: {selectedChoice?.choice}
+                  Your answer: {selectedChoice}
                 </p>
                 {!isSelectedCorrect && (
                   <p className="text-green-600 text-sm">

@@ -2,7 +2,9 @@
 import * as React from "react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 import ChoiceBox from "@/components/choicebox";
+import CountdownTimer from "@/components/timer-countdown";
 
 import {
   Dialog,
@@ -14,44 +16,15 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-// Mock Data
-const mockExam = [
-  {
-    id: "1",
-    question: "Some question about law1.",
-    choice: ["choice1", "choice2", "choice3", "choice4"],
-    correct: "1",
-  },
-  {
-    id: "2",
-    question: "Some question about law2.",
-    choice: ["choice1", "choice2", "choice3", "choice4"],
-    correct: "4",
-  },
-  {
-    id: "3",
-    question: "Some question about law3.",
-    choice: ["choice1", "choice2", "choice3", "choice4"],
-    correct: "4",
-  },
-  {
-    id: "4",
-    question: "Some question about law4.",
-    choice: ["choice1", "choice2", "choice3", "choice4"],
-    correct: "2",
-  },
-  {
-    id: "5",
-    question: "Some question about law5.",
-    choice: ["choice1", "choice2", "choice3", "choice4"],
-    correct: "3",
-  },
-];
+import { mockExam } from "@/data/mockData";
 
 const MockPage = () => {
   const [selectedChoices, setSelectedChoices] = useState<{
     [key: string]: string | null;
   }>({});
+  const [open, setOpen] = React.useState(false);
+  const [showWarning, setShowWarning] = React.useState(false);
+  const router = useRouter();
 
   const handleSelect = (questionId: string, choice: string) => {
     setSelectedChoices((prev) => ({
@@ -60,27 +33,37 @@ const MockPage = () => {
     }));
   };
 
-  const [open, setOpen] = React.useState(false);
-  const Trigger = () => (
-    <Button variant="secondary" className="flex justify-end w-full p-2">
-      <p>Finish123</p>
-    </Button>
-  );
-
   const handleFinishExam = () => {
-    // Implement what should happen when the user confirms they want to finish the exam
-    console.log("Exam finished!");
-    setOpen(false); // Close the dialog after finishing the exam
+    const unansweredQuestions = mockExam.some(
+      (exam) => !selectedChoices[exam.id]
+    );
+
+    if (unansweredQuestions) {
+      setShowWarning(true);
+      setOpen(false);
+    } else {
+      setOpen(true);
+      setShowWarning(false);
+    }
+  };
+
+  const navigateToResults = () => {
+    const queryParams = new URLSearchParams({
+      answers: JSON.stringify(selectedChoices),
+    }).toString();
+
+    router.push(`/mockanswer?${queryParams}`);
+    setOpen(false);
   };
 
   return (
-    <div className="container flex flex-col justify-center items-center space-y-4">
+    <div className="container flex flex-col justify-center items-center space-y-4 bg-white mt-10">
       <div className="box flex flex-col justify-center items-center w-fit">
-        <p className="text-black text-lg font-semibold">Mock exam 123</p>
+        <p className="text-black text-lg font-semibold">Math</p>
       </div>
 
       <div className="w-full flex justify-start pl-4">
-        <p className="text-black text-lg font-normal">Time left...</p>
+        <CountdownTimer duration={300} />
       </div>
 
       {mockExam.map((exam) => (
@@ -106,11 +89,18 @@ const MockPage = () => {
           ))}
         </div>
       ))}
+
       <div className="w-full flex justify-end pr-4">
-        <Dialog open={open} onOpenChange={setOpen}>
+        <Dialog open={open}>
           <DialogTrigger asChild>
             <span>
-              <Trigger />
+              <Button
+                variant="secondary"
+                className="flex justify-end w-full p-2"
+                onClick={handleFinishExam}
+              >
+                <p>Finish</p>
+              </Button>
             </span>
           </DialogTrigger>
           <DialogContent>
@@ -124,13 +114,29 @@ const MockPage = () => {
               <Button variant="outline" onClick={() => setOpen(false)}>
                 Cancel
               </Button>
-              <Button onClick={handleFinishExam}>
-                Yes
-              </Button>
+              <Button onClick={navigateToResults}>Yes</Button>
             </DialogFooter>
           </DialogContent>
         </Dialog>
       </div>
+
+      <Dialog open={showWarning} onOpenChange={setShowWarning}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Warning</DialogTitle>
+          </DialogHeader>
+          <DialogDescription>
+            You have unanswered questions. Are you sure you want to finish the
+            exam?
+          </DialogDescription>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setShowWarning(false)}>
+              Cancel
+            </Button>
+            <Button onClick={navigateToResults}>Yes, finish</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
