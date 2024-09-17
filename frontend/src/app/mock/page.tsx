@@ -119,13 +119,13 @@ export default function ExamplePage() {
           </div>
         }
       />
-      {/* <div className="w-full flex justify-end pr-4">
+      <div className="w-full flex justify-end">
         <Dialog open={open}>
           <DialogTrigger asChild>
             <span>
               <Button
                 variant="secondary"
-                className="flex justify-end w-full p-2"
+                className="flex justify-end w-full"
                 onClick={handleFinishExam}
               >
                 <p>Finish</p>
@@ -165,7 +165,7 @@ export default function ExamplePage() {
             <Button onClick={navigateToResults}>Yes, finish</Button>
           </DialogFooter>
         </DialogContent>
-      </Dialog> */}
+      </Dialog>
     </div>
   );
 }
