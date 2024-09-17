@@ -79,9 +79,7 @@ export default function ExamplePage() {
                 <div
                   key={question.id}
                   className={`flex items-center justify-center w-10 h-10 text-center rounded cursor-pointer ${
-                    selectedChoices[question.id]
-                      ? "bg-orange-300"
-                      : "bg-gray-300"
+                    selectedChoices[question.id] ? "bg-blue-300" : "bg-gray-300"
                   }`}
                 >
                   <p className="text-black">{question.id}</p>
@@ -97,10 +95,18 @@ export default function ExamplePage() {
                 key={question.id}
                 className="box flex flex-col justify-center items-center w-full space-y-4 mt-5 bg-neutral-700"
               >
-                <div className="w-full flex justify-start">
+                <div className="w-full  justify-start">
                   <p className="text-white text-lg font-normal">
-                    {question.id + ". "}
-                    {question.question}
+                    <div className="flex items-center">
+                      <div
+                        key={question.id}
+                        className="flex items-center justify-center w-8 h-8 text-center rounded cursor-pointer"
+                        style={{ backgroundColor: "#DB7801" }}
+                      >
+                        <p className="text-white">{question.id}</p>
+                      </div>
+                      <p className="text-white ml-4">{question.question}</p>
+                    </div>
                   </p>
                 </div>
                 <div className="w-full justify-center">

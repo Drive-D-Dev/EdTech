@@ -10,7 +10,7 @@ export default function TwoColumnLayout({
   leftContent,
   rightContent,
 }: TwoColumnLayoutProps) {
-  const rh = 10 + Math.ceil(mockExam.length / 2) * 5;
+  const rh = 12 + Math.ceil(mockExam.length / 2) * 5;
   return (
     <div className="min-h-screen bg-black">
       <div className="w-full px-4 py-10">
