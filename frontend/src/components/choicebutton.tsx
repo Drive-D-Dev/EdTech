@@ -19,7 +19,7 @@ const ChoiceButton: React.FC<ChoiceButtonProps> = ({
   };
 
   return (
-    <div className="flex flex-col items-center space-x-5 p-2 w-full">
+    <div className="flex flex-col items-center space-x-5 w-full">
       <Button
         onClick={handleClick}
         style={{
