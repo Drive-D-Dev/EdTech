@@ -22,14 +22,14 @@ const StudySetWrapper = () => {
     );
 
   if (!data || data?.success === false) return <RetryButton retry={mutate} />;
-  console.log(data);
 
+  const mutatedData = data.data ?? []
   return (
     <>
       <h3 className="text-xl font-semibold mb-4">โจทย์สำหรับคุณ</h3>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {data.data.map((index) => (
+        {mutatedData.map((index) => (
           <StudySetCard key={index} />
         ))}
       </div>
