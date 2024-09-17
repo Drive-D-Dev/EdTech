@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import SummaryCard from "@/components/summary-card";
 import {
   Dialog,
   DialogContent,
@@ -44,8 +45,9 @@ const HomePage = () => {
   };
 
   return (
-    <main className="container flex flex-col justify-center bg-white mt-10">
-      <div className="flex flex-col space-y-4 bg-white">
+    <main >
+      <SummaryCard />
+      <div className="flex flex-col space-y-4">
         {isVisible && (
           <div className="box relative flex flex-col items-center space-y-6 pt-6">
             <Button
