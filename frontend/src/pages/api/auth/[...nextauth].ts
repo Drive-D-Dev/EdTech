@@ -27,31 +27,21 @@ export const authOptions: NextAuthOptions = {
 					body: JSON.stringify({ email, password }),
 				});
 
-				if (!response.ok) {
-					const json = await response.json();
-					throw new Error(json.message);
-				}
-
-				const user = await response.json();
-				if (user && user.id && user.name && user.email) {
-					return {
-						id: user.id,
-						name: user.name,
-						email: user.email,
-					};
-				}
-				return null;
-			},
-		}),
-	],
-	session: {
-		strategy: 'jwt',,
+        const user = await response.json()
+  
+        return { name: user.name }
+      }
+    })
+  ],
+  session: {
+    strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60, // 30 days
     updateAge: 24 * 60 * 60, // 24 hours
-	},
-	pages: {
-		signIn: '/auth/signin',
-	},
-};
+  },
+  pages: {
+    signIn: "/auth/signin"
+  }
+}
+
 
 export default NextAuth(authOptions);

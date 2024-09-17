@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 
 import StudySetCard from "@/components/studyset-card";
 import { Button } from "./ui/button";
@@ -7,7 +7,9 @@ import { fetchStudysetByAmount } from "@/swr/fetch-studyset";
 import { AlertCircle, RefreshCw } from "lucide-react";
 
 const StudySetWrapper = () => {
-  const { data, error, isLoading, mutate } = fetchStudysetByAmount(6);
+  const [studysetAmount, setStudysetAmount] = useState(6);
+  const { data, error, isLoading, mutate } =
+    fetchStudysetByAmount(studysetAmount);
 
   if (error) return <RetryButton retry={mutate} />;
   if (isLoading)
@@ -18,7 +20,6 @@ const StudySetWrapper = () => {
         ))}
       </div>
     );
-  const transformedData = data ?? [];
 
   if (!data || data?.success === false) return <RetryButton retry={mutate} />;
   console.log(data);
@@ -28,13 +29,19 @@ const StudySetWrapper = () => {
       <h3 className="text-xl font-semibold mb-4">โจทย์สำหรับคุณ</h3>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {transformedData.map((index) => (
+        {data.data.map((index) => (
           <StudySetCard key={index} />
         ))}
       </div>
-      <Button variant="ghost" className="col-span-full w-full mt-4">
-        Show More
-      </Button>
+      {studysetAmount < 16 && (
+        <Button
+          variant="ghost"
+          className="col-span-full w-full mt-4"
+          onClick={() => setStudysetAmount(studysetAmount + 6)}
+        >
+          Show More
+        </Button>
+      )}
     </>
   );
 };
