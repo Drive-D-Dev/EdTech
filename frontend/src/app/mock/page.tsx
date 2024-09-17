@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import ChoiceButton from "@/components/choicebutton";
 import CountdownTimer from "@/components/timer-countdown";
-import TwoColumnLayout from "@/components/twolayout";
+import TwoRowLayout from "@/components/twolayout";
 import { mockExam } from "@/data/mockData";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
@@ -109,16 +109,16 @@ export default function ExamplePage() {
             </DialogFooter>
           </DialogContent>
         </Dialog>
-      </ >
-    )
-  }
+      </>
+    );
+  };
 
   return (
     <div>
       <div className="w-[97dvw] flex justify-center pl-4">
         <CountdownTimer duration={300} />
       </div>
-      <TwoColumnLayout
+      <TwoRowLayout
         leftContent={
           <div>
             <div className="mb-4 text-xl text-center">
@@ -131,10 +131,11 @@ export default function ExamplePage() {
                 <a
                   key={question.id}
                   href={`#question${index + 1}`}
-                  className={`flex items-center justify-center w-10 h-10 text-center rounded cursor-pointer ${selectedChoices[question.id] ? "bg-blue-300" : "bg-gray-300"
-                    }`}
+                  className={`flex items-center justify-center w-10 h-10 text-center rounded cursor-pointer ${
+                    selectedChoices[question.id] ? "bg-blue-300" : "bg-gray-300"
+                  }`}
                 >
-                  <p className="text-black" >{question.id}</p>
+                  <p className="text-black">{question.id}</p>
                 </a>
               ))}
             </div>
@@ -158,7 +159,9 @@ export default function ExamplePage() {
                       >
                         <p className="text-background">{question.id}</p>
                       </div>
-                      <p className="text-foreground ml-4">{question.question}</p>
+                      <p className="text-foreground ml-4">
+                        {question.question}
+                      </p>
                     </div>
                   </p>
                 </div>
@@ -179,8 +182,6 @@ export default function ExamplePage() {
           </div>
         }
       />
-
     </div>
   );
 }
-

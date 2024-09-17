@@ -54,5 +54,4 @@ export const mockExam = [
     ],
     correct: "1/2",
   },
-  
 ];
