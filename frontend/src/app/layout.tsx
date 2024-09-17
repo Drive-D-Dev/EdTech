@@ -45,7 +45,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
               disableTransitionOnChange
             >
               <SideNav />
-              <main className="bg-background w-full rounded-2xl min-h-full p-6 overflow-y-auto">
+              <main className="bg-background w-full rounded-2xl min-h-full p-6 overflow-y-auto overflow-x-hidden">
                 <ProfileNav />
                 {children}
                 <Toaster />

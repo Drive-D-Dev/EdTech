@@ -1,7 +1,7 @@
 import { title } from "process";
 
 export const LOGO_IMG = {
-  src: "/next.svg",
+  src: "/testmate-logo.svg",
   alt: "logo",
 };
 
@@ -12,4 +12,4 @@ export const NAV_LINKS = [
   },
 ];
 
-export const BACKEND_URL = "http://localhost:8000"
+export const BACKEND_URL = "http://localhost:8000";
