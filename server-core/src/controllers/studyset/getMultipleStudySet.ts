@@ -1,7 +1,7 @@
 import { Context } from 'hono';
 import { getAllStudySet } from '../../services/studySet/getStudySet';
 
-const getAllStudySetController = async (c: Context) => {
+const getMultipleStudySetController = async (c: Context) => {
 	try {
 		const data = await getAllStudySet();
 		return c.json({
@@ -18,4 +18,4 @@ const getAllStudySetController = async (c: Context) => {
 	}
 };
 
-export { getAllStudySetController };
+export { getMultipleStudySetController };
