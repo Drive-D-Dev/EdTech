@@ -1,7 +1,7 @@
 import { Context } from 'hono';
+import { sign } from 'hono/jwt';
 import { getUserByEmail } from '../../services/auth/getUser';
 import { compare } from 'bcrypt';
-import { sign } from 'jsonwebtoken';
 import { setSignedCookie } from 'hono/cookie';
 
 const loginController = async (c: Context) => {
@@ -13,7 +13,7 @@ const loginController = async (c: Context) => {
 		if (!(await compare(password, userData.password))) throw 'Password is incorrect';
 		const SECRET = Bun.env.JWT_SECRET;
 		if (!SECRET) throw 'JWT_SECRET is not defined';
-		const token = sign({ email: userData.email }, SECRET, { expiresIn: '1m' });
+		const token = await sign({ email: userData.email }, SECRET);
 		const ENV = Bun.env.ENV;
 		const COOKIE_SECRET = Bun.env.COOKIE_SECRET;
 		if (!ENV) throw 'ENV is not defined';
