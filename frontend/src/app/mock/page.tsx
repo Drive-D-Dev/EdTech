@@ -1,8 +1,11 @@
 "use client";
-import * as React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
+import ChoiceButton from "@/components/choicebutton";
+import CountdownTimer from "@/components/timer-countdown";
+import TwoColumnLayout from "@/components/twolayout";
+import { mockExam } from "@/data/mockData";
 import { Button } from "@/components/ui/button";
-import ChoiceBox from "@/components/choicebox";
+import { useRouter } from "next/navigation";
 
 import {
   Dialog,
@@ -14,103 +17,119 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-// Mock Data
-const mockExam = [
-  {
-    id: "1",
-    question: "Some question about law1.",
-    choice: ["choice1", "choice2", "choice3", "choice4"],
-    correct: "1",
-  },
-  {
-    id: "2",
-    question: "Some question about law2.",
-    choice: ["choice1", "choice2", "choice3", "choice4"],
-    correct: "4",
-  },
-  {
-    id: "3",
-    question: "Some question about law3.",
-    choice: ["choice1", "choice2", "choice3", "choice4"],
-    correct: "4",
-  },
-  {
-    id: "4",
-    question: "Some question about law4.",
-    choice: ["choice1", "choice2", "choice3", "choice4"],
-    correct: "2",
-  },
-  {
-    id: "5",
-    question: "Some question about law5.",
-    choice: ["choice1", "choice2", "choice3", "choice4"],
-    correct: "3",
-  },
-];
-
-const MockPage = () => {
+export default function ExamplePage() {
   const [selectedChoices, setSelectedChoices] = useState<{
-    [key: string]: string | null;
+    [questionId: string]: string | null;
   }>({});
+  const [open, setOpen] = React.useState(false);
+  const [showWarning, setShowWarning] = React.useState(false);
+  const router = useRouter();
 
-  const handleSelect = (questionId: string, choice: string) => {
+  const handleSelect = (questionId: string, choiceId: string) => {
     setSelectedChoices((prev) => ({
       ...prev,
-      [questionId]: choice,
+      [questionId]: choiceId,
     }));
   };
 
-  const [open, setOpen] = React.useState(false);
-  const Trigger = () => (
-    <Button variant="secondary" className="flex justify-end w-full p-2">
-      <p>Finish123</p>
-    </Button>
-  );
-
   const handleFinishExam = () => {
-    // Implement what should happen when the user confirms they want to finish the exam
-    console.log("Exam finished!");
-    setOpen(false); // Close the dialog after finishing the exam
+    const unansweredQuestions = mockExam.some(
+      (exam) => !selectedChoices[exam.id]
+    );
+
+    if (unansweredQuestions) {
+      setShowWarning(true);
+      setOpen(false);
+    } else {
+      setOpen(true);
+      setShowWarning(false);
+    }
+  };
+
+  const selectedCount = Object.keys(selectedChoices).filter(
+    (key) => selectedChoices[key]
+  ).length;
+
+  const totalQuestions = mockExam.length;
+
+  const navigateToResults = () => {
+    const queryParams = new URLSearchParams({
+      answers: JSON.stringify(selectedChoices),
+    }).toString();
+
+    router.push(`/mockanswer?${queryParams}`);
+    setOpen(false);
   };
 
   return (
-    <div className="container flex flex-col justify-center items-center space-y-4">
-      <div className="box flex flex-col justify-center items-center w-fit">
-        <p className="text-black text-lg font-semibold">Mock exam 123</p>
+    <div>
+      <div className="w-[97dvw] flex justify-center pl-4">
+        <CountdownTimer duration={300} />
       </div>
-
-      <div className="w-full flex justify-start pl-4">
-        <p className="text-black text-lg font-normal">Time left...</p>
-      </div>
-
-      {mockExam.map((exam) => (
-        <div
-          key={exam.id}
-          className="box flex flex-col justify-center items-center w-full space-y-4"
-        >
-          <div className="w-full flex justify-start">
-            <p className="text-black text-md font-normal">
-              {exam.id + ". "}
-              {exam.question}
-            </p>
+      <TwoColumnLayout
+        leftContent={
+          <div>
+            <div className="mb-4 text-xl text-center">
+              <p className="text-white">
+                {selectedCount} / {totalQuestions} ข้อ
+              </p>
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              {mockExam.map((question) => (
+                <div
+                  key={question.id}
+                  className={`flex items-center justify-center w-10 h-10 text-center rounded cursor-pointer ${
+                    selectedChoices[question.id]
+                      ? "bg-orange-300"
+                      : "bg-gray-300"
+                  }`}
+                >
+                  <p className="text-black">{question.id}</p>
+                </div>
+              ))}
+            </div>
           </div>
-
-          {exam.choice.map((choice, index) => (
-            <ChoiceBox
-              key={index}
-              id={choice}
-              label={choice}
-              checked={selectedChoices[exam.id] === choice}
-              onChange={() => handleSelect(exam.id, choice)}
-            />
-          ))}
-        </div>
-      ))}
-      <div className="w-full flex justify-end pr-4">
-        <Dialog open={open} onOpenChange={setOpen}>
+        }
+        rightContent={
+          <div>
+            {mockExam.map((question) => (
+              <div
+                key={question.id}
+                className="box flex flex-col justify-center items-center w-full space-y-4 mt-5 bg-neutral-700"
+              >
+                <div className="w-full flex justify-start">
+                  <p className="text-white text-lg font-normal">
+                    {question.id + ". "}
+                    {question.question}
+                  </p>
+                </div>
+                <div className="w-full justify-center">
+                  {question.choice.map((choice) => (
+                    <ChoiceButton
+                      key={choice.id}
+                      id={choice.id}
+                      label={choice.label}
+                      isSelected={selectedChoices[question.id] === choice.id}
+                      onSelect={(id) => handleSelect(question.id, id)}
+                    />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        }
+      />
+      <div className="w-full flex justify-end">
+        <Dialog open={open}>
           <DialogTrigger asChild>
             <span>
-              <Trigger />
+              <Button
+                variant="secondary"
+                className="flex justify-end w-full"
+                onClick={handleFinishExam}
+              >
+                <p>Finish</p>
+              </Button>
             </span>
           </DialogTrigger>
           <DialogContent>
@@ -124,15 +143,29 @@ const MockPage = () => {
               <Button variant="outline" onClick={() => setOpen(false)}>
                 Cancel
               </Button>
-              <Button onClick={handleFinishExam}>
-                Yes
-              </Button>
+              <Button onClick={navigateToResults}>Yes</Button>
             </DialogFooter>
           </DialogContent>
         </Dialog>
       </div>
+
+      <Dialog open={showWarning} onOpenChange={setShowWarning}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Warning</DialogTitle>
+          </DialogHeader>
+          <DialogDescription>
+            You have unanswered questions. Are you sure you want to finish the
+            exam?
+          </DialogDescription>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setShowWarning(false)}>
+              Cancel
+            </Button>
+            <Button onClick={navigateToResults}>Yes, finish</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
-};
-
-export default MockPage;
+}
