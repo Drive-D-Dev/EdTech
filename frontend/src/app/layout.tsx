@@ -24,7 +24,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <head />
       <body
         className={cn(
-          "min-h-screen font-sans antialiased bg-muted",
+          "min-h-screen font-sans antialiased bg-backdrop",
           fontSans.variable
         )}
       >
@@ -39,7 +39,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             disableTransitionOnChange
           >
             <SideNav />
-            <main className="bg-background w-full rounded-2xl min-h-full p-6">
+            <main className="bg-background w-full rounded-2xl min-h-full p-6 overflow-y-auto">
               <ProfileNav />
               {children}
             </main>

@@ -15,14 +15,12 @@ export const ProfileNav = () => {
   // add scrolledStyle styling to <nav /> when user scroll pass a certain threshold
 
   return (
-    <nav className="float-end mb-4">
-      <span className="container flex justify-between items-center">
-        <div className="flex justify-center items-center gap-4">
-          <NavbarMenu />
-          <ModeToggle />
-          {session ? <ProfileWrapper /> : <SignInWrapper />}
-        </div>
-      </span>
+    <nav className="flex justify-end items-end mb-4">
+      <div className="flex justify-center items-center gap-4">
+        <NavbarMenu />
+        {/* <ModeToggle /> */}
+        {session ? <ProfileWrapper /> : <SignInWrapper />}
+      </div>
     </nav>
   );
 };

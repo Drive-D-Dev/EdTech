@@ -25,8 +25,8 @@ const SideNav = () => {
           </Button>
         </li>
       </ul>
-      <footer className="mt-auto flex flex-col items-center">
-        <p>Copyright © 2024</p>
+      <footer className="mt-auto flex flex-col items-start">
+        <p className="text-sm text-muted-foreground">Copyright © 2024</p>
         <Button variant="link">เงื่อนไขของการบริการ</Button>
       </footer>
     </div>
