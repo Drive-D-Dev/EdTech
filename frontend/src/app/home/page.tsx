@@ -11,6 +11,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { useSession } from "next-auth/react";
 
 // Mock Data
 const mockQuestions = [
