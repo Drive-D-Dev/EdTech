@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
+import { signOut } from "next-auth/react";
 
 // TODO: update dropdown menu
 // TODO: add mode toggle to menu
@@ -33,7 +34,9 @@ export function AvatarDropdown() {
         <DropdownMenuItem>Profile</DropdownMenuItem>
         <DropdownMenuItem>Billing</DropdownMenuItem>
         <DropdownMenuItem>Subscription</DropdownMenuItem>
-        <DropdownMenuItem className="text-red-600">Logout</DropdownMenuItem>
+        <DropdownMenuItem className="text-red-600" onClick={signOut}>
+          Logout
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
