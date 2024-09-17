@@ -12,6 +12,7 @@ const getAnswerController = async (c: Context) => {
 			message: 'Questions from Study Set Get Successfully',
 		});
 	} catch (e) {
+		console.error(e);
 		return c.json({
 			success: false,
 			message: e,

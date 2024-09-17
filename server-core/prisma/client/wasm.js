@@ -137,8 +137,7 @@ exports.Prisma.ChoiceScalarFieldEnum = {
 exports.Prisma.QuestionScalarFieldEnum = {
   id: 'id',
   content: 'content',
-  explanation: 'explanation',
-  accuracy_percentage: 'accuracy_percentage'
+  explanation: 'explanation'
 };
 
 exports.Prisma.AnswerScalarFieldEnum = {
@@ -148,7 +147,8 @@ exports.Prisma.AnswerScalarFieldEnum = {
 
 exports.Prisma.Study_SetScalarFieldEnum = {
   id: 'id',
-  label: 'label'
+  label: 'label',
+  description: 'description'
 };
 
 exports.Prisma.Study_Set_Questions_ListScalarFieldEnum = {
@@ -165,11 +165,6 @@ exports.Prisma.SortOrder = {
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
-};
-
-exports.Prisma.NullsOrder = {
-  first: 'first',
-  last: 'last'
 };
 exports.Role = exports.$Enums.Role = {
   ADMIN: 'ADMIN',
