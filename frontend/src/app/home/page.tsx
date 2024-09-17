@@ -11,6 +11,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import SummaryCard from "@/components/summary-card";
 
 // Mock Data
 const mockQuestions = [
@@ -44,7 +45,8 @@ const HomePage = () => {
   };
 
   return (
-    <main className="container flex flex-col justify-center">
+    <main >
+      <SummaryCard />
       <div className="flex flex-col space-y-4">
         {isVisible && (
           // <Dialog open={isVisible} onOpenChange={setIsVisible}>
