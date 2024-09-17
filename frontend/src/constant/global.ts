@@ -11,3 +11,5 @@ export const NAV_LINKS = [
     href: "/pricing",
   },
 ];
+
+export const BACKEND_URL = "http://localhost:8000"
