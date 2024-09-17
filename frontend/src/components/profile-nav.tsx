@@ -6,13 +6,12 @@ import { Button } from "./ui/button";
 import useScrollThreshold from "@/hooks/use-scroll-threshold";
 import { AvatarDropdown } from "@/components/avatar-dropdown";
 import { NavbarMenu } from "@/components/navbar-menu";
-
-// TODO: check whether or not user is sign in.
-const session = false;
+import { useSession } from "next-auth/react";
 
 export const ProfileNav = () => {
   // handle cool on scroll animation
   // add scrolledStyle styling to <nav /> when user scroll pass a certain threshold
+  const { data: session } = useSession();
 
   return (
     <nav className="flex justify-end items-end mb-4">

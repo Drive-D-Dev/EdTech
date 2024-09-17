@@ -2,12 +2,14 @@ import "@/styles/globals.css";
 import { Prompt as FontSans } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
-
 import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
 import SideNav from "@/components/sidenav";
 import { ProfileNav } from "@/components/profile-nav";
+import { NextAuthProvider } from "@/components/next-provider";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
+import { getServerSession } from "next-auth";
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -18,7 +20,9 @@ interface RootLayoutProps {
   children: React.ReactNode;
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default async function RootLayout({ children }: RootLayoutProps) {
+  const session = await getServerSession(authOptions);
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
@@ -32,19 +36,22 @@ export default function RootLayout({ children }: RootLayoutProps) {
           vaul-drawer-wrapper=""
           className="flex flex-row max-w-screen-xl mx-auto px-6 py-4 h-screen gap-2"
         >
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <SideNav />
-            <main className="bg-background w-full rounded-2xl min-h-full p-6 overflow-y-auto">
-              <ProfileNav />
-              {children}
-              <Toaster />
-            </main>
-          </ThemeProvider>
+          <NextAuthProvider session={session}>
+            {" "}
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <SideNav />
+              <main className="bg-background w-full rounded-2xl min-h-full p-6 overflow-y-auto">
+                <ProfileNav />
+                {children}
+                <Toaster />
+              </main>
+            </ThemeProvider>
+          </NextAuthProvider>
         </div>
       </body>
     </html>
