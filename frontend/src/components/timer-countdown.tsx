@@ -37,11 +37,9 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({
   };
 
   return (
-    <div className="flex flex-col bg-stone-200 rounded-md p-5">
-      <p className="text-black text-lg font-normal">
-        Time left: {formatTime(timeLeft)}
-      </p>
-    </div>
+    <p className="text-black text-lg font-normal">
+      {formatTime(timeLeft)} นาที
+    </p>
   );
 };
 
