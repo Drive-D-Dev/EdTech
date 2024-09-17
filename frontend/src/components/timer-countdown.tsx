@@ -41,17 +41,17 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({
 
   return (
     <div className="relative w-full p-4">
-      <p className="text-white text-lg font-normal mb-2">
-        <div className="w-full flex justify-start text-white">
+      <p className="text-foreground text-lg font-normal mb-2">
+        <div className="w-full flex justify-start text-foreground">
           <CiAlarmOn size={25} />
-          <p className="text-white text-lg font-normal ml-2">
+          <p className="text-foreground text-lg font-normal ml-2">
             {formatTime(timeLeft)} นาที
           </p>
         </div>
       </p>
       <div
         className="absolute bottom-0 left-0 w-[62dvw] rounded"
-        style={{ height: "10px", backgroundColor: "#949494" }}
+        style={{ height: "10px", backgroundColor: "#f4f4f4" }}
       >
         <div
           className="rounded"
