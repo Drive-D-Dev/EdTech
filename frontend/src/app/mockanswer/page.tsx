@@ -1,6 +1,7 @@
 "use client";
 import { AnswerDialog } from "@/components/answer-dialog";
 import CardSummary from "@/components/summary-card";
+import AnswerCard from "@/components/answer-card";
 import { Button } from "@/components/ui/button";
 
 // Mock Data
@@ -67,6 +68,7 @@ const MockAnswerPage = () => {
         <Button className="bg-[#DB7801]">ข้อถูก</Button>
         <Button>ข้อผิด</Button>
       </div>
+      <AnswerCard />
     </div>
 
     //   <div className="container flex flex-col justify-center items-center space-y-4">
