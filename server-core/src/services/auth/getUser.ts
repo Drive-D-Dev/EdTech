@@ -10,7 +10,8 @@ const getUserByEmail = async (email: string) => {
 };
 
 const isEmailExist = async (email: string) => {
-	return (await getUserByEmail(email)) !== null;
+	const user = await getUserByEmail(email);
+	return user === null ? false : true;
 };
 
 export { getUserByEmail, isEmailExist };
