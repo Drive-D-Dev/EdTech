@@ -61,71 +61,15 @@ export default function ExamplePage() {
     setOpen(false);
   };
 
-  return (
-    <div>
-      <div className="w-[97dvw] flex justify-center pl-4">
-        <CountdownTimer duration={300} />
-      </div>
-      <TwoColumnLayout
-        leftContent={
-          <div>
-            <div className="mb-4 text-xl text-center">
-              <p className="text-white">
-                {selectedCount} / {totalQuestions} ข้อ
-              </p>
-            </div>
-            <div className="grid grid-cols-2 gap-2">
-              {mockExam.map((question) => (
-                <div
-                  key={question.id}
-                  className={`flex items-center justify-center w-10 h-10 text-center rounded cursor-pointer ${
-                    selectedChoices[question.id]
-                      ? "bg-orange-300"
-                      : "bg-gray-300"
-                  }`}
-                >
-                  <p className="text-black">{question.id}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        }
-        rightContent={
-          <div>
-            {mockExam.map((question) => (
-              <div
-                key={question.id}
-                className="box flex flex-col justify-center items-center w-full space-y-4 mt-5 bg-neutral-700"
-              >
-                <div className="w-full flex justify-start">
-                  <p className="text-white text-lg font-normal">
-                    {question.id + ". "}
-                    {question.question}
-                  </p>
-                </div>
-                <div className="w-full justify-center">
-                  {question.choice.map((choice) => (
-                    <ChoiceButton
-                      key={choice.id}
-                      id={choice.id}
-                      label={choice.label}
-                      isSelected={selectedChoices[question.id] === choice.id}
-                      onSelect={(id) => handleSelect(question.id, id)}
-                    />
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        }
-      />
-      <div className="w-full flex justify-end">
+  const DoneDialog = () => {
+    return (
+      <>
         <Dialog open={open}>
           <DialogTrigger asChild>
             <span>
               <Button
-                variant="secondary"
-                className="flex justify-end w-full"
+                className="flex ml-auto  mt-4"
+                size="lg"
                 onClick={handleFinishExam}
               >
                 <p>Finish</p>
@@ -147,25 +91,96 @@ export default function ExamplePage() {
             </DialogFooter>
           </DialogContent>
         </Dialog>
-      </div>
 
-      <Dialog open={showWarning} onOpenChange={setShowWarning}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Warning</DialogTitle>
-          </DialogHeader>
-          <DialogDescription>
-            You have unanswered questions. Are you sure you want to finish the
-            exam?
-          </DialogDescription>
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setShowWarning(false)}>
-              Cancel
-            </Button>
-            <Button onClick={navigateToResults}>Yes, finish</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+        <Dialog open={showWarning} onOpenChange={setShowWarning}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Warning</DialogTitle>
+            </DialogHeader>
+            <DialogDescription>
+              You have unanswered questions. Are you sure you want to finish the
+              exam?
+            </DialogDescription>
+            <DialogFooter>
+              <Button variant="outline" onClick={() => setShowWarning(false)}>
+                Cancel
+              </Button>
+              <Button onClick={navigateToResults}>Yes, finish</Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      </ >
+    )
+  }
+
+  return (
+    <div>
+      <div className="w-[97dvw] flex justify-center pl-4">
+        <CountdownTimer duration={300} />
+      </div>
+      <TwoColumnLayout
+        leftContent={
+          <div>
+            <div className="mb-4 text-xl text-center">
+              <p className="text-foreground">
+                {selectedCount} / {totalQuestions} ข้อ
+              </p>
+            </div>
+            <div className="flex flex-row flex-wrap gap-3 mx-auto">
+              {mockExam.map((question, index) => (
+                <a
+                  key={question.id}
+                  href={`#question${index + 1}`}
+                  className={`flex items-center justify-center w-10 h-10 text-center rounded cursor-pointer ${selectedChoices[question.id] ? "bg-blue-300" : "bg-gray-300"
+                    }`}
+                >
+                  <p className="text-black" >{question.id}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+        }
+        rightContent={
+          <div className="space-y-4">
+            {mockExam.map((question, index) => (
+              <div
+                key={question.id}
+                id={`question${index + 1}`}
+                className="box flex flex-col justify-center items-center w-full gap-4 bg-background "
+              >
+                <div className="w-full justify-start">
+                  <p className="text-background text-lg font-normal">
+                    <div className="flex items-center">
+                      <div
+                        key={question.id}
+                        className="flex items-center justify-center w-8 h-8 text-center rounded cursor-pointer"
+                        style={{ backgroundColor: "#DB7801" }}
+                      >
+                        <p className="text-background">{question.id}</p>
+                      </div>
+                      <p className="text-foreground ml-4">{question.question}</p>
+                    </div>
+                  </p>
+                </div>
+                <div className="w-full justify-center">
+                  {question.choice.map((choice) => (
+                    <ChoiceButton
+                      key={choice.id}
+                      id={choice.id}
+                      label={choice.label}
+                      isSelected={selectedChoices[question.id] === choice.id}
+                      onSelect={(id) => handleSelect(question.id, id)}
+                    />
+                  ))}
+                </div>
+              </div>
+            ))}
+            <DoneDialog />
+          </div>
+        }
+      />
+
     </div>
   );
 }
+
