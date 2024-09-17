@@ -8,26 +8,13 @@ import { cn } from "@/lib/utils";
 import SideNav from "@/components/sidenav";
 import { ProfileNav } from "@/components/profile-nav";
 
-const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
-});
-
 interface RootLayoutProps {
   children: React.ReactNode;
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head />
-      <body
-        className={cn(
-          "min-h-screen font-sans antialiased bg-backdrop",
-          fontSans.variable
-        )}
-      >
+    <>
         <div
           vaul-drawer-wrapper=""
           className="flex flex-row max-w-screen-xl mx-auto px-6 py-4 h-screen gap-2"
@@ -46,7 +33,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
           </ThemeProvider>
         </div>
         <Toaster />
-      </body>
-    </html>
+    </>
   );
 }
