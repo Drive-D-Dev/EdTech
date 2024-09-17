@@ -70,8 +70,8 @@ export default function ExamplePage() {
         leftContent={
           <div>
             <div className="mb-4 text-xl text-center">
-              <p className="text-black">
-                {selectedCount} / {totalQuestions}
+              <p className="text-white">
+                {selectedCount} / {totalQuestions} ข้อ
               </p>
             </div>
             <div className="grid grid-cols-2 gap-2">
@@ -95,13 +95,10 @@ export default function ExamplePage() {
             {mockExam.map((question) => (
               <div
                 key={question.id}
-                className="box flex flex-col justify-center items-center w-full space-y-4 mt-5"
+                className="box flex flex-col justify-center items-center w-full space-y-4 mt-5 bg-neutral-700"
               >
                 <div className="w-full flex justify-start">
-                  <h2>{question.question}</h2>
-                </div>
-                <div className="w-full flex justify-start">
-                  <p className="text-black text-md font-normal">
+                  <p className="text-white text-lg font-normal">
                     {question.id + ". "}
                     {question.question}
                   </p>
@@ -122,7 +119,7 @@ export default function ExamplePage() {
           </div>
         }
       />
-      <div className="w-full flex justify-end pr-4">
+      {/* <div className="w-full flex justify-end pr-4">
         <Dialog open={open}>
           <DialogTrigger asChild>
             <span>
@@ -168,7 +165,7 @@ export default function ExamplePage() {
             <Button onClick={navigateToResults}>Yes, finish</Button>
           </DialogFooter>
         </DialogContent>
-      </Dialog>
+      </Dialog> */}
     </div>
   );
 }

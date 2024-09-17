@@ -23,10 +23,10 @@ const ChoiceButton: React.FC<ChoiceButtonProps> = ({
       <Button
         onClick={handleClick}
         style={{
-          border: isSelected ? "2px solid #ffd333" : "2px solid #eaeaea",
+          border: isSelected ? "2px solid #DB7801" : "2px solid #eaeaea",
           padding: "10px",
           borderRadius: "10px",
-          backgroundColor: isSelected ? "#fff5e0" : "#EDEDED",
+          backgroundColor: isSelected ? "#ffd9ab" : "#EDEDED",
           color: isSelected ? "#1a1a1a" : "#3d3d3d",
           transition: "border-color 0.3s ease, color 0.3s ease",
           cursor: "pointer",
