@@ -1,47 +1,55 @@
 // pages/api/auth/[...nextauth].ts
-import NextAuth, { NextAuthOptions } from "next-auth"
-import bcrypt from "bcrypt"
-import CredentialsProvider from "next-auth/providers/credentials"
-import { BACKEND_URL } from "@/constant/global"
+import NextAuth, { NextAuthOptions } from 'next-auth';
+import CredentialsProvider from 'next-auth/providers/credentials';
+import { BACKEND_URL } from '@/constant/global';
 
 export const authOptions: NextAuthOptions = {
-  providers: [
-    CredentialsProvider({
-      name: "Credentials",
-      credentials: {
-        username: { label: "Username", type: "text" },
-        password: { label: "Password", type: "password" }
-      },
-      async authorize(credentials) {
-        if (!credentials?.username || !credentials?.password) {
-          return null
-        }
+	providers: [
+		CredentialsProvider({
+			name: 'Credentials',
+			credentials: {
+				email: { label: 'Email', type: 'text' },
+				password: { label: 'Password', type: 'password' },
+			},
+			async authorize(credentials) {
+				if (!credentials?.email || !credentials?.password) {
+					throw new Error('Please enter both email and password');
+				}
 
-        const user = await fetch(BACKEND_URL+'/auth/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email, password }),
-        })
+				const email = credentials.email;
+				const password = credentials.password;
 
-        if (!user) {
-          return null
-        }
-        const isPasswordValid = await bcrypt.compare(credentials.password, user.password)
-        if (!isPasswordValid) {
-          return null
-        }
-        return { id: user.id, name: user.name, username: user.username }
-      }
-    })
-  ],
-  session: {
-    strategy: "jwt"
-  },
-  pages: {
-    signIn: "/auth/signin"
-  }
-}
+				const response = await fetch(`${BACKEND_URL}/auth/login`, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({ email, password }),
+				});
 
-export default NextAuth(authOptions)
+				if (!response.ok) {
+					const json = await response.json();
+					throw new Error(json.message);
+				}
+
+				const user = await response.json();
+				if (user && user.id && user.name && user.email) {
+					return {
+						id: user.id,
+						name: user.name,
+						email: user.email,
+					};
+				}
+				return null;
+			},
+		}),
+	],
+	session: {
+		strategy: 'jwt',
+	},
+	pages: {
+		signIn: '/auth/signin',
+	},
+};
+
+export default NextAuth(authOptions);

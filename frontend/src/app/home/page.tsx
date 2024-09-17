@@ -3,14 +3,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 import SummaryCard from "@/components/summary-card";
 
 // Mock Data
@@ -49,24 +41,6 @@ const HomePage = () => {
       <SummaryCard />
       <div className="flex flex-col space-y-4">
         {isVisible && (
-          // <Dialog open={isVisible} onOpenChange={setIsVisible}>
-          //   <DialogContent>
-          //     <button
-          //       onClick={handleClose}
-          //       className="absolute top-2 right-2 text-black text-lg font-bold"
-          //     >
-          //       ×
-          //     </button>
-          //     <p className="text-black text-lg font-semibold text-center">
-          //       Your goal within reach.
-          //     </p>
-
-          //     <p className="text-black text-lg font-semibold text-center">
-          //       Do mock exams, practice questions, get answers all in one app.
-          //     </p>
-          //   </DialogContent>
-          // </Dialog>
-
           <div className="box relative flex flex-col items-center space-y-6 pt-6">
             <Button
               onClick={handleClose}

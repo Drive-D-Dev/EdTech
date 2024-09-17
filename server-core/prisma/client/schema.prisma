@@ -54,7 +54,6 @@ model Answer {
 
 model Study_Set {
   id                       Int                        @id @default(autoincrement())
-  stage                    String                     @db.VarChar(20)
   label                    String                     @db.VarChar(255)
   Study_Set_Questions_List Study_Set_Questions_List[]
 }
