@@ -64,10 +64,10 @@ const MockAnswerPage = () => {
   return (
     <div>
       <CardSummary />
-      <div className="flex flex-row space-x-2 my-5">
+      {/* <div className="flex flex-row space-x-2 my-5">
         <Button className="bg-[#DB7801]">ข้อถูก</Button>
         <Button variant="ghost">ข้อผิด</Button>
-      </div>
+      </div> */}
       <AnswerCard />
     </div>
 

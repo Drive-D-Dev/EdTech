@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import { Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { mock } from "node:test";
+import { ChevronDownIcon } from "@radix-ui/react-icons";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const mockExam = [
   {
@@ -10,7 +18,8 @@ const mockExam = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.",
     choice: ["choice1", "choice2", "choice3", "choice4"],
     correct: "choice1",
-    solution: "This is solution 1 lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem",
+    solution:
+      "This is solution 1 lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem",
   },
   {
     id: "2",
@@ -41,6 +50,7 @@ const mockExam = [
     solution: "This is solution 5",
   },
 ];
+
 const MockSelectedChoice = [
   { id: "1", choice: "choice2" },
   { id: "2", choice: "choice4" },
@@ -51,16 +61,69 @@ const MockSelectedChoice = [
 
 const AnswerCard = () => {
   const [visibleSolution, setVisibleSolution] = useState<string | null>(null);
+  const [selectedFilter, setSelectedFilter] = useState<string>("all");
 
   const handleClick = (id: string) => {
     setVisibleSolution((prevId) => (prevId === id ? null : id));
   };
 
+  const handleClickFilter = (filter: string) => {
+    setSelectedFilter(filter);
+  };
+
+  // Filter questions based on the selected filter
+  const filteredExams = mockExam.filter((exam) => {
+    const userSelectedChoice = MockSelectedChoice.find(
+      (selected) => selected.id === exam.id
+    )?.choice;
+
+    const isCorrect = exam.correct === userSelectedChoice;
+
+    if (selectedFilter === "all") {
+      return true;
+    } else if (selectedFilter === "corrected") {
+      return isCorrect;
+    } else if (selectedFilter === "incorrected") {
+      return userSelectedChoice !== exam.correct;
+    }
+    return true; // Default case if filter is unknown
+  });
+
   return (
     <div>
-      {mockExam.map((exam) => {
+      <div className="flex flex-row space-x-2 my-5">
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline" className="flex gap-1 px-3 py-1">
+              <span>
+                {selectedFilter === "all"
+                  ? "ทั้งหมด"
+                  : selectedFilter === "corrected"
+                  ? "ข้อถูก"
+                  : "ข้อผิด"}
+              </span>
+              <ChevronDownIcon className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuItem onClick={() => handleClickFilter("all")}>
+              ทั้งหมด
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => handleClickFilter("corrected")}>
+              ข้อถูก
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => handleClickFilter("incorrected")}>
+              ข้อผิด
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
+      {filteredExams.map((exam) => {
         return (
-          <div key={exam.id} className="box flex flex-row space-x-2 justify-between">
+          <div
+            key={exam.id}
+            className="box flex flex-row space-x-2 justify-between mb-4"
+          >
             <div className="">
               <div className="w-9 h-9  bg-[#DB7801] flex items-center justify-center text-white text-md rounded-lg">
                 {exam.id}
@@ -183,46 +246,6 @@ const AnswerCard = () => {
                   </div>
                 </div>
               )}
-
-              {/* <div className="box">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et
-                massa mi.
-              </div>
-
-              <div
-                className="box"
-                style={{
-                  border: "6px solid #4ADE80",
-                  paddingBottom: "0px",
-                  paddingLeft: "0px",
-                }}
-              >
-                <div className="pl-5">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et
-                  massa mi.Lorem ipsum dolor sit amet, consectetur adipiscing
-                  elit. Ut et massa mi.Lorem ipsum dolor sit amet, consectetur
-                  adipiscing elit. Ut et massa mi.
-                </div>
-
-                <p className="flex mt-2">
-                  <span className="bg-blue-400 px-2 pl-3 py-1 ml-[-5px] rounded-tr-lg order-2 relative z-10 ">
-                    correct answer
-                  </span>
-
-                  <span className="bg-green-400 px-2 py-1 rounded-tr-lg order-1  relative z-20">
-                    your answer
-                  </span>
-                </p>
-              </div>
-
-              <div className="box ">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et
-                massa mi.
-              </div>
-              <div className="box ">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et
-                massa mi.
-              </div> */}
             </div>
           </div>
         );
