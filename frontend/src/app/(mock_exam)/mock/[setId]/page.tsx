@@ -5,7 +5,7 @@ import CountdownTimer from "@/components/timer-countdown";
 import TwoRowLayout from "@/components/twolayout";
 import { Button } from "@/components/ui/button";
 import { useRouter, useParams } from "next/navigation";
-import { getQuestionAPI } from "@/api/question";
+import { GetQuestionAPI } from "@/api/question";
 import { AnswerPayload } from "@/model/answerPayload";
 import {
   Dialog,
@@ -65,7 +65,6 @@ export default function ExamplePage() {
         choice_id: choiceId,
       });
     }
-    console.log(answerPayload);
   };
 
   const selectedCount = Object.keys(selectedChoices).filter(
