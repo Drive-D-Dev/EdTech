@@ -18,11 +18,11 @@ const StudySetCard: StudySetCardWithSkeleton = ({ id, title }) => {
 	const router = useRouter();
 
 	function gotoPractice() {
-		router.push('/practice');
+		router.push(`/practice/${id}`);
 	}
 
 	function gotoExam() {
-		router.push('/mock');
+		router.push(`/mock/${id}`);
 	}
 	return (
 		<Card>
