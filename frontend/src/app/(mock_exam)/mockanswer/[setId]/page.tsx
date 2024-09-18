@@ -3,6 +3,7 @@ import { AnswerDialog } from "@/components/answer-dialog";
 import CardSummary from "@/components/summary-card";
 import AnswerCard from "@/components/answer-card";
 import { Button } from "@/components/ui/button";
+import { useParams } from "next/navigation";
 
 // Mock Data
 const mockExam = [
@@ -49,6 +50,9 @@ const MockSelectedChoice = [
 const MockAnswerPage = () => {
   // Calculate total questions
   const totalQuestions = mockExam.length;
+
+  const params = useParams<{ setId: string }>();
+  const setId = params?.setId;
 
   // Calculate the number of correct answers
   const correctAnswersCount = mockExam.reduce((count, exam) => {
