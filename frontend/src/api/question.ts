@@ -9,7 +9,7 @@ const fetcher = async (setId: number) => {
   );
   return response.data;
 };
-const getQuestionAPI = (setId: number) =>
+const GetQuestionAPI = (setId: number) =>
   useSWR([setId], ([setId]) => fetcher(setId));
 
-export { getQuestionAPI };
+export { GetQuestionAPI };

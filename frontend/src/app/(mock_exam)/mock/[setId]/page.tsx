@@ -16,6 +16,14 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { create } from "zustand";
+
+export const useStore = create((set) => ({
+  answers: [],
+  setAnswer: (data: any) => {
+    set(() => ({ answers: data }));
+  },
+}));
 
 export default function ExamplePage() {
   const [selectedChoices, setSelectedChoices] = useState<{
@@ -29,14 +37,14 @@ export default function ExamplePage() {
   const params = useParams<{ setId: string }>();
 
   const setId = params?.setId;
-  if (!setId) return <div>Exam Not Found</div>;
   const [answerPayload] = React.useState<AnswerPayload>({
-    setId: parseInt(setId),
+    setId: parseInt(setId ?? "0"),
     time: 0,
     Question: [],
   });
+  if (!setId) return <div>Exam Not Found</div>;
 
-  const { data, error, isLoading, mutate } = getQuestionAPI(parseInt(setId));
+  const { data, error, isLoading, mutate } = GetQuestionAPI(parseInt(setId));
 
   if (isLoading || !data) return <div>Loading</div>;
 

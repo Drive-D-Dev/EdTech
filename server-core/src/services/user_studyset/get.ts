@@ -7,6 +7,22 @@ const getUserStudySetAnswersWithAnswers = async (studySetId: number, userId: num
 			user_id: userId,
 			studyset_id: studySetId,
 		},
+		include: {
+			Study_Set: {
+				include: {
+					Study_Set_Questions_List: {
+						include: {
+							Question: {
+								include: {
+									Choice: true,
+								},
+							},
+							Study_Set: true,
+						},
+					},
+				},
+			},
+		},
 	});
 	if (!userStudySet) {
 		throw new Error('User study set not found');
@@ -39,6 +55,7 @@ const getUserStudySetAnswersWithAnswers = async (studySetId: number, userId: num
 	});
 	return {
 		studySetId,
+		label: userStudySet.Study_Set.label,
 		time: userStudySet.time,
 		stat: {
 			correct: correctCount,
@@ -46,7 +63,25 @@ const getUserStudySetAnswersWithAnswers = async (studySetId: number, userId: num
 			percentage: (correctCount / (correctCount + wrongCount)) * 100,
 			total: correctCount + wrongCount,
 		},
-		userAnswers: userAnswersWithCorrectAnswers,
+		userAnswers: userStudySet.Study_Set.Study_Set_Questions_List.map((usq) => {
+			const userAnswer = userAnswersWithCorrectAnswers.find(
+				(ua) => ua.question_id === usq.question_id
+			);
+			return {
+				question_id: usq.question_id,
+				content: usq.Question.content,
+				explaination: usq.Question.explanation,
+				isCorrect: userAnswer?.isCorrect,
+				choices: usq.Question.Choice.map((c) => {
+					return {
+						id: c.id,
+						content: c.content,
+						isUserAnswer: userAnswer?.user_choice_id === c.id,
+						isCorrectAnswer: userAnswer?.correct_choice_id === c.id,
+					};
+				}),
+			};
+		}),
 	};
 };
 
