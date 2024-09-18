@@ -1,7 +1,7 @@
 import { Axios } from '@/lib/axiosConfig';
 import { BaseResponse } from '@/model/baseResponse';
 
-const loginAPI = async (
+const registerAPI = async (
 	email: string,
 	password: string,
 	name: string
@@ -14,4 +14,4 @@ const loginAPI = async (
 	return response.data;
 };
 
-export { loginAPI };
+export { registerAPI };
