@@ -1,9 +1,12 @@
-import React from "react";
+import React, {FC} from "react";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { GetExamResultAPI } from "@/api/getExamResult";
+
 
 // Constants
 const timeUsed = "100"; 
-const totalTime = "120"; 
+const totalTime = "300"; 
 const correctAnswers = 20;
 const wrongAnswers = 30;
 const correctPercentage =
@@ -43,7 +46,10 @@ const TimerSummary = ({
   );
 };
 
-const CardSummary = () => {
+const CardSummary: FC<{setId: string}> = ({setId}) => {
+  const { data, error, isLoading, mutate } = GetExamResultAPI(parseInt(setId));
+  if (isLoading || !data) return <div>Loading</div>;
+
   return (
     <Card className="w-fit">
       <CardHeader>
@@ -54,20 +60,20 @@ const CardSummary = () => {
           <div>
             <TimerSummary
               fullTime={Number(totalTime)}
-              elapsedTime={Number(timeUsed)}
+              elapsedTime={Number(data.data.time)}
             />
             {/* Converted timeUsed and totalTime to numbers */}
           </div>
           <div className="flex flex-col space-y-2">
             <div className="bg-gray-200 px-4 py-2 rounded-sm">
-              ถูกต้อง {correctPercentage.toFixed(2)}%
+              ถูกต้อง {data.data.stat.percentage}%
             </div>
             <div className="flex flex-row space-x-2">
               <div className="bg-green-200 px-4 py-2 rounded-sm">
-                ถูก {correctAnswers} ข้อ
+                ถูก {data.data.stat.correct} ข้อ
               </div>
               <div className="bg-red-200 px-4 py-2 rounded-sm">
-                ผิด {wrongAnswers} ข้อ
+                ผิด {data.data.stat.wrong} ข้อ
               </div>
             </div>
           </div>
