@@ -1,16 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { CiAlarmOn } from "react-icons/ci";
 
 interface CountdownTimerProps {
   duration: number;
   onTimeUp?: () => void;
+  onTimeLeftChange?: (timeLeft: number) => void;
 }
 
 const CountdownTimer: React.FC<CountdownTimerProps> = ({
   duration,
   onTimeUp,
+  onTimeLeftChange,
 }) => {
   const [timeLeft, setTimeLeft] = useState(duration);
+
+  const timeLeftRef = useRef(timeLeft);
+
+  useEffect(() => {
+    timeLeftRef.current = timeLeft;
+  }, [timeLeft]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -28,6 +36,12 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({
 
     return () => clearInterval(timer);
   }, [onTimeUp]);
+
+  useEffect(() => {
+    if (onTimeLeftChange) {
+      onTimeLeftChange(timeLeftRef.current); // Notify about the timeLeft change
+    }
+  }, [timeLeft, onTimeLeftChange]);
 
   const formatTime = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
