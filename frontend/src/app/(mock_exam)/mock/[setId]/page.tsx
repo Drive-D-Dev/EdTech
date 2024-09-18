@@ -89,7 +89,7 @@ export default function ExamplePage() {
   const navigateToResults = () => {
     answerPayload.time = timerRef.current.getTimeLeft();
     console.log(answerPayload);
-    router.push(`/mockanswer`);
+    router.push(`/mockanswer/${setId}`);
     setOpen(false);
   };
 
