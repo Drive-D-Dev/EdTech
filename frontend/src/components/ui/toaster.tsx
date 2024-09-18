@@ -1,4 +1,4 @@
-npx prisma migrate dev --name init"use client"
+"use client"
 
 import {
   Toast,
