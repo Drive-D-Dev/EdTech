@@ -1,55 +1,55 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { ChevronDownIcon } from "@radix-ui/react-icons";
-import { Button } from "@/components/ui/button";
-import { signOut } from "next-auth/react";
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuLabel,
+	DropdownMenuSeparator,
+	DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { ChevronDownIcon } from '@radix-ui/react-icons';
+import { Button } from '@/components/ui/button';
+import { signOut } from 'next-auth/react';
 
 // TODO: update dropdown menu
 // TODO: add mode toggle to menu
 
 export function AvatarDropdown() {
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        {/* 
+	return (
+		<DropdownMenu>
+			<DropdownMenuTrigger asChild>
+				{/* 
                     Avoid hydration error
                     by using 'asChild' on DropdownMenuTrigger, 
                     however this need to be use in corraspond with <span /> 
                     avoiding DropdownMenu not trigger
                 */}
-        <span>
-          <AvatarTrigger />
-        </span>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem>Profile</DropdownMenuItem>
-        <DropdownMenuItem>Billing</DropdownMenuItem>
-        <DropdownMenuItem>Subscription</DropdownMenuItem>
-        <DropdownMenuItem className="text-red-600" onClick={signOut}>
-          Logout
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  );
+				<span>
+					<AvatarTrigger />
+				</span>
+			</DropdownMenuTrigger>
+			<DropdownMenuContent>
+				<DropdownMenuLabel>My Account</DropdownMenuLabel>
+				<DropdownMenuSeparator />
+				<DropdownMenuItem>Profile</DropdownMenuItem>
+				<DropdownMenuItem>Billing</DropdownMenuItem>
+				<DropdownMenuItem>Subscription</DropdownMenuItem>
+				<DropdownMenuItem className='text-red-600' onClick={(e: any) => signOut(e)}>
+					Logout
+				</DropdownMenuItem>
+			</DropdownMenuContent>
+		</DropdownMenu>
+	);
 }
 
 const AvatarTrigger = () => {
-  return (
-    <Button variant="outline" className="flex gap-1 px-3 py-1">
-      <Avatar className="w-7 h-7">
-        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-        <AvatarFallback>MC</AvatarFallback>
-      </Avatar>
-      <ChevronDownIcon className="h-4 w-4" />
-    </Button>
-  );
+	return (
+		<Button variant='outline' className='flex gap-1 px-3 py-1'>
+			<Avatar className='w-7 h-7'>
+				<AvatarImage src='https://github.com/shadcn.png' alt='@shadcn' />
+				<AvatarFallback>MC</AvatarFallback>
+			</Avatar>
+			<ChevronDownIcon className='h-4 w-4' />
+		</Button>
+	);
 };

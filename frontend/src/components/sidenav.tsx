@@ -25,7 +25,7 @@ const SideNav = () => {
       <ul className="sm:w-full sm:mt-5">
         <NavbarMenu />
       </ul>
-      <footer className="mt-auto flex flex-col items-start sm:block hidden">
+      <footer className="mt-auto flex-col items-start sm:block hidden">
         <p className="text-sm text-muted-foreground">Copyright © 2024</p>
         <Button variant="link">เงื่อนไขของการบริการ</Button>
       </footer>
