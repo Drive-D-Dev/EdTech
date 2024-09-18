@@ -16,7 +16,6 @@ export const ProfileNav = () => {
   return (
     <nav className="flex justify-end items-end mb-4">
       <div className="flex justify-center items-center gap-4">
-        <NavbarMenu />
         <ModeToggle />
         {session ? <ProfileWrapper /> : <SignInWrapper />}
       </div>

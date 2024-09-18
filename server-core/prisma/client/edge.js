@@ -158,7 +158,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/sunthewhat/Documents/Code/Projects/ddev/edtech/server-core/prisma/client",
+      "value": "/Users/melchanatan/Documents/WebDevelopment/EdTech/server-core/prisma/client",
       "fromEnvVar": null
     },
     "config": {
@@ -172,12 +172,11 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/sunthewhat/Documents/Code/Projects/ddev/edtech/server-core/prisma/schema.prisma",
+    "sourceFilePath": "/Users/melchanatan/Documents/WebDevelopment/EdTech/server-core/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
-    "schemaEnvPath": "../../.env"
+    "rootEnvPath": null
   },
   "relativePath": "..",
   "clientVersion": "5.19.1",
@@ -186,6 +185,7 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": true,
   "inlineDatasources": {
     "db": {
       "url": {
