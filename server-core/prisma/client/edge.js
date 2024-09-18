@@ -158,7 +158,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/melchanatan/Documents/WebDevelopment/EdTech/server-core/prisma/client",
+      "value": "/Users/phatta/Documents/Code/DriveD/EdTech/server-core/prisma/client",
       "fromEnvVar": null
     },
     "config": {
@@ -172,7 +172,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/melchanatan/Documents/WebDevelopment/EdTech/server-core/prisma/schema.prisma",
+    "sourceFilePath": "/Users/phatta/Documents/Code/DriveD/EdTech/server-core/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {

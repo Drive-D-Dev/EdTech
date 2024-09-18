@@ -6,6 +6,7 @@ import TwoRowLayout from "@/components/twolayout";
 import { mockExam } from "@/data/mockData";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import { getQuestionAPI } from "@/api/question";
 
 import {
   Dialog,
