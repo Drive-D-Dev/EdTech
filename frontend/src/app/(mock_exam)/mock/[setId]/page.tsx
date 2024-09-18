@@ -16,14 +16,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { create } from "zustand";
-
-export const useStore = create((set) => ({
-  answers: [],
-  setAnswer: (data: any) => {
-    set(() => ({ answers: data }));
-  },
-}));
 
 export default function ExamplePage() {
   const [selectedChoices, setSelectedChoices] = useState<{
