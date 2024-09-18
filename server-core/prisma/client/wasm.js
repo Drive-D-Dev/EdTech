@@ -137,7 +137,8 @@ exports.Prisma.ChoiceScalarFieldEnum = {
 exports.Prisma.QuestionScalarFieldEnum = {
   id: 'id',
   content: 'content',
-  explanation: 'explanation'
+  explanation: 'explanation',
+  type: 'type'
 };
 
 exports.Prisma.AnswerScalarFieldEnum = {
