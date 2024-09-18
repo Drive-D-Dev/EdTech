@@ -24,6 +24,16 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
  */
 export type Choice = $Result.DefaultSelection<Prisma.$ChoicePayload>
 /**
+ * Model User_Study_Set
+ * 
+ */
+export type User_Study_Set = $Result.DefaultSelection<Prisma.$User_Study_SetPayload>
+/**
+ * Model User_Answer
+ * 
+ */
+export type User_Answer = $Result.DefaultSelection<Prisma.$User_AnswerPayload>
+/**
  * Model Question
  * 
  */
@@ -203,6 +213,26 @@ export class PrismaClient<
     * ```
     */
   get choice(): Prisma.ChoiceDelegate<ExtArgs>;
+
+  /**
+   * `prisma.user_Study_Set`: Exposes CRUD operations for the **User_Study_Set** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more User_Study_Sets
+    * const user_Study_Sets = await prisma.user_Study_Set.findMany()
+    * ```
+    */
+  get user_Study_Set(): Prisma.User_Study_SetDelegate<ExtArgs>;
+
+  /**
+   * `prisma.user_Answer`: Exposes CRUD operations for the **User_Answer** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more User_Answers
+    * const user_Answers = await prisma.user_Answer.findMany()
+    * ```
+    */
+  get user_Answer(): Prisma.User_AnswerDelegate<ExtArgs>;
 
   /**
    * `prisma.question`: Exposes CRUD operations for the **Question** model.
@@ -684,6 +714,8 @@ export namespace Prisma {
   export const ModelName: {
     User: 'User',
     Choice: 'Choice',
+    User_Study_Set: 'User_Study_Set',
+    User_Answer: 'User_Answer',
     Question: 'Question',
     Answer: 'Answer',
     Study_Set: 'Study_Set',
@@ -703,7 +735,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "user" | "choice" | "question" | "answer" | "study_Set" | "study_Set_Questions_List"
+      modelProps: "user" | "choice" | "user_Study_Set" | "user_Answer" | "question" | "answer" | "study_Set" | "study_Set_Questions_List"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -844,6 +876,146 @@ export namespace Prisma {
           count: {
             args: Prisma.ChoiceCountArgs<ExtArgs>
             result: $Utils.Optional<ChoiceCountAggregateOutputType> | number
+          }
+        }
+      }
+      User_Study_Set: {
+        payload: Prisma.$User_Study_SetPayload<ExtArgs>
+        fields: Prisma.User_Study_SetFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.User_Study_SetFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$User_Study_SetPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.User_Study_SetFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$User_Study_SetPayload>
+          }
+          findFirst: {
+            args: Prisma.User_Study_SetFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$User_Study_SetPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.User_Study_SetFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$User_Study_SetPayload>
+          }
+          findMany: {
+            args: Prisma.User_Study_SetFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$User_Study_SetPayload>[]
+          }
+          create: {
+            args: Prisma.User_Study_SetCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$User_Study_SetPayload>
+          }
+          createMany: {
+            args: Prisma.User_Study_SetCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.User_Study_SetCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$User_Study_SetPayload>[]
+          }
+          delete: {
+            args: Prisma.User_Study_SetDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$User_Study_SetPayload>
+          }
+          update: {
+            args: Prisma.User_Study_SetUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$User_Study_SetPayload>
+          }
+          deleteMany: {
+            args: Prisma.User_Study_SetDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.User_Study_SetUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.User_Study_SetUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$User_Study_SetPayload>
+          }
+          aggregate: {
+            args: Prisma.User_Study_SetAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUser_Study_Set>
+          }
+          groupBy: {
+            args: Prisma.User_Study_SetGroupByArgs<ExtArgs>
+            result: $Utils.Optional<User_Study_SetGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.User_Study_SetCountArgs<ExtArgs>
+            result: $Utils.Optional<User_Study_SetCountAggregateOutputType> | number
+          }
+        }
+      }
+      User_Answer: {
+        payload: Prisma.$User_AnswerPayload<ExtArgs>
+        fields: Prisma.User_AnswerFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.User_AnswerFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$User_AnswerPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.User_AnswerFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$User_AnswerPayload>
+          }
+          findFirst: {
+            args: Prisma.User_AnswerFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$User_AnswerPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.User_AnswerFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$User_AnswerPayload>
+          }
+          findMany: {
+            args: Prisma.User_AnswerFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$User_AnswerPayload>[]
+          }
+          create: {
+            args: Prisma.User_AnswerCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$User_AnswerPayload>
+          }
+          createMany: {
+            args: Prisma.User_AnswerCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.User_AnswerCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$User_AnswerPayload>[]
+          }
+          delete: {
+            args: Prisma.User_AnswerDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$User_AnswerPayload>
+          }
+          update: {
+            args: Prisma.User_AnswerUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$User_AnswerPayload>
+          }
+          deleteMany: {
+            args: Prisma.User_AnswerDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.User_AnswerUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.User_AnswerUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$User_AnswerPayload>
+          }
+          aggregate: {
+            args: Prisma.User_AnswerAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUser_Answer>
+          }
+          groupBy: {
+            args: Prisma.User_AnswerGroupByArgs<ExtArgs>
+            result: $Utils.Optional<User_AnswerGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.User_AnswerCountArgs<ExtArgs>
+            result: $Utils.Optional<User_AnswerCountAggregateOutputType> | number
           }
         }
       }
@@ -1284,15 +1456,48 @@ export namespace Prisma {
 
 
   /**
+   * Count Type UserCountOutputType
+   */
+
+  export type UserCountOutputType = {
+    User_Study_Set: number
+  }
+
+  export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    User_Study_Set?: boolean | UserCountOutputTypeCountUser_Study_SetArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCountOutputType
+     */
+    select?: UserCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountUser_Study_SetArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: User_Study_SetWhereInput
+  }
+
+
+  /**
    * Count Type ChoiceCountOutputType
    */
 
   export type ChoiceCountOutputType = {
     Answer: number
+    User_Answer: number
   }
 
   export type ChoiceCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Answer?: boolean | ChoiceCountOutputTypeCountAnswerArgs
+    User_Answer?: boolean | ChoiceCountOutputTypeCountUser_AnswerArgs
   }
 
   // Custom InputTypes
@@ -1313,6 +1518,44 @@ export namespace Prisma {
     where?: AnswerWhereInput
   }
 
+  /**
+   * ChoiceCountOutputType without action
+   */
+  export type ChoiceCountOutputTypeCountUser_AnswerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: User_AnswerWhereInput
+  }
+
+
+  /**
+   * Count Type User_Study_SetCountOutputType
+   */
+
+  export type User_Study_SetCountOutputType = {
+    User_Answer: number
+  }
+
+  export type User_Study_SetCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    User_Answer?: boolean | User_Study_SetCountOutputTypeCountUser_AnswerArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * User_Study_SetCountOutputType without action
+   */
+  export type User_Study_SetCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User_Study_SetCountOutputType
+     */
+    select?: User_Study_SetCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * User_Study_SetCountOutputType without action
+   */
+  export type User_Study_SetCountOutputTypeCountUser_AnswerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: User_AnswerWhereInput
+  }
+
 
   /**
    * Count Type QuestionCountOutputType
@@ -1322,12 +1565,14 @@ export namespace Prisma {
     Choice: number
     Study_Set_Questions_List: number
     Answer: number
+    User_Answer: number
   }
 
   export type QuestionCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Choice?: boolean | QuestionCountOutputTypeCountChoiceArgs
     Study_Set_Questions_List?: boolean | QuestionCountOutputTypeCountStudy_Set_Questions_ListArgs
     Answer?: boolean | QuestionCountOutputTypeCountAnswerArgs
+    User_Answer?: boolean | QuestionCountOutputTypeCountUser_AnswerArgs
   }
 
   // Custom InputTypes
@@ -1362,6 +1607,13 @@ export namespace Prisma {
     where?: AnswerWhereInput
   }
 
+  /**
+   * QuestionCountOutputType without action
+   */
+  export type QuestionCountOutputTypeCountUser_AnswerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: User_AnswerWhereInput
+  }
+
 
   /**
    * Count Type Study_SetCountOutputType
@@ -1369,10 +1621,12 @@ export namespace Prisma {
 
   export type Study_SetCountOutputType = {
     Study_Set_Questions_List: number
+    User_Study_Set: number
   }
 
   export type Study_SetCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Study_Set_Questions_List?: boolean | Study_SetCountOutputTypeCountStudy_Set_Questions_ListArgs
+    User_Study_Set?: boolean | Study_SetCountOutputTypeCountUser_Study_SetArgs
   }
 
   // Custom InputTypes
@@ -1391,6 +1645,13 @@ export namespace Prisma {
    */
   export type Study_SetCountOutputTypeCountStudy_Set_Questions_ListArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: Study_Set_Questions_ListWhereInput
+  }
+
+  /**
+   * Study_SetCountOutputType without action
+   */
+  export type Study_SetCountOutputTypeCountUser_Study_SetArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: User_Study_SetWhereInput
   }
 
 
@@ -1596,6 +1857,8 @@ export namespace Prisma {
     password?: boolean
     name?: boolean
     role?: boolean
+    User_Study_Set?: boolean | User$User_Study_SetArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1614,10 +1877,17 @@ export namespace Prisma {
     role?: boolean
   }
 
+  export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    User_Study_Set?: boolean | User$User_Study_SetArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
-    objects: {}
+    objects: {
+      User_Study_Set: Prisma.$User_Study_SetPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       email: string
@@ -1988,6 +2258,7 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    User_Study_Set<T extends User$User_Study_SetArgs<ExtArgs> = {}>(args?: Subset<T, User$User_Study_SetArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$User_Study_SetPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2035,6 +2306,10 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where: UserWhereUniqueInput
@@ -2049,6 +2324,10 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where: UserWhereUniqueInput
@@ -2062,6 +2341,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the User
      */
     select?: UserSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * Filter, which User to fetch.
      */
@@ -2107,6 +2390,10 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where?: UserWhereInput
@@ -2151,6 +2438,10 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which Users to fetch.
      */
     where?: UserWhereInput
@@ -2189,6 +2480,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the User
      */
     select?: UserSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * The data needed to create a User.
      */
@@ -2230,6 +2525,10 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * The data needed to update a User.
      */
     data: XOR<UserUpdateInput, UserUncheckedUpdateInput>
@@ -2262,6 +2561,10 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * The filter to search for the User to update in case it exists.
      */
     where: UserWhereUniqueInput
@@ -2284,6 +2587,10 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter which User to delete.
      */
     where: UserWhereUniqueInput
@@ -2300,6 +2607,26 @@ export namespace Prisma {
   }
 
   /**
+   * User.User_Study_Set
+   */
+  export type User$User_Study_SetArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User_Study_Set
+     */
+    select?: User_Study_SetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: User_Study_SetInclude<ExtArgs> | null
+    where?: User_Study_SetWhereInput
+    orderBy?: User_Study_SetOrderByWithRelationInput | User_Study_SetOrderByWithRelationInput[]
+    cursor?: User_Study_SetWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: User_Study_SetScalarFieldEnum | User_Study_SetScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2307,6 +2634,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the User
      */
     select?: UserSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
   }
 
 
@@ -2510,6 +2841,7 @@ export namespace Prisma {
     question_id?: boolean
     Question?: boolean | QuestionDefaultArgs<ExtArgs>
     Answer?: boolean | Choice$AnswerArgs<ExtArgs>
+    User_Answer?: boolean | Choice$User_AnswerArgs<ExtArgs>
     _count?: boolean | ChoiceCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["choice"]>
 
@@ -2531,6 +2863,7 @@ export namespace Prisma {
   export type ChoiceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Question?: boolean | QuestionDefaultArgs<ExtArgs>
     Answer?: boolean | Choice$AnswerArgs<ExtArgs>
+    User_Answer?: boolean | Choice$User_AnswerArgs<ExtArgs>
     _count?: boolean | ChoiceCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ChoiceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2542,6 +2875,7 @@ export namespace Prisma {
     objects: {
       Question: Prisma.$QuestionPayload<ExtArgs>
       Answer: Prisma.$AnswerPayload<ExtArgs>[]
+      User_Answer: Prisma.$User_AnswerPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -2914,6 +3248,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     Question<T extends QuestionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, QuestionDefaultArgs<ExtArgs>>): Prisma__QuestionClient<$Result.GetResult<Prisma.$QuestionPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     Answer<T extends Choice$AnswerArgs<ExtArgs> = {}>(args?: Subset<T, Choice$AnswerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AnswerPayload<ExtArgs>, T, "findMany"> | Null>
+    User_Answer<T extends Choice$User_AnswerArgs<ExtArgs> = {}>(args?: Subset<T, Choice$User_AnswerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$User_AnswerPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3285,6 +3620,26 @@ export namespace Prisma {
   }
 
   /**
+   * Choice.User_Answer
+   */
+  export type Choice$User_AnswerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User_Answer
+     */
+    select?: User_AnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: User_AnswerInclude<ExtArgs> | null
+    where?: User_AnswerWhereInput
+    orderBy?: User_AnswerOrderByWithRelationInput | User_AnswerOrderByWithRelationInput[]
+    cursor?: User_AnswerWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: User_AnswerScalarFieldEnum | User_AnswerScalarFieldEnum[]
+  }
+
+  /**
    * Choice without action
    */
   export type ChoiceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3296,6 +3651,2000 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: ChoiceInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model User_Study_Set
+   */
+
+  export type AggregateUser_Study_Set = {
+    _count: User_Study_SetCountAggregateOutputType | null
+    _avg: User_Study_SetAvgAggregateOutputType | null
+    _sum: User_Study_SetSumAggregateOutputType | null
+    _min: User_Study_SetMinAggregateOutputType | null
+    _max: User_Study_SetMaxAggregateOutputType | null
+  }
+
+  export type User_Study_SetAvgAggregateOutputType = {
+    id: number | null
+    user_id: number | null
+    studyset_id: number | null
+    time: number | null
+  }
+
+  export type User_Study_SetSumAggregateOutputType = {
+    id: number | null
+    user_id: number | null
+    studyset_id: number | null
+    time: number | null
+  }
+
+  export type User_Study_SetMinAggregateOutputType = {
+    id: number | null
+    user_id: number | null
+    studyset_id: number | null
+    time: number | null
+  }
+
+  export type User_Study_SetMaxAggregateOutputType = {
+    id: number | null
+    user_id: number | null
+    studyset_id: number | null
+    time: number | null
+  }
+
+  export type User_Study_SetCountAggregateOutputType = {
+    id: number
+    user_id: number
+    studyset_id: number
+    time: number
+    _all: number
+  }
+
+
+  export type User_Study_SetAvgAggregateInputType = {
+    id?: true
+    user_id?: true
+    studyset_id?: true
+    time?: true
+  }
+
+  export type User_Study_SetSumAggregateInputType = {
+    id?: true
+    user_id?: true
+    studyset_id?: true
+    time?: true
+  }
+
+  export type User_Study_SetMinAggregateInputType = {
+    id?: true
+    user_id?: true
+    studyset_id?: true
+    time?: true
+  }
+
+  export type User_Study_SetMaxAggregateInputType = {
+    id?: true
+    user_id?: true
+    studyset_id?: true
+    time?: true
+  }
+
+  export type User_Study_SetCountAggregateInputType = {
+    id?: true
+    user_id?: true
+    studyset_id?: true
+    time?: true
+    _all?: true
+  }
+
+  export type User_Study_SetAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which User_Study_Set to aggregate.
+     */
+    where?: User_Study_SetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of User_Study_Sets to fetch.
+     */
+    orderBy?: User_Study_SetOrderByWithRelationInput | User_Study_SetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: User_Study_SetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` User_Study_Sets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` User_Study_Sets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned User_Study_Sets
+    **/
+    _count?: true | User_Study_SetCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: User_Study_SetAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: User_Study_SetSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: User_Study_SetMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: User_Study_SetMaxAggregateInputType
+  }
+
+  export type GetUser_Study_SetAggregateType<T extends User_Study_SetAggregateArgs> = {
+        [P in keyof T & keyof AggregateUser_Study_Set]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUser_Study_Set[P]>
+      : GetScalarType<T[P], AggregateUser_Study_Set[P]>
+  }
+
+
+
+
+  export type User_Study_SetGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: User_Study_SetWhereInput
+    orderBy?: User_Study_SetOrderByWithAggregationInput | User_Study_SetOrderByWithAggregationInput[]
+    by: User_Study_SetScalarFieldEnum[] | User_Study_SetScalarFieldEnum
+    having?: User_Study_SetScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: User_Study_SetCountAggregateInputType | true
+    _avg?: User_Study_SetAvgAggregateInputType
+    _sum?: User_Study_SetSumAggregateInputType
+    _min?: User_Study_SetMinAggregateInputType
+    _max?: User_Study_SetMaxAggregateInputType
+  }
+
+  export type User_Study_SetGroupByOutputType = {
+    id: number
+    user_id: number
+    studyset_id: number
+    time: number
+    _count: User_Study_SetCountAggregateOutputType | null
+    _avg: User_Study_SetAvgAggregateOutputType | null
+    _sum: User_Study_SetSumAggregateOutputType | null
+    _min: User_Study_SetMinAggregateOutputType | null
+    _max: User_Study_SetMaxAggregateOutputType | null
+  }
+
+  type GetUser_Study_SetGroupByPayload<T extends User_Study_SetGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<User_Study_SetGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof User_Study_SetGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], User_Study_SetGroupByOutputType[P]>
+            : GetScalarType<T[P], User_Study_SetGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type User_Study_SetSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    user_id?: boolean
+    studyset_id?: boolean
+    time?: boolean
+    User?: boolean | UserDefaultArgs<ExtArgs>
+    Study_Set?: boolean | Study_SetDefaultArgs<ExtArgs>
+    User_Answer?: boolean | User_Study_Set$User_AnswerArgs<ExtArgs>
+    _count?: boolean | User_Study_SetCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["user_Study_Set"]>
+
+  export type User_Study_SetSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    user_id?: boolean
+    studyset_id?: boolean
+    time?: boolean
+    User?: boolean | UserDefaultArgs<ExtArgs>
+    Study_Set?: boolean | Study_SetDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["user_Study_Set"]>
+
+  export type User_Study_SetSelectScalar = {
+    id?: boolean
+    user_id?: boolean
+    studyset_id?: boolean
+    time?: boolean
+  }
+
+  export type User_Study_SetInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    User?: boolean | UserDefaultArgs<ExtArgs>
+    Study_Set?: boolean | Study_SetDefaultArgs<ExtArgs>
+    User_Answer?: boolean | User_Study_Set$User_AnswerArgs<ExtArgs>
+    _count?: boolean | User_Study_SetCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type User_Study_SetIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    User?: boolean | UserDefaultArgs<ExtArgs>
+    Study_Set?: boolean | Study_SetDefaultArgs<ExtArgs>
+  }
+
+  export type $User_Study_SetPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "User_Study_Set"
+    objects: {
+      User: Prisma.$UserPayload<ExtArgs>
+      Study_Set: Prisma.$Study_SetPayload<ExtArgs>
+      User_Answer: Prisma.$User_AnswerPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      user_id: number
+      studyset_id: number
+      time: number
+    }, ExtArgs["result"]["user_Study_Set"]>
+    composites: {}
+  }
+
+  type User_Study_SetGetPayload<S extends boolean | null | undefined | User_Study_SetDefaultArgs> = $Result.GetResult<Prisma.$User_Study_SetPayload, S>
+
+  type User_Study_SetCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<User_Study_SetFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: User_Study_SetCountAggregateInputType | true
+    }
+
+  export interface User_Study_SetDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['User_Study_Set'], meta: { name: 'User_Study_Set' } }
+    /**
+     * Find zero or one User_Study_Set that matches the filter.
+     * @param {User_Study_SetFindUniqueArgs} args - Arguments to find a User_Study_Set
+     * @example
+     * // Get one User_Study_Set
+     * const user_Study_Set = await prisma.user_Study_Set.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends User_Study_SetFindUniqueArgs>(args: SelectSubset<T, User_Study_SetFindUniqueArgs<ExtArgs>>): Prisma__User_Study_SetClient<$Result.GetResult<Prisma.$User_Study_SetPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one User_Study_Set that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {User_Study_SetFindUniqueOrThrowArgs} args - Arguments to find a User_Study_Set
+     * @example
+     * // Get one User_Study_Set
+     * const user_Study_Set = await prisma.user_Study_Set.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends User_Study_SetFindUniqueOrThrowArgs>(args: SelectSubset<T, User_Study_SetFindUniqueOrThrowArgs<ExtArgs>>): Prisma__User_Study_SetClient<$Result.GetResult<Prisma.$User_Study_SetPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first User_Study_Set that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {User_Study_SetFindFirstArgs} args - Arguments to find a User_Study_Set
+     * @example
+     * // Get one User_Study_Set
+     * const user_Study_Set = await prisma.user_Study_Set.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends User_Study_SetFindFirstArgs>(args?: SelectSubset<T, User_Study_SetFindFirstArgs<ExtArgs>>): Prisma__User_Study_SetClient<$Result.GetResult<Prisma.$User_Study_SetPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first User_Study_Set that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {User_Study_SetFindFirstOrThrowArgs} args - Arguments to find a User_Study_Set
+     * @example
+     * // Get one User_Study_Set
+     * const user_Study_Set = await prisma.user_Study_Set.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends User_Study_SetFindFirstOrThrowArgs>(args?: SelectSubset<T, User_Study_SetFindFirstOrThrowArgs<ExtArgs>>): Prisma__User_Study_SetClient<$Result.GetResult<Prisma.$User_Study_SetPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more User_Study_Sets that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {User_Study_SetFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all User_Study_Sets
+     * const user_Study_Sets = await prisma.user_Study_Set.findMany()
+     * 
+     * // Get first 10 User_Study_Sets
+     * const user_Study_Sets = await prisma.user_Study_Set.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const user_Study_SetWithIdOnly = await prisma.user_Study_Set.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends User_Study_SetFindManyArgs>(args?: SelectSubset<T, User_Study_SetFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$User_Study_SetPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a User_Study_Set.
+     * @param {User_Study_SetCreateArgs} args - Arguments to create a User_Study_Set.
+     * @example
+     * // Create one User_Study_Set
+     * const User_Study_Set = await prisma.user_Study_Set.create({
+     *   data: {
+     *     // ... data to create a User_Study_Set
+     *   }
+     * })
+     * 
+     */
+    create<T extends User_Study_SetCreateArgs>(args: SelectSubset<T, User_Study_SetCreateArgs<ExtArgs>>): Prisma__User_Study_SetClient<$Result.GetResult<Prisma.$User_Study_SetPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many User_Study_Sets.
+     * @param {User_Study_SetCreateManyArgs} args - Arguments to create many User_Study_Sets.
+     * @example
+     * // Create many User_Study_Sets
+     * const user_Study_Set = await prisma.user_Study_Set.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends User_Study_SetCreateManyArgs>(args?: SelectSubset<T, User_Study_SetCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many User_Study_Sets and returns the data saved in the database.
+     * @param {User_Study_SetCreateManyAndReturnArgs} args - Arguments to create many User_Study_Sets.
+     * @example
+     * // Create many User_Study_Sets
+     * const user_Study_Set = await prisma.user_Study_Set.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many User_Study_Sets and only return the `id`
+     * const user_Study_SetWithIdOnly = await prisma.user_Study_Set.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends User_Study_SetCreateManyAndReturnArgs>(args?: SelectSubset<T, User_Study_SetCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$User_Study_SetPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a User_Study_Set.
+     * @param {User_Study_SetDeleteArgs} args - Arguments to delete one User_Study_Set.
+     * @example
+     * // Delete one User_Study_Set
+     * const User_Study_Set = await prisma.user_Study_Set.delete({
+     *   where: {
+     *     // ... filter to delete one User_Study_Set
+     *   }
+     * })
+     * 
+     */
+    delete<T extends User_Study_SetDeleteArgs>(args: SelectSubset<T, User_Study_SetDeleteArgs<ExtArgs>>): Prisma__User_Study_SetClient<$Result.GetResult<Prisma.$User_Study_SetPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one User_Study_Set.
+     * @param {User_Study_SetUpdateArgs} args - Arguments to update one User_Study_Set.
+     * @example
+     * // Update one User_Study_Set
+     * const user_Study_Set = await prisma.user_Study_Set.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends User_Study_SetUpdateArgs>(args: SelectSubset<T, User_Study_SetUpdateArgs<ExtArgs>>): Prisma__User_Study_SetClient<$Result.GetResult<Prisma.$User_Study_SetPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more User_Study_Sets.
+     * @param {User_Study_SetDeleteManyArgs} args - Arguments to filter User_Study_Sets to delete.
+     * @example
+     * // Delete a few User_Study_Sets
+     * const { count } = await prisma.user_Study_Set.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends User_Study_SetDeleteManyArgs>(args?: SelectSubset<T, User_Study_SetDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more User_Study_Sets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {User_Study_SetUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many User_Study_Sets
+     * const user_Study_Set = await prisma.user_Study_Set.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends User_Study_SetUpdateManyArgs>(args: SelectSubset<T, User_Study_SetUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one User_Study_Set.
+     * @param {User_Study_SetUpsertArgs} args - Arguments to update or create a User_Study_Set.
+     * @example
+     * // Update or create a User_Study_Set
+     * const user_Study_Set = await prisma.user_Study_Set.upsert({
+     *   create: {
+     *     // ... data to create a User_Study_Set
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the User_Study_Set we want to update
+     *   }
+     * })
+     */
+    upsert<T extends User_Study_SetUpsertArgs>(args: SelectSubset<T, User_Study_SetUpsertArgs<ExtArgs>>): Prisma__User_Study_SetClient<$Result.GetResult<Prisma.$User_Study_SetPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of User_Study_Sets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {User_Study_SetCountArgs} args - Arguments to filter User_Study_Sets to count.
+     * @example
+     * // Count the number of User_Study_Sets
+     * const count = await prisma.user_Study_Set.count({
+     *   where: {
+     *     // ... the filter for the User_Study_Sets we want to count
+     *   }
+     * })
+    **/
+    count<T extends User_Study_SetCountArgs>(
+      args?: Subset<T, User_Study_SetCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], User_Study_SetCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a User_Study_Set.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {User_Study_SetAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends User_Study_SetAggregateArgs>(args: Subset<T, User_Study_SetAggregateArgs>): Prisma.PrismaPromise<GetUser_Study_SetAggregateType<T>>
+
+    /**
+     * Group by User_Study_Set.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {User_Study_SetGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends User_Study_SetGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: User_Study_SetGroupByArgs['orderBy'] }
+        : { orderBy?: User_Study_SetGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, User_Study_SetGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUser_Study_SetGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the User_Study_Set model
+   */
+  readonly fields: User_Study_SetFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for User_Study_Set.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__User_Study_SetClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    User<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    Study_Set<T extends Study_SetDefaultArgs<ExtArgs> = {}>(args?: Subset<T, Study_SetDefaultArgs<ExtArgs>>): Prisma__Study_SetClient<$Result.GetResult<Prisma.$Study_SetPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    User_Answer<T extends User_Study_Set$User_AnswerArgs<ExtArgs> = {}>(args?: Subset<T, User_Study_Set$User_AnswerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$User_AnswerPayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the User_Study_Set model
+   */ 
+  interface User_Study_SetFieldRefs {
+    readonly id: FieldRef<"User_Study_Set", 'Int'>
+    readonly user_id: FieldRef<"User_Study_Set", 'Int'>
+    readonly studyset_id: FieldRef<"User_Study_Set", 'Int'>
+    readonly time: FieldRef<"User_Study_Set", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * User_Study_Set findUnique
+   */
+  export type User_Study_SetFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User_Study_Set
+     */
+    select?: User_Study_SetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: User_Study_SetInclude<ExtArgs> | null
+    /**
+     * Filter, which User_Study_Set to fetch.
+     */
+    where: User_Study_SetWhereUniqueInput
+  }
+
+  /**
+   * User_Study_Set findUniqueOrThrow
+   */
+  export type User_Study_SetFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User_Study_Set
+     */
+    select?: User_Study_SetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: User_Study_SetInclude<ExtArgs> | null
+    /**
+     * Filter, which User_Study_Set to fetch.
+     */
+    where: User_Study_SetWhereUniqueInput
+  }
+
+  /**
+   * User_Study_Set findFirst
+   */
+  export type User_Study_SetFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User_Study_Set
+     */
+    select?: User_Study_SetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: User_Study_SetInclude<ExtArgs> | null
+    /**
+     * Filter, which User_Study_Set to fetch.
+     */
+    where?: User_Study_SetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of User_Study_Sets to fetch.
+     */
+    orderBy?: User_Study_SetOrderByWithRelationInput | User_Study_SetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for User_Study_Sets.
+     */
+    cursor?: User_Study_SetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` User_Study_Sets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` User_Study_Sets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of User_Study_Sets.
+     */
+    distinct?: User_Study_SetScalarFieldEnum | User_Study_SetScalarFieldEnum[]
+  }
+
+  /**
+   * User_Study_Set findFirstOrThrow
+   */
+  export type User_Study_SetFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User_Study_Set
+     */
+    select?: User_Study_SetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: User_Study_SetInclude<ExtArgs> | null
+    /**
+     * Filter, which User_Study_Set to fetch.
+     */
+    where?: User_Study_SetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of User_Study_Sets to fetch.
+     */
+    orderBy?: User_Study_SetOrderByWithRelationInput | User_Study_SetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for User_Study_Sets.
+     */
+    cursor?: User_Study_SetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` User_Study_Sets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` User_Study_Sets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of User_Study_Sets.
+     */
+    distinct?: User_Study_SetScalarFieldEnum | User_Study_SetScalarFieldEnum[]
+  }
+
+  /**
+   * User_Study_Set findMany
+   */
+  export type User_Study_SetFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User_Study_Set
+     */
+    select?: User_Study_SetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: User_Study_SetInclude<ExtArgs> | null
+    /**
+     * Filter, which User_Study_Sets to fetch.
+     */
+    where?: User_Study_SetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of User_Study_Sets to fetch.
+     */
+    orderBy?: User_Study_SetOrderByWithRelationInput | User_Study_SetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing User_Study_Sets.
+     */
+    cursor?: User_Study_SetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` User_Study_Sets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` User_Study_Sets.
+     */
+    skip?: number
+    distinct?: User_Study_SetScalarFieldEnum | User_Study_SetScalarFieldEnum[]
+  }
+
+  /**
+   * User_Study_Set create
+   */
+  export type User_Study_SetCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User_Study_Set
+     */
+    select?: User_Study_SetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: User_Study_SetInclude<ExtArgs> | null
+    /**
+     * The data needed to create a User_Study_Set.
+     */
+    data: XOR<User_Study_SetCreateInput, User_Study_SetUncheckedCreateInput>
+  }
+
+  /**
+   * User_Study_Set createMany
+   */
+  export type User_Study_SetCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many User_Study_Sets.
+     */
+    data: User_Study_SetCreateManyInput | User_Study_SetCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * User_Study_Set createManyAndReturn
+   */
+  export type User_Study_SetCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User_Study_Set
+     */
+    select?: User_Study_SetSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many User_Study_Sets.
+     */
+    data: User_Study_SetCreateManyInput | User_Study_SetCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: User_Study_SetIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * User_Study_Set update
+   */
+  export type User_Study_SetUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User_Study_Set
+     */
+    select?: User_Study_SetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: User_Study_SetInclude<ExtArgs> | null
+    /**
+     * The data needed to update a User_Study_Set.
+     */
+    data: XOR<User_Study_SetUpdateInput, User_Study_SetUncheckedUpdateInput>
+    /**
+     * Choose, which User_Study_Set to update.
+     */
+    where: User_Study_SetWhereUniqueInput
+  }
+
+  /**
+   * User_Study_Set updateMany
+   */
+  export type User_Study_SetUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update User_Study_Sets.
+     */
+    data: XOR<User_Study_SetUpdateManyMutationInput, User_Study_SetUncheckedUpdateManyInput>
+    /**
+     * Filter which User_Study_Sets to update
+     */
+    where?: User_Study_SetWhereInput
+  }
+
+  /**
+   * User_Study_Set upsert
+   */
+  export type User_Study_SetUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User_Study_Set
+     */
+    select?: User_Study_SetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: User_Study_SetInclude<ExtArgs> | null
+    /**
+     * The filter to search for the User_Study_Set to update in case it exists.
+     */
+    where: User_Study_SetWhereUniqueInput
+    /**
+     * In case the User_Study_Set found by the `where` argument doesn't exist, create a new User_Study_Set with this data.
+     */
+    create: XOR<User_Study_SetCreateInput, User_Study_SetUncheckedCreateInput>
+    /**
+     * In case the User_Study_Set was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<User_Study_SetUpdateInput, User_Study_SetUncheckedUpdateInput>
+  }
+
+  /**
+   * User_Study_Set delete
+   */
+  export type User_Study_SetDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User_Study_Set
+     */
+    select?: User_Study_SetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: User_Study_SetInclude<ExtArgs> | null
+    /**
+     * Filter which User_Study_Set to delete.
+     */
+    where: User_Study_SetWhereUniqueInput
+  }
+
+  /**
+   * User_Study_Set deleteMany
+   */
+  export type User_Study_SetDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which User_Study_Sets to delete
+     */
+    where?: User_Study_SetWhereInput
+  }
+
+  /**
+   * User_Study_Set.User_Answer
+   */
+  export type User_Study_Set$User_AnswerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User_Answer
+     */
+    select?: User_AnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: User_AnswerInclude<ExtArgs> | null
+    where?: User_AnswerWhereInput
+    orderBy?: User_AnswerOrderByWithRelationInput | User_AnswerOrderByWithRelationInput[]
+    cursor?: User_AnswerWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: User_AnswerScalarFieldEnum | User_AnswerScalarFieldEnum[]
+  }
+
+  /**
+   * User_Study_Set without action
+   */
+  export type User_Study_SetDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User_Study_Set
+     */
+    select?: User_Study_SetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: User_Study_SetInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model User_Answer
+   */
+
+  export type AggregateUser_Answer = {
+    _count: User_AnswerCountAggregateOutputType | null
+    _avg: User_AnswerAvgAggregateOutputType | null
+    _sum: User_AnswerSumAggregateOutputType | null
+    _min: User_AnswerMinAggregateOutputType | null
+    _max: User_AnswerMaxAggregateOutputType | null
+  }
+
+  export type User_AnswerAvgAggregateOutputType = {
+    id: number | null
+    user_StudySet_id: number | null
+    studyset_id: number | null
+    question_id: number | null
+    choice_id: number | null
+  }
+
+  export type User_AnswerSumAggregateOutputType = {
+    id: number | null
+    user_StudySet_id: number | null
+    studyset_id: number | null
+    question_id: number | null
+    choice_id: number | null
+  }
+
+  export type User_AnswerMinAggregateOutputType = {
+    id: number | null
+    user_StudySet_id: number | null
+    studyset_id: number | null
+    question_id: number | null
+    choice_id: number | null
+  }
+
+  export type User_AnswerMaxAggregateOutputType = {
+    id: number | null
+    user_StudySet_id: number | null
+    studyset_id: number | null
+    question_id: number | null
+    choice_id: number | null
+  }
+
+  export type User_AnswerCountAggregateOutputType = {
+    id: number
+    user_StudySet_id: number
+    studyset_id: number
+    question_id: number
+    choice_id: number
+    _all: number
+  }
+
+
+  export type User_AnswerAvgAggregateInputType = {
+    id?: true
+    user_StudySet_id?: true
+    studyset_id?: true
+    question_id?: true
+    choice_id?: true
+  }
+
+  export type User_AnswerSumAggregateInputType = {
+    id?: true
+    user_StudySet_id?: true
+    studyset_id?: true
+    question_id?: true
+    choice_id?: true
+  }
+
+  export type User_AnswerMinAggregateInputType = {
+    id?: true
+    user_StudySet_id?: true
+    studyset_id?: true
+    question_id?: true
+    choice_id?: true
+  }
+
+  export type User_AnswerMaxAggregateInputType = {
+    id?: true
+    user_StudySet_id?: true
+    studyset_id?: true
+    question_id?: true
+    choice_id?: true
+  }
+
+  export type User_AnswerCountAggregateInputType = {
+    id?: true
+    user_StudySet_id?: true
+    studyset_id?: true
+    question_id?: true
+    choice_id?: true
+    _all?: true
+  }
+
+  export type User_AnswerAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which User_Answer to aggregate.
+     */
+    where?: User_AnswerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of User_Answers to fetch.
+     */
+    orderBy?: User_AnswerOrderByWithRelationInput | User_AnswerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: User_AnswerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` User_Answers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` User_Answers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned User_Answers
+    **/
+    _count?: true | User_AnswerCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: User_AnswerAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: User_AnswerSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: User_AnswerMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: User_AnswerMaxAggregateInputType
+  }
+
+  export type GetUser_AnswerAggregateType<T extends User_AnswerAggregateArgs> = {
+        [P in keyof T & keyof AggregateUser_Answer]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUser_Answer[P]>
+      : GetScalarType<T[P], AggregateUser_Answer[P]>
+  }
+
+
+
+
+  export type User_AnswerGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: User_AnswerWhereInput
+    orderBy?: User_AnswerOrderByWithAggregationInput | User_AnswerOrderByWithAggregationInput[]
+    by: User_AnswerScalarFieldEnum[] | User_AnswerScalarFieldEnum
+    having?: User_AnswerScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: User_AnswerCountAggregateInputType | true
+    _avg?: User_AnswerAvgAggregateInputType
+    _sum?: User_AnswerSumAggregateInputType
+    _min?: User_AnswerMinAggregateInputType
+    _max?: User_AnswerMaxAggregateInputType
+  }
+
+  export type User_AnswerGroupByOutputType = {
+    id: number
+    user_StudySet_id: number
+    studyset_id: number
+    question_id: number
+    choice_id: number
+    _count: User_AnswerCountAggregateOutputType | null
+    _avg: User_AnswerAvgAggregateOutputType | null
+    _sum: User_AnswerSumAggregateOutputType | null
+    _min: User_AnswerMinAggregateOutputType | null
+    _max: User_AnswerMaxAggregateOutputType | null
+  }
+
+  type GetUser_AnswerGroupByPayload<T extends User_AnswerGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<User_AnswerGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof User_AnswerGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], User_AnswerGroupByOutputType[P]>
+            : GetScalarType<T[P], User_AnswerGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type User_AnswerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    user_StudySet_id?: boolean
+    studyset_id?: boolean
+    question_id?: boolean
+    choice_id?: boolean
+    User_Study_Set?: boolean | User_Study_SetDefaultArgs<ExtArgs>
+    Choice?: boolean | ChoiceDefaultArgs<ExtArgs>
+    Question?: boolean | QuestionDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["user_Answer"]>
+
+  export type User_AnswerSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    user_StudySet_id?: boolean
+    studyset_id?: boolean
+    question_id?: boolean
+    choice_id?: boolean
+    User_Study_Set?: boolean | User_Study_SetDefaultArgs<ExtArgs>
+    Choice?: boolean | ChoiceDefaultArgs<ExtArgs>
+    Question?: boolean | QuestionDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["user_Answer"]>
+
+  export type User_AnswerSelectScalar = {
+    id?: boolean
+    user_StudySet_id?: boolean
+    studyset_id?: boolean
+    question_id?: boolean
+    choice_id?: boolean
+  }
+
+  export type User_AnswerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    User_Study_Set?: boolean | User_Study_SetDefaultArgs<ExtArgs>
+    Choice?: boolean | ChoiceDefaultArgs<ExtArgs>
+    Question?: boolean | QuestionDefaultArgs<ExtArgs>
+  }
+  export type User_AnswerIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    User_Study_Set?: boolean | User_Study_SetDefaultArgs<ExtArgs>
+    Choice?: boolean | ChoiceDefaultArgs<ExtArgs>
+    Question?: boolean | QuestionDefaultArgs<ExtArgs>
+  }
+
+  export type $User_AnswerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "User_Answer"
+    objects: {
+      User_Study_Set: Prisma.$User_Study_SetPayload<ExtArgs>
+      Choice: Prisma.$ChoicePayload<ExtArgs>
+      Question: Prisma.$QuestionPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      user_StudySet_id: number
+      studyset_id: number
+      question_id: number
+      choice_id: number
+    }, ExtArgs["result"]["user_Answer"]>
+    composites: {}
+  }
+
+  type User_AnswerGetPayload<S extends boolean | null | undefined | User_AnswerDefaultArgs> = $Result.GetResult<Prisma.$User_AnswerPayload, S>
+
+  type User_AnswerCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<User_AnswerFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: User_AnswerCountAggregateInputType | true
+    }
+
+  export interface User_AnswerDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['User_Answer'], meta: { name: 'User_Answer' } }
+    /**
+     * Find zero or one User_Answer that matches the filter.
+     * @param {User_AnswerFindUniqueArgs} args - Arguments to find a User_Answer
+     * @example
+     * // Get one User_Answer
+     * const user_Answer = await prisma.user_Answer.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends User_AnswerFindUniqueArgs>(args: SelectSubset<T, User_AnswerFindUniqueArgs<ExtArgs>>): Prisma__User_AnswerClient<$Result.GetResult<Prisma.$User_AnswerPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one User_Answer that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {User_AnswerFindUniqueOrThrowArgs} args - Arguments to find a User_Answer
+     * @example
+     * // Get one User_Answer
+     * const user_Answer = await prisma.user_Answer.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends User_AnswerFindUniqueOrThrowArgs>(args: SelectSubset<T, User_AnswerFindUniqueOrThrowArgs<ExtArgs>>): Prisma__User_AnswerClient<$Result.GetResult<Prisma.$User_AnswerPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first User_Answer that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {User_AnswerFindFirstArgs} args - Arguments to find a User_Answer
+     * @example
+     * // Get one User_Answer
+     * const user_Answer = await prisma.user_Answer.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends User_AnswerFindFirstArgs>(args?: SelectSubset<T, User_AnswerFindFirstArgs<ExtArgs>>): Prisma__User_AnswerClient<$Result.GetResult<Prisma.$User_AnswerPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first User_Answer that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {User_AnswerFindFirstOrThrowArgs} args - Arguments to find a User_Answer
+     * @example
+     * // Get one User_Answer
+     * const user_Answer = await prisma.user_Answer.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends User_AnswerFindFirstOrThrowArgs>(args?: SelectSubset<T, User_AnswerFindFirstOrThrowArgs<ExtArgs>>): Prisma__User_AnswerClient<$Result.GetResult<Prisma.$User_AnswerPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more User_Answers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {User_AnswerFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all User_Answers
+     * const user_Answers = await prisma.user_Answer.findMany()
+     * 
+     * // Get first 10 User_Answers
+     * const user_Answers = await prisma.user_Answer.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const user_AnswerWithIdOnly = await prisma.user_Answer.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends User_AnswerFindManyArgs>(args?: SelectSubset<T, User_AnswerFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$User_AnswerPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a User_Answer.
+     * @param {User_AnswerCreateArgs} args - Arguments to create a User_Answer.
+     * @example
+     * // Create one User_Answer
+     * const User_Answer = await prisma.user_Answer.create({
+     *   data: {
+     *     // ... data to create a User_Answer
+     *   }
+     * })
+     * 
+     */
+    create<T extends User_AnswerCreateArgs>(args: SelectSubset<T, User_AnswerCreateArgs<ExtArgs>>): Prisma__User_AnswerClient<$Result.GetResult<Prisma.$User_AnswerPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many User_Answers.
+     * @param {User_AnswerCreateManyArgs} args - Arguments to create many User_Answers.
+     * @example
+     * // Create many User_Answers
+     * const user_Answer = await prisma.user_Answer.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends User_AnswerCreateManyArgs>(args?: SelectSubset<T, User_AnswerCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many User_Answers and returns the data saved in the database.
+     * @param {User_AnswerCreateManyAndReturnArgs} args - Arguments to create many User_Answers.
+     * @example
+     * // Create many User_Answers
+     * const user_Answer = await prisma.user_Answer.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many User_Answers and only return the `id`
+     * const user_AnswerWithIdOnly = await prisma.user_Answer.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends User_AnswerCreateManyAndReturnArgs>(args?: SelectSubset<T, User_AnswerCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$User_AnswerPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a User_Answer.
+     * @param {User_AnswerDeleteArgs} args - Arguments to delete one User_Answer.
+     * @example
+     * // Delete one User_Answer
+     * const User_Answer = await prisma.user_Answer.delete({
+     *   where: {
+     *     // ... filter to delete one User_Answer
+     *   }
+     * })
+     * 
+     */
+    delete<T extends User_AnswerDeleteArgs>(args: SelectSubset<T, User_AnswerDeleteArgs<ExtArgs>>): Prisma__User_AnswerClient<$Result.GetResult<Prisma.$User_AnswerPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one User_Answer.
+     * @param {User_AnswerUpdateArgs} args - Arguments to update one User_Answer.
+     * @example
+     * // Update one User_Answer
+     * const user_Answer = await prisma.user_Answer.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends User_AnswerUpdateArgs>(args: SelectSubset<T, User_AnswerUpdateArgs<ExtArgs>>): Prisma__User_AnswerClient<$Result.GetResult<Prisma.$User_AnswerPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more User_Answers.
+     * @param {User_AnswerDeleteManyArgs} args - Arguments to filter User_Answers to delete.
+     * @example
+     * // Delete a few User_Answers
+     * const { count } = await prisma.user_Answer.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends User_AnswerDeleteManyArgs>(args?: SelectSubset<T, User_AnswerDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more User_Answers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {User_AnswerUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many User_Answers
+     * const user_Answer = await prisma.user_Answer.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends User_AnswerUpdateManyArgs>(args: SelectSubset<T, User_AnswerUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one User_Answer.
+     * @param {User_AnswerUpsertArgs} args - Arguments to update or create a User_Answer.
+     * @example
+     * // Update or create a User_Answer
+     * const user_Answer = await prisma.user_Answer.upsert({
+     *   create: {
+     *     // ... data to create a User_Answer
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the User_Answer we want to update
+     *   }
+     * })
+     */
+    upsert<T extends User_AnswerUpsertArgs>(args: SelectSubset<T, User_AnswerUpsertArgs<ExtArgs>>): Prisma__User_AnswerClient<$Result.GetResult<Prisma.$User_AnswerPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of User_Answers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {User_AnswerCountArgs} args - Arguments to filter User_Answers to count.
+     * @example
+     * // Count the number of User_Answers
+     * const count = await prisma.user_Answer.count({
+     *   where: {
+     *     // ... the filter for the User_Answers we want to count
+     *   }
+     * })
+    **/
+    count<T extends User_AnswerCountArgs>(
+      args?: Subset<T, User_AnswerCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], User_AnswerCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a User_Answer.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {User_AnswerAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends User_AnswerAggregateArgs>(args: Subset<T, User_AnswerAggregateArgs>): Prisma.PrismaPromise<GetUser_AnswerAggregateType<T>>
+
+    /**
+     * Group by User_Answer.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {User_AnswerGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends User_AnswerGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: User_AnswerGroupByArgs['orderBy'] }
+        : { orderBy?: User_AnswerGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, User_AnswerGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUser_AnswerGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the User_Answer model
+   */
+  readonly fields: User_AnswerFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for User_Answer.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__User_AnswerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    User_Study_Set<T extends User_Study_SetDefaultArgs<ExtArgs> = {}>(args?: Subset<T, User_Study_SetDefaultArgs<ExtArgs>>): Prisma__User_Study_SetClient<$Result.GetResult<Prisma.$User_Study_SetPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    Choice<T extends ChoiceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ChoiceDefaultArgs<ExtArgs>>): Prisma__ChoiceClient<$Result.GetResult<Prisma.$ChoicePayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    Question<T extends QuestionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, QuestionDefaultArgs<ExtArgs>>): Prisma__QuestionClient<$Result.GetResult<Prisma.$QuestionPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the User_Answer model
+   */ 
+  interface User_AnswerFieldRefs {
+    readonly id: FieldRef<"User_Answer", 'Int'>
+    readonly user_StudySet_id: FieldRef<"User_Answer", 'Int'>
+    readonly studyset_id: FieldRef<"User_Answer", 'Int'>
+    readonly question_id: FieldRef<"User_Answer", 'Int'>
+    readonly choice_id: FieldRef<"User_Answer", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * User_Answer findUnique
+   */
+  export type User_AnswerFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User_Answer
+     */
+    select?: User_AnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: User_AnswerInclude<ExtArgs> | null
+    /**
+     * Filter, which User_Answer to fetch.
+     */
+    where: User_AnswerWhereUniqueInput
+  }
+
+  /**
+   * User_Answer findUniqueOrThrow
+   */
+  export type User_AnswerFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User_Answer
+     */
+    select?: User_AnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: User_AnswerInclude<ExtArgs> | null
+    /**
+     * Filter, which User_Answer to fetch.
+     */
+    where: User_AnswerWhereUniqueInput
+  }
+
+  /**
+   * User_Answer findFirst
+   */
+  export type User_AnswerFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User_Answer
+     */
+    select?: User_AnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: User_AnswerInclude<ExtArgs> | null
+    /**
+     * Filter, which User_Answer to fetch.
+     */
+    where?: User_AnswerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of User_Answers to fetch.
+     */
+    orderBy?: User_AnswerOrderByWithRelationInput | User_AnswerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for User_Answers.
+     */
+    cursor?: User_AnswerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` User_Answers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` User_Answers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of User_Answers.
+     */
+    distinct?: User_AnswerScalarFieldEnum | User_AnswerScalarFieldEnum[]
+  }
+
+  /**
+   * User_Answer findFirstOrThrow
+   */
+  export type User_AnswerFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User_Answer
+     */
+    select?: User_AnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: User_AnswerInclude<ExtArgs> | null
+    /**
+     * Filter, which User_Answer to fetch.
+     */
+    where?: User_AnswerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of User_Answers to fetch.
+     */
+    orderBy?: User_AnswerOrderByWithRelationInput | User_AnswerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for User_Answers.
+     */
+    cursor?: User_AnswerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` User_Answers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` User_Answers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of User_Answers.
+     */
+    distinct?: User_AnswerScalarFieldEnum | User_AnswerScalarFieldEnum[]
+  }
+
+  /**
+   * User_Answer findMany
+   */
+  export type User_AnswerFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User_Answer
+     */
+    select?: User_AnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: User_AnswerInclude<ExtArgs> | null
+    /**
+     * Filter, which User_Answers to fetch.
+     */
+    where?: User_AnswerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of User_Answers to fetch.
+     */
+    orderBy?: User_AnswerOrderByWithRelationInput | User_AnswerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing User_Answers.
+     */
+    cursor?: User_AnswerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` User_Answers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` User_Answers.
+     */
+    skip?: number
+    distinct?: User_AnswerScalarFieldEnum | User_AnswerScalarFieldEnum[]
+  }
+
+  /**
+   * User_Answer create
+   */
+  export type User_AnswerCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User_Answer
+     */
+    select?: User_AnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: User_AnswerInclude<ExtArgs> | null
+    /**
+     * The data needed to create a User_Answer.
+     */
+    data: XOR<User_AnswerCreateInput, User_AnswerUncheckedCreateInput>
+  }
+
+  /**
+   * User_Answer createMany
+   */
+  export type User_AnswerCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many User_Answers.
+     */
+    data: User_AnswerCreateManyInput | User_AnswerCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * User_Answer createManyAndReturn
+   */
+  export type User_AnswerCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User_Answer
+     */
+    select?: User_AnswerSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many User_Answers.
+     */
+    data: User_AnswerCreateManyInput | User_AnswerCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: User_AnswerIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * User_Answer update
+   */
+  export type User_AnswerUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User_Answer
+     */
+    select?: User_AnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: User_AnswerInclude<ExtArgs> | null
+    /**
+     * The data needed to update a User_Answer.
+     */
+    data: XOR<User_AnswerUpdateInput, User_AnswerUncheckedUpdateInput>
+    /**
+     * Choose, which User_Answer to update.
+     */
+    where: User_AnswerWhereUniqueInput
+  }
+
+  /**
+   * User_Answer updateMany
+   */
+  export type User_AnswerUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update User_Answers.
+     */
+    data: XOR<User_AnswerUpdateManyMutationInput, User_AnswerUncheckedUpdateManyInput>
+    /**
+     * Filter which User_Answers to update
+     */
+    where?: User_AnswerWhereInput
+  }
+
+  /**
+   * User_Answer upsert
+   */
+  export type User_AnswerUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User_Answer
+     */
+    select?: User_AnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: User_AnswerInclude<ExtArgs> | null
+    /**
+     * The filter to search for the User_Answer to update in case it exists.
+     */
+    where: User_AnswerWhereUniqueInput
+    /**
+     * In case the User_Answer found by the `where` argument doesn't exist, create a new User_Answer with this data.
+     */
+    create: XOR<User_AnswerCreateInput, User_AnswerUncheckedCreateInput>
+    /**
+     * In case the User_Answer was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<User_AnswerUpdateInput, User_AnswerUncheckedUpdateInput>
+  }
+
+  /**
+   * User_Answer delete
+   */
+  export type User_AnswerDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User_Answer
+     */
+    select?: User_AnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: User_AnswerInclude<ExtArgs> | null
+    /**
+     * Filter which User_Answer to delete.
+     */
+    where: User_AnswerWhereUniqueInput
+  }
+
+  /**
+   * User_Answer deleteMany
+   */
+  export type User_AnswerDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which User_Answers to delete
+     */
+    where?: User_AnswerWhereInput
+  }
+
+  /**
+   * User_Answer without action
+   */
+  export type User_AnswerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User_Answer
+     */
+    select?: User_AnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: User_AnswerInclude<ExtArgs> | null
   }
 
 
@@ -3323,18 +5672,21 @@ export namespace Prisma {
     id: number | null
     content: string | null
     explanation: string | null
+    type: string | null
   }
 
   export type QuestionMaxAggregateOutputType = {
     id: number | null
     content: string | null
     explanation: string | null
+    type: string | null
   }
 
   export type QuestionCountAggregateOutputType = {
     id: number
     content: number
     explanation: number
+    type: number
     _all: number
   }
 
@@ -3351,18 +5703,21 @@ export namespace Prisma {
     id?: true
     content?: true
     explanation?: true
+    type?: true
   }
 
   export type QuestionMaxAggregateInputType = {
     id?: true
     content?: true
     explanation?: true
+    type?: true
   }
 
   export type QuestionCountAggregateInputType = {
     id?: true
     content?: true
     explanation?: true
+    type?: true
     _all?: true
   }
 
@@ -3456,6 +5811,7 @@ export namespace Prisma {
     id: number
     content: string
     explanation: string
+    type: string
     _count: QuestionCountAggregateOutputType | null
     _avg: QuestionAvgAggregateOutputType | null
     _sum: QuestionSumAggregateOutputType | null
@@ -3481,9 +5837,11 @@ export namespace Prisma {
     id?: boolean
     content?: boolean
     explanation?: boolean
+    type?: boolean
     Choice?: boolean | Question$ChoiceArgs<ExtArgs>
     Study_Set_Questions_List?: boolean | Question$Study_Set_Questions_ListArgs<ExtArgs>
     Answer?: boolean | Question$AnswerArgs<ExtArgs>
+    User_Answer?: boolean | Question$User_AnswerArgs<ExtArgs>
     _count?: boolean | QuestionCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["question"]>
 
@@ -3491,18 +5849,21 @@ export namespace Prisma {
     id?: boolean
     content?: boolean
     explanation?: boolean
+    type?: boolean
   }, ExtArgs["result"]["question"]>
 
   export type QuestionSelectScalar = {
     id?: boolean
     content?: boolean
     explanation?: boolean
+    type?: boolean
   }
 
   export type QuestionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Choice?: boolean | Question$ChoiceArgs<ExtArgs>
     Study_Set_Questions_List?: boolean | Question$Study_Set_Questions_ListArgs<ExtArgs>
     Answer?: boolean | Question$AnswerArgs<ExtArgs>
+    User_Answer?: boolean | Question$User_AnswerArgs<ExtArgs>
     _count?: boolean | QuestionCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type QuestionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -3513,11 +5874,13 @@ export namespace Prisma {
       Choice: Prisma.$ChoicePayload<ExtArgs>[]
       Study_Set_Questions_List: Prisma.$Study_Set_Questions_ListPayload<ExtArgs>[]
       Answer: Prisma.$AnswerPayload<ExtArgs>[]
+      User_Answer: Prisma.$User_AnswerPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       content: string
       explanation: string
+      type: string
     }, ExtArgs["result"]["question"]>
     composites: {}
   }
@@ -3885,6 +6248,7 @@ export namespace Prisma {
     Choice<T extends Question$ChoiceArgs<ExtArgs> = {}>(args?: Subset<T, Question$ChoiceArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChoicePayload<ExtArgs>, T, "findMany"> | Null>
     Study_Set_Questions_List<T extends Question$Study_Set_Questions_ListArgs<ExtArgs> = {}>(args?: Subset<T, Question$Study_Set_Questions_ListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Study_Set_Questions_ListPayload<ExtArgs>, T, "findMany"> | Null>
     Answer<T extends Question$AnswerArgs<ExtArgs> = {}>(args?: Subset<T, Question$AnswerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AnswerPayload<ExtArgs>, T, "findMany"> | Null>
+    User_Answer<T extends Question$User_AnswerArgs<ExtArgs> = {}>(args?: Subset<T, Question$User_AnswerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$User_AnswerPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3917,6 +6281,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Question", 'Int'>
     readonly content: FieldRef<"Question", 'String'>
     readonly explanation: FieldRef<"Question", 'String'>
+    readonly type: FieldRef<"Question", 'String'>
   }
     
 
@@ -4288,6 +6653,26 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: AnswerScalarFieldEnum | AnswerScalarFieldEnum[]
+  }
+
+  /**
+   * Question.User_Answer
+   */
+  export type Question$User_AnswerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User_Answer
+     */
+    select?: User_AnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: User_AnswerInclude<ExtArgs> | null
+    where?: User_AnswerWhereInput
+    orderBy?: User_AnswerOrderByWithRelationInput | User_AnswerOrderByWithRelationInput[]
+    cursor?: User_AnswerWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: User_AnswerScalarFieldEnum | User_AnswerScalarFieldEnum[]
   }
 
   /**
@@ -5429,6 +7814,7 @@ export namespace Prisma {
     label?: boolean
     description?: boolean
     Study_Set_Questions_List?: boolean | Study_Set$Study_Set_Questions_ListArgs<ExtArgs>
+    User_Study_Set?: boolean | Study_Set$User_Study_SetArgs<ExtArgs>
     _count?: boolean | Study_SetCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["study_Set"]>
 
@@ -5446,6 +7832,7 @@ export namespace Prisma {
 
   export type Study_SetInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Study_Set_Questions_List?: boolean | Study_Set$Study_Set_Questions_ListArgs<ExtArgs>
+    User_Study_Set?: boolean | Study_Set$User_Study_SetArgs<ExtArgs>
     _count?: boolean | Study_SetCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type Study_SetIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -5454,6 +7841,7 @@ export namespace Prisma {
     name: "Study_Set"
     objects: {
       Study_Set_Questions_List: Prisma.$Study_Set_Questions_ListPayload<ExtArgs>[]
+      User_Study_Set: Prisma.$User_Study_SetPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -5824,6 +8212,7 @@ export namespace Prisma {
   export interface Prisma__Study_SetClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     Study_Set_Questions_List<T extends Study_Set$Study_Set_Questions_ListArgs<ExtArgs> = {}>(args?: Subset<T, Study_Set$Study_Set_Questions_ListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Study_Set_Questions_ListPayload<ExtArgs>, T, "findMany"> | Null>
+    User_Study_Set<T extends Study_Set$User_Study_SetArgs<ExtArgs> = {}>(args?: Subset<T, Study_Set$User_Study_SetArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$User_Study_SetPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6187,6 +8576,26 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: Study_Set_Questions_ListScalarFieldEnum | Study_Set_Questions_ListScalarFieldEnum[]
+  }
+
+  /**
+   * Study_Set.User_Study_Set
+   */
+  export type Study_Set$User_Study_SetArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User_Study_Set
+     */
+    select?: User_Study_SetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: User_Study_SetInclude<ExtArgs> | null
+    where?: User_Study_SetWhereInput
+    orderBy?: User_Study_SetOrderByWithRelationInput | User_Study_SetOrderByWithRelationInput[]
+    cursor?: User_Study_SetWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: User_Study_SetScalarFieldEnum | User_Study_SetScalarFieldEnum[]
   }
 
   /**
@@ -7196,10 +9605,32 @@ export namespace Prisma {
   export type ChoiceScalarFieldEnum = (typeof ChoiceScalarFieldEnum)[keyof typeof ChoiceScalarFieldEnum]
 
 
+  export const User_Study_SetScalarFieldEnum: {
+    id: 'id',
+    user_id: 'user_id',
+    studyset_id: 'studyset_id',
+    time: 'time'
+  };
+
+  export type User_Study_SetScalarFieldEnum = (typeof User_Study_SetScalarFieldEnum)[keyof typeof User_Study_SetScalarFieldEnum]
+
+
+  export const User_AnswerScalarFieldEnum: {
+    id: 'id',
+    user_StudySet_id: 'user_StudySet_id',
+    studyset_id: 'studyset_id',
+    question_id: 'question_id',
+    choice_id: 'choice_id'
+  };
+
+  export type User_AnswerScalarFieldEnum = (typeof User_AnswerScalarFieldEnum)[keyof typeof User_AnswerScalarFieldEnum]
+
+
   export const QuestionScalarFieldEnum: {
     id: 'id',
     content: 'content',
-    explanation: 'explanation'
+    explanation: 'explanation',
+    type: 'type'
   };
 
   export type QuestionScalarFieldEnum = (typeof QuestionScalarFieldEnum)[keyof typeof QuestionScalarFieldEnum]
@@ -7320,6 +9751,7 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
     name?: StringFilter<"User"> | string
     role?: EnumRoleFilter<"User"> | $Enums.Role
+    User_Study_Set?: User_Study_SetListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -7328,6 +9760,7 @@ export namespace Prisma {
     password?: SortOrder
     name?: SortOrder
     role?: SortOrder
+    User_Study_Set?: User_Study_SetOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -7339,6 +9772,7 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
     name?: StringFilter<"User"> | string
     role?: EnumRoleFilter<"User"> | $Enums.Role
+    User_Study_Set?: User_Study_SetListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -7375,6 +9809,7 @@ export namespace Prisma {
     question_id?: IntFilter<"Choice"> | number
     Question?: XOR<QuestionRelationFilter, QuestionWhereInput>
     Answer?: AnswerListRelationFilter
+    User_Answer?: User_AnswerListRelationFilter
   }
 
   export type ChoiceOrderByWithRelationInput = {
@@ -7384,6 +9819,7 @@ export namespace Prisma {
     question_id?: SortOrder
     Question?: QuestionOrderByWithRelationInput
     Answer?: AnswerOrderByRelationAggregateInput
+    User_Answer?: User_AnswerOrderByRelationAggregateInput
   }
 
   export type ChoiceWhereUniqueInput = Prisma.AtLeast<{
@@ -7396,6 +9832,7 @@ export namespace Prisma {
     question_id?: IntFilter<"Choice"> | number
     Question?: XOR<QuestionRelationFilter, QuestionWhereInput>
     Answer?: AnswerListRelationFilter
+    User_Answer?: User_AnswerListRelationFilter
   }, "id">
 
   export type ChoiceOrderByWithAggregationInput = {
@@ -7420,6 +9857,127 @@ export namespace Prisma {
     question_id?: IntWithAggregatesFilter<"Choice"> | number
   }
 
+  export type User_Study_SetWhereInput = {
+    AND?: User_Study_SetWhereInput | User_Study_SetWhereInput[]
+    OR?: User_Study_SetWhereInput[]
+    NOT?: User_Study_SetWhereInput | User_Study_SetWhereInput[]
+    id?: IntFilter<"User_Study_Set"> | number
+    user_id?: IntFilter<"User_Study_Set"> | number
+    studyset_id?: IntFilter<"User_Study_Set"> | number
+    time?: IntFilter<"User_Study_Set"> | number
+    User?: XOR<UserRelationFilter, UserWhereInput>
+    Study_Set?: XOR<Study_SetRelationFilter, Study_SetWhereInput>
+    User_Answer?: User_AnswerListRelationFilter
+  }
+
+  export type User_Study_SetOrderByWithRelationInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    studyset_id?: SortOrder
+    time?: SortOrder
+    User?: UserOrderByWithRelationInput
+    Study_Set?: Study_SetOrderByWithRelationInput
+    User_Answer?: User_AnswerOrderByRelationAggregateInput
+  }
+
+  export type User_Study_SetWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: User_Study_SetWhereInput | User_Study_SetWhereInput[]
+    OR?: User_Study_SetWhereInput[]
+    NOT?: User_Study_SetWhereInput | User_Study_SetWhereInput[]
+    user_id?: IntFilter<"User_Study_Set"> | number
+    studyset_id?: IntFilter<"User_Study_Set"> | number
+    time?: IntFilter<"User_Study_Set"> | number
+    User?: XOR<UserRelationFilter, UserWhereInput>
+    Study_Set?: XOR<Study_SetRelationFilter, Study_SetWhereInput>
+    User_Answer?: User_AnswerListRelationFilter
+  }, "id">
+
+  export type User_Study_SetOrderByWithAggregationInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    studyset_id?: SortOrder
+    time?: SortOrder
+    _count?: User_Study_SetCountOrderByAggregateInput
+    _avg?: User_Study_SetAvgOrderByAggregateInput
+    _max?: User_Study_SetMaxOrderByAggregateInput
+    _min?: User_Study_SetMinOrderByAggregateInput
+    _sum?: User_Study_SetSumOrderByAggregateInput
+  }
+
+  export type User_Study_SetScalarWhereWithAggregatesInput = {
+    AND?: User_Study_SetScalarWhereWithAggregatesInput | User_Study_SetScalarWhereWithAggregatesInput[]
+    OR?: User_Study_SetScalarWhereWithAggregatesInput[]
+    NOT?: User_Study_SetScalarWhereWithAggregatesInput | User_Study_SetScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"User_Study_Set"> | number
+    user_id?: IntWithAggregatesFilter<"User_Study_Set"> | number
+    studyset_id?: IntWithAggregatesFilter<"User_Study_Set"> | number
+    time?: IntWithAggregatesFilter<"User_Study_Set"> | number
+  }
+
+  export type User_AnswerWhereInput = {
+    AND?: User_AnswerWhereInput | User_AnswerWhereInput[]
+    OR?: User_AnswerWhereInput[]
+    NOT?: User_AnswerWhereInput | User_AnswerWhereInput[]
+    id?: IntFilter<"User_Answer"> | number
+    user_StudySet_id?: IntFilter<"User_Answer"> | number
+    studyset_id?: IntFilter<"User_Answer"> | number
+    question_id?: IntFilter<"User_Answer"> | number
+    choice_id?: IntFilter<"User_Answer"> | number
+    User_Study_Set?: XOR<User_Study_SetRelationFilter, User_Study_SetWhereInput>
+    Choice?: XOR<ChoiceRelationFilter, ChoiceWhereInput>
+    Question?: XOR<QuestionRelationFilter, QuestionWhereInput>
+  }
+
+  export type User_AnswerOrderByWithRelationInput = {
+    id?: SortOrder
+    user_StudySet_id?: SortOrder
+    studyset_id?: SortOrder
+    question_id?: SortOrder
+    choice_id?: SortOrder
+    User_Study_Set?: User_Study_SetOrderByWithRelationInput
+    Choice?: ChoiceOrderByWithRelationInput
+    Question?: QuestionOrderByWithRelationInput
+  }
+
+  export type User_AnswerWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: User_AnswerWhereInput | User_AnswerWhereInput[]
+    OR?: User_AnswerWhereInput[]
+    NOT?: User_AnswerWhereInput | User_AnswerWhereInput[]
+    user_StudySet_id?: IntFilter<"User_Answer"> | number
+    studyset_id?: IntFilter<"User_Answer"> | number
+    question_id?: IntFilter<"User_Answer"> | number
+    choice_id?: IntFilter<"User_Answer"> | number
+    User_Study_Set?: XOR<User_Study_SetRelationFilter, User_Study_SetWhereInput>
+    Choice?: XOR<ChoiceRelationFilter, ChoiceWhereInput>
+    Question?: XOR<QuestionRelationFilter, QuestionWhereInput>
+  }, "id">
+
+  export type User_AnswerOrderByWithAggregationInput = {
+    id?: SortOrder
+    user_StudySet_id?: SortOrder
+    studyset_id?: SortOrder
+    question_id?: SortOrder
+    choice_id?: SortOrder
+    _count?: User_AnswerCountOrderByAggregateInput
+    _avg?: User_AnswerAvgOrderByAggregateInput
+    _max?: User_AnswerMaxOrderByAggregateInput
+    _min?: User_AnswerMinOrderByAggregateInput
+    _sum?: User_AnswerSumOrderByAggregateInput
+  }
+
+  export type User_AnswerScalarWhereWithAggregatesInput = {
+    AND?: User_AnswerScalarWhereWithAggregatesInput | User_AnswerScalarWhereWithAggregatesInput[]
+    OR?: User_AnswerScalarWhereWithAggregatesInput[]
+    NOT?: User_AnswerScalarWhereWithAggregatesInput | User_AnswerScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"User_Answer"> | number
+    user_StudySet_id?: IntWithAggregatesFilter<"User_Answer"> | number
+    studyset_id?: IntWithAggregatesFilter<"User_Answer"> | number
+    question_id?: IntWithAggregatesFilter<"User_Answer"> | number
+    choice_id?: IntWithAggregatesFilter<"User_Answer"> | number
+  }
+
   export type QuestionWhereInput = {
     AND?: QuestionWhereInput | QuestionWhereInput[]
     OR?: QuestionWhereInput[]
@@ -7427,18 +9985,22 @@ export namespace Prisma {
     id?: IntFilter<"Question"> | number
     content?: StringFilter<"Question"> | string
     explanation?: StringFilter<"Question"> | string
+    type?: StringFilter<"Question"> | string
     Choice?: ChoiceListRelationFilter
     Study_Set_Questions_List?: Study_Set_Questions_ListListRelationFilter
     Answer?: AnswerListRelationFilter
+    User_Answer?: User_AnswerListRelationFilter
   }
 
   export type QuestionOrderByWithRelationInput = {
     id?: SortOrder
     content?: SortOrder
     explanation?: SortOrder
+    type?: SortOrder
     Choice?: ChoiceOrderByRelationAggregateInput
     Study_Set_Questions_List?: Study_Set_Questions_ListOrderByRelationAggregateInput
     Answer?: AnswerOrderByRelationAggregateInput
+    User_Answer?: User_AnswerOrderByRelationAggregateInput
   }
 
   export type QuestionWhereUniqueInput = Prisma.AtLeast<{
@@ -7448,15 +10010,18 @@ export namespace Prisma {
     NOT?: QuestionWhereInput | QuestionWhereInput[]
     content?: StringFilter<"Question"> | string
     explanation?: StringFilter<"Question"> | string
+    type?: StringFilter<"Question"> | string
     Choice?: ChoiceListRelationFilter
     Study_Set_Questions_List?: Study_Set_Questions_ListListRelationFilter
     Answer?: AnswerListRelationFilter
+    User_Answer?: User_AnswerListRelationFilter
   }, "id">
 
   export type QuestionOrderByWithAggregationInput = {
     id?: SortOrder
     content?: SortOrder
     explanation?: SortOrder
+    type?: SortOrder
     _count?: QuestionCountOrderByAggregateInput
     _avg?: QuestionAvgOrderByAggregateInput
     _max?: QuestionMaxOrderByAggregateInput
@@ -7471,6 +10036,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Question"> | number
     content?: StringWithAggregatesFilter<"Question"> | string
     explanation?: StringWithAggregatesFilter<"Question"> | string
+    type?: StringWithAggregatesFilter<"Question"> | string
   }
 
   export type AnswerWhereInput = {
@@ -7526,6 +10092,7 @@ export namespace Prisma {
     label?: StringFilter<"Study_Set"> | string
     description?: StringFilter<"Study_Set"> | string
     Study_Set_Questions_List?: Study_Set_Questions_ListListRelationFilter
+    User_Study_Set?: User_Study_SetListRelationFilter
   }
 
   export type Study_SetOrderByWithRelationInput = {
@@ -7533,6 +10100,7 @@ export namespace Prisma {
     label?: SortOrder
     description?: SortOrder
     Study_Set_Questions_List?: Study_Set_Questions_ListOrderByRelationAggregateInput
+    User_Study_Set?: User_Study_SetOrderByRelationAggregateInput
   }
 
   export type Study_SetWhereUniqueInput = Prisma.AtLeast<{
@@ -7543,6 +10111,7 @@ export namespace Prisma {
     label?: StringFilter<"Study_Set"> | string
     description?: StringFilter<"Study_Set"> | string
     Study_Set_Questions_List?: Study_Set_Questions_ListListRelationFilter
+    User_Study_Set?: User_Study_SetListRelationFilter
   }, "id">
 
   export type Study_SetOrderByWithAggregationInput = {
@@ -7620,6 +10189,7 @@ export namespace Prisma {
     password: string
     name: string
     role: $Enums.Role
+    User_Study_Set?: User_Study_SetCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -7628,6 +10198,7 @@ export namespace Prisma {
     password: string
     name: string
     role: $Enums.Role
+    User_Study_Set?: User_Study_SetUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -7635,6 +10206,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    User_Study_Set?: User_Study_SetUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -7643,6 +10215,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    User_Study_Set?: User_Study_SetUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -7673,6 +10246,7 @@ export namespace Prisma {
     number: number
     Question: QuestionCreateNestedOneWithoutChoiceInput
     Answer?: AnswerCreateNestedManyWithoutChoiceInput
+    User_Answer?: User_AnswerCreateNestedManyWithoutChoiceInput
   }
 
   export type ChoiceUncheckedCreateInput = {
@@ -7681,6 +10255,7 @@ export namespace Prisma {
     number: number
     question_id: number
     Answer?: AnswerUncheckedCreateNestedManyWithoutChoiceInput
+    User_Answer?: User_AnswerUncheckedCreateNestedManyWithoutChoiceInput
   }
 
   export type ChoiceUpdateInput = {
@@ -7688,6 +10263,7 @@ export namespace Prisma {
     number?: IntFieldUpdateOperationsInput | number
     Question?: QuestionUpdateOneRequiredWithoutChoiceNestedInput
     Answer?: AnswerUpdateManyWithoutChoiceNestedInput
+    User_Answer?: User_AnswerUpdateManyWithoutChoiceNestedInput
   }
 
   export type ChoiceUncheckedUpdateInput = {
@@ -7696,6 +10272,7 @@ export namespace Prisma {
     number?: IntFieldUpdateOperationsInput | number
     question_id?: IntFieldUpdateOperationsInput | number
     Answer?: AnswerUncheckedUpdateManyWithoutChoiceNestedInput
+    User_Answer?: User_AnswerUncheckedUpdateManyWithoutChoiceNestedInput
   }
 
   export type ChoiceCreateManyInput = {
@@ -7717,55 +10294,164 @@ export namespace Prisma {
     question_id?: IntFieldUpdateOperationsInput | number
   }
 
+  export type User_Study_SetCreateInput = {
+    time: number
+    User: UserCreateNestedOneWithoutUser_Study_SetInput
+    Study_Set: Study_SetCreateNestedOneWithoutUser_Study_SetInput
+    User_Answer?: User_AnswerCreateNestedManyWithoutUser_Study_SetInput
+  }
+
+  export type User_Study_SetUncheckedCreateInput = {
+    id?: number
+    user_id: number
+    studyset_id: number
+    time: number
+    User_Answer?: User_AnswerUncheckedCreateNestedManyWithoutUser_Study_SetInput
+  }
+
+  export type User_Study_SetUpdateInput = {
+    time?: IntFieldUpdateOperationsInput | number
+    User?: UserUpdateOneRequiredWithoutUser_Study_SetNestedInput
+    Study_Set?: Study_SetUpdateOneRequiredWithoutUser_Study_SetNestedInput
+    User_Answer?: User_AnswerUpdateManyWithoutUser_Study_SetNestedInput
+  }
+
+  export type User_Study_SetUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+    studyset_id?: IntFieldUpdateOperationsInput | number
+    time?: IntFieldUpdateOperationsInput | number
+    User_Answer?: User_AnswerUncheckedUpdateManyWithoutUser_Study_SetNestedInput
+  }
+
+  export type User_Study_SetCreateManyInput = {
+    id?: number
+    user_id: number
+    studyset_id: number
+    time: number
+  }
+
+  export type User_Study_SetUpdateManyMutationInput = {
+    time?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type User_Study_SetUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+    studyset_id?: IntFieldUpdateOperationsInput | number
+    time?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type User_AnswerCreateInput = {
+    studyset_id: number
+    User_Study_Set: User_Study_SetCreateNestedOneWithoutUser_AnswerInput
+    Choice: ChoiceCreateNestedOneWithoutUser_AnswerInput
+    Question: QuestionCreateNestedOneWithoutUser_AnswerInput
+  }
+
+  export type User_AnswerUncheckedCreateInput = {
+    id?: number
+    user_StudySet_id: number
+    studyset_id: number
+    question_id: number
+    choice_id: number
+  }
+
+  export type User_AnswerUpdateInput = {
+    studyset_id?: IntFieldUpdateOperationsInput | number
+    User_Study_Set?: User_Study_SetUpdateOneRequiredWithoutUser_AnswerNestedInput
+    Choice?: ChoiceUpdateOneRequiredWithoutUser_AnswerNestedInput
+    Question?: QuestionUpdateOneRequiredWithoutUser_AnswerNestedInput
+  }
+
+  export type User_AnswerUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    user_StudySet_id?: IntFieldUpdateOperationsInput | number
+    studyset_id?: IntFieldUpdateOperationsInput | number
+    question_id?: IntFieldUpdateOperationsInput | number
+    choice_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type User_AnswerCreateManyInput = {
+    id?: number
+    user_StudySet_id: number
+    studyset_id: number
+    question_id: number
+    choice_id: number
+  }
+
+  export type User_AnswerUpdateManyMutationInput = {
+    studyset_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type User_AnswerUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    user_StudySet_id?: IntFieldUpdateOperationsInput | number
+    studyset_id?: IntFieldUpdateOperationsInput | number
+    question_id?: IntFieldUpdateOperationsInput | number
+    choice_id?: IntFieldUpdateOperationsInput | number
+  }
+
   export type QuestionCreateInput = {
     content: string
     explanation: string
+    type: string
     Choice?: ChoiceCreateNestedManyWithoutQuestionInput
     Study_Set_Questions_List?: Study_Set_Questions_ListCreateNestedManyWithoutQuestionInput
     Answer?: AnswerCreateNestedManyWithoutQuestionInput
+    User_Answer?: User_AnswerCreateNestedManyWithoutQuestionInput
   }
 
   export type QuestionUncheckedCreateInput = {
     id?: number
     content: string
     explanation: string
+    type: string
     Choice?: ChoiceUncheckedCreateNestedManyWithoutQuestionInput
     Study_Set_Questions_List?: Study_Set_Questions_ListUncheckedCreateNestedManyWithoutQuestionInput
     Answer?: AnswerUncheckedCreateNestedManyWithoutQuestionInput
+    User_Answer?: User_AnswerUncheckedCreateNestedManyWithoutQuestionInput
   }
 
   export type QuestionUpdateInput = {
     content?: StringFieldUpdateOperationsInput | string
     explanation?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
     Choice?: ChoiceUpdateManyWithoutQuestionNestedInput
     Study_Set_Questions_List?: Study_Set_Questions_ListUpdateManyWithoutQuestionNestedInput
     Answer?: AnswerUpdateManyWithoutQuestionNestedInput
+    User_Answer?: User_AnswerUpdateManyWithoutQuestionNestedInput
   }
 
   export type QuestionUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     explanation?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
     Choice?: ChoiceUncheckedUpdateManyWithoutQuestionNestedInput
     Study_Set_Questions_List?: Study_Set_Questions_ListUncheckedUpdateManyWithoutQuestionNestedInput
     Answer?: AnswerUncheckedUpdateManyWithoutQuestionNestedInput
+    User_Answer?: User_AnswerUncheckedUpdateManyWithoutQuestionNestedInput
   }
 
   export type QuestionCreateManyInput = {
     id?: number
     content: string
     explanation: string
+    type: string
   }
 
   export type QuestionUpdateManyMutationInput = {
     content?: StringFieldUpdateOperationsInput | string
     explanation?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
   }
 
   export type QuestionUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     explanation?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
   }
 
   export type AnswerCreateInput = {
@@ -7806,6 +10492,7 @@ export namespace Prisma {
     label: string
     description: string
     Study_Set_Questions_List?: Study_Set_Questions_ListCreateNestedManyWithoutStudy_SetInput
+    User_Study_Set?: User_Study_SetCreateNestedManyWithoutStudy_SetInput
   }
 
   export type Study_SetUncheckedCreateInput = {
@@ -7813,12 +10500,14 @@ export namespace Prisma {
     label: string
     description: string
     Study_Set_Questions_List?: Study_Set_Questions_ListUncheckedCreateNestedManyWithoutStudy_SetInput
+    User_Study_Set?: User_Study_SetUncheckedCreateNestedManyWithoutStudy_SetInput
   }
 
   export type Study_SetUpdateInput = {
     label?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     Study_Set_Questions_List?: Study_Set_Questions_ListUpdateManyWithoutStudy_SetNestedInput
+    User_Study_Set?: User_Study_SetUpdateManyWithoutStudy_SetNestedInput
   }
 
   export type Study_SetUncheckedUpdateInput = {
@@ -7826,6 +10515,7 @@ export namespace Prisma {
     label?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     Study_Set_Questions_List?: Study_Set_Questions_ListUncheckedUpdateManyWithoutStudy_SetNestedInput
+    User_Study_Set?: User_Study_SetUncheckedUpdateManyWithoutStudy_SetNestedInput
   }
 
   export type Study_SetCreateManyInput = {
@@ -7916,6 +10606,16 @@ export namespace Prisma {
     not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
   }
 
+  export type User_Study_SetListRelationFilter = {
+    every?: User_Study_SetWhereInput
+    some?: User_Study_SetWhereInput
+    none?: User_Study_SetWhereInput
+  }
+
+  export type User_Study_SetOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
@@ -8003,7 +10703,17 @@ export namespace Prisma {
     none?: AnswerWhereInput
   }
 
+  export type User_AnswerListRelationFilter = {
+    every?: User_AnswerWhereInput
+    some?: User_AnswerWhereInput
+    none?: User_AnswerWhereInput
+  }
+
   export type AnswerOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type User_AnswerOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -8040,6 +10750,101 @@ export namespace Prisma {
     question_id?: SortOrder
   }
 
+  export type UserRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
+  }
+
+  export type Study_SetRelationFilter = {
+    is?: Study_SetWhereInput
+    isNot?: Study_SetWhereInput
+  }
+
+  export type User_Study_SetCountOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    studyset_id?: SortOrder
+    time?: SortOrder
+  }
+
+  export type User_Study_SetAvgOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    studyset_id?: SortOrder
+    time?: SortOrder
+  }
+
+  export type User_Study_SetMaxOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    studyset_id?: SortOrder
+    time?: SortOrder
+  }
+
+  export type User_Study_SetMinOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    studyset_id?: SortOrder
+    time?: SortOrder
+  }
+
+  export type User_Study_SetSumOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    studyset_id?: SortOrder
+    time?: SortOrder
+  }
+
+  export type User_Study_SetRelationFilter = {
+    is?: User_Study_SetWhereInput
+    isNot?: User_Study_SetWhereInput
+  }
+
+  export type ChoiceRelationFilter = {
+    is?: ChoiceWhereInput
+    isNot?: ChoiceWhereInput
+  }
+
+  export type User_AnswerCountOrderByAggregateInput = {
+    id?: SortOrder
+    user_StudySet_id?: SortOrder
+    studyset_id?: SortOrder
+    question_id?: SortOrder
+    choice_id?: SortOrder
+  }
+
+  export type User_AnswerAvgOrderByAggregateInput = {
+    id?: SortOrder
+    user_StudySet_id?: SortOrder
+    studyset_id?: SortOrder
+    question_id?: SortOrder
+    choice_id?: SortOrder
+  }
+
+  export type User_AnswerMaxOrderByAggregateInput = {
+    id?: SortOrder
+    user_StudySet_id?: SortOrder
+    studyset_id?: SortOrder
+    question_id?: SortOrder
+    choice_id?: SortOrder
+  }
+
+  export type User_AnswerMinOrderByAggregateInput = {
+    id?: SortOrder
+    user_StudySet_id?: SortOrder
+    studyset_id?: SortOrder
+    question_id?: SortOrder
+    choice_id?: SortOrder
+  }
+
+  export type User_AnswerSumOrderByAggregateInput = {
+    id?: SortOrder
+    user_StudySet_id?: SortOrder
+    studyset_id?: SortOrder
+    question_id?: SortOrder
+    choice_id?: SortOrder
+  }
+
   export type ChoiceListRelationFilter = {
     every?: ChoiceWhereInput
     some?: ChoiceWhereInput
@@ -8064,6 +10869,7 @@ export namespace Prisma {
     id?: SortOrder
     content?: SortOrder
     explanation?: SortOrder
+    type?: SortOrder
   }
 
   export type QuestionAvgOrderByAggregateInput = {
@@ -8074,21 +10880,18 @@ export namespace Prisma {
     id?: SortOrder
     content?: SortOrder
     explanation?: SortOrder
+    type?: SortOrder
   }
 
   export type QuestionMinOrderByAggregateInput = {
     id?: SortOrder
     content?: SortOrder
     explanation?: SortOrder
+    type?: SortOrder
   }
 
   export type QuestionSumOrderByAggregateInput = {
     id?: SortOrder
-  }
-
-  export type ChoiceRelationFilter = {
-    is?: ChoiceWhereInput
-    isNot?: ChoiceWhereInput
   }
 
   export type AnswerCountOrderByAggregateInput = {
@@ -8142,11 +10945,6 @@ export namespace Prisma {
     id?: SortOrder
   }
 
-  export type Study_SetRelationFilter = {
-    is?: Study_SetWhereInput
-    isNot?: Study_SetWhereInput
-  }
-
   export type Study_Set_Questions_ListCountOrderByAggregateInput = {
     id?: SortOrder
     question_id?: SortOrder
@@ -8177,6 +10975,20 @@ export namespace Prisma {
     studyset_id?: SortOrder
   }
 
+  export type User_Study_SetCreateNestedManyWithoutUserInput = {
+    create?: XOR<User_Study_SetCreateWithoutUserInput, User_Study_SetUncheckedCreateWithoutUserInput> | User_Study_SetCreateWithoutUserInput[] | User_Study_SetUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: User_Study_SetCreateOrConnectWithoutUserInput | User_Study_SetCreateOrConnectWithoutUserInput[]
+    createMany?: User_Study_SetCreateManyUserInputEnvelope
+    connect?: User_Study_SetWhereUniqueInput | User_Study_SetWhereUniqueInput[]
+  }
+
+  export type User_Study_SetUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<User_Study_SetCreateWithoutUserInput, User_Study_SetUncheckedCreateWithoutUserInput> | User_Study_SetCreateWithoutUserInput[] | User_Study_SetUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: User_Study_SetCreateOrConnectWithoutUserInput | User_Study_SetCreateOrConnectWithoutUserInput[]
+    createMany?: User_Study_SetCreateManyUserInputEnvelope
+    connect?: User_Study_SetWhereUniqueInput | User_Study_SetWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -8185,12 +10997,40 @@ export namespace Prisma {
     set?: $Enums.Role
   }
 
+  export type User_Study_SetUpdateManyWithoutUserNestedInput = {
+    create?: XOR<User_Study_SetCreateWithoutUserInput, User_Study_SetUncheckedCreateWithoutUserInput> | User_Study_SetCreateWithoutUserInput[] | User_Study_SetUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: User_Study_SetCreateOrConnectWithoutUserInput | User_Study_SetCreateOrConnectWithoutUserInput[]
+    upsert?: User_Study_SetUpsertWithWhereUniqueWithoutUserInput | User_Study_SetUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: User_Study_SetCreateManyUserInputEnvelope
+    set?: User_Study_SetWhereUniqueInput | User_Study_SetWhereUniqueInput[]
+    disconnect?: User_Study_SetWhereUniqueInput | User_Study_SetWhereUniqueInput[]
+    delete?: User_Study_SetWhereUniqueInput | User_Study_SetWhereUniqueInput[]
+    connect?: User_Study_SetWhereUniqueInput | User_Study_SetWhereUniqueInput[]
+    update?: User_Study_SetUpdateWithWhereUniqueWithoutUserInput | User_Study_SetUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: User_Study_SetUpdateManyWithWhereWithoutUserInput | User_Study_SetUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: User_Study_SetScalarWhereInput | User_Study_SetScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type User_Study_SetUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<User_Study_SetCreateWithoutUserInput, User_Study_SetUncheckedCreateWithoutUserInput> | User_Study_SetCreateWithoutUserInput[] | User_Study_SetUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: User_Study_SetCreateOrConnectWithoutUserInput | User_Study_SetCreateOrConnectWithoutUserInput[]
+    upsert?: User_Study_SetUpsertWithWhereUniqueWithoutUserInput | User_Study_SetUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: User_Study_SetCreateManyUserInputEnvelope
+    set?: User_Study_SetWhereUniqueInput | User_Study_SetWhereUniqueInput[]
+    disconnect?: User_Study_SetWhereUniqueInput | User_Study_SetWhereUniqueInput[]
+    delete?: User_Study_SetWhereUniqueInput | User_Study_SetWhereUniqueInput[]
+    connect?: User_Study_SetWhereUniqueInput | User_Study_SetWhereUniqueInput[]
+    update?: User_Study_SetUpdateWithWhereUniqueWithoutUserInput | User_Study_SetUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: User_Study_SetUpdateManyWithWhereWithoutUserInput | User_Study_SetUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: User_Study_SetScalarWhereInput | User_Study_SetScalarWhereInput[]
   }
 
   export type QuestionCreateNestedOneWithoutChoiceInput = {
@@ -8206,11 +11046,25 @@ export namespace Prisma {
     connect?: AnswerWhereUniqueInput | AnswerWhereUniqueInput[]
   }
 
+  export type User_AnswerCreateNestedManyWithoutChoiceInput = {
+    create?: XOR<User_AnswerCreateWithoutChoiceInput, User_AnswerUncheckedCreateWithoutChoiceInput> | User_AnswerCreateWithoutChoiceInput[] | User_AnswerUncheckedCreateWithoutChoiceInput[]
+    connectOrCreate?: User_AnswerCreateOrConnectWithoutChoiceInput | User_AnswerCreateOrConnectWithoutChoiceInput[]
+    createMany?: User_AnswerCreateManyChoiceInputEnvelope
+    connect?: User_AnswerWhereUniqueInput | User_AnswerWhereUniqueInput[]
+  }
+
   export type AnswerUncheckedCreateNestedManyWithoutChoiceInput = {
     create?: XOR<AnswerCreateWithoutChoiceInput, AnswerUncheckedCreateWithoutChoiceInput> | AnswerCreateWithoutChoiceInput[] | AnswerUncheckedCreateWithoutChoiceInput[]
     connectOrCreate?: AnswerCreateOrConnectWithoutChoiceInput | AnswerCreateOrConnectWithoutChoiceInput[]
     createMany?: AnswerCreateManyChoiceInputEnvelope
     connect?: AnswerWhereUniqueInput | AnswerWhereUniqueInput[]
+  }
+
+  export type User_AnswerUncheckedCreateNestedManyWithoutChoiceInput = {
+    create?: XOR<User_AnswerCreateWithoutChoiceInput, User_AnswerUncheckedCreateWithoutChoiceInput> | User_AnswerCreateWithoutChoiceInput[] | User_AnswerUncheckedCreateWithoutChoiceInput[]
+    connectOrCreate?: User_AnswerCreateOrConnectWithoutChoiceInput | User_AnswerCreateOrConnectWithoutChoiceInput[]
+    createMany?: User_AnswerCreateManyChoiceInputEnvelope
+    connect?: User_AnswerWhereUniqueInput | User_AnswerWhereUniqueInput[]
   }
 
   export type QuestionUpdateOneRequiredWithoutChoiceNestedInput = {
@@ -8235,6 +11089,20 @@ export namespace Prisma {
     deleteMany?: AnswerScalarWhereInput | AnswerScalarWhereInput[]
   }
 
+  export type User_AnswerUpdateManyWithoutChoiceNestedInput = {
+    create?: XOR<User_AnswerCreateWithoutChoiceInput, User_AnswerUncheckedCreateWithoutChoiceInput> | User_AnswerCreateWithoutChoiceInput[] | User_AnswerUncheckedCreateWithoutChoiceInput[]
+    connectOrCreate?: User_AnswerCreateOrConnectWithoutChoiceInput | User_AnswerCreateOrConnectWithoutChoiceInput[]
+    upsert?: User_AnswerUpsertWithWhereUniqueWithoutChoiceInput | User_AnswerUpsertWithWhereUniqueWithoutChoiceInput[]
+    createMany?: User_AnswerCreateManyChoiceInputEnvelope
+    set?: User_AnswerWhereUniqueInput | User_AnswerWhereUniqueInput[]
+    disconnect?: User_AnswerWhereUniqueInput | User_AnswerWhereUniqueInput[]
+    delete?: User_AnswerWhereUniqueInput | User_AnswerWhereUniqueInput[]
+    connect?: User_AnswerWhereUniqueInput | User_AnswerWhereUniqueInput[]
+    update?: User_AnswerUpdateWithWhereUniqueWithoutChoiceInput | User_AnswerUpdateWithWhereUniqueWithoutChoiceInput[]
+    updateMany?: User_AnswerUpdateManyWithWhereWithoutChoiceInput | User_AnswerUpdateManyWithWhereWithoutChoiceInput[]
+    deleteMany?: User_AnswerScalarWhereInput | User_AnswerScalarWhereInput[]
+  }
+
   export type AnswerUncheckedUpdateManyWithoutChoiceNestedInput = {
     create?: XOR<AnswerCreateWithoutChoiceInput, AnswerUncheckedCreateWithoutChoiceInput> | AnswerCreateWithoutChoiceInput[] | AnswerUncheckedCreateWithoutChoiceInput[]
     connectOrCreate?: AnswerCreateOrConnectWithoutChoiceInput | AnswerCreateOrConnectWithoutChoiceInput[]
@@ -8247,6 +11115,132 @@ export namespace Prisma {
     update?: AnswerUpdateWithWhereUniqueWithoutChoiceInput | AnswerUpdateWithWhereUniqueWithoutChoiceInput[]
     updateMany?: AnswerUpdateManyWithWhereWithoutChoiceInput | AnswerUpdateManyWithWhereWithoutChoiceInput[]
     deleteMany?: AnswerScalarWhereInput | AnswerScalarWhereInput[]
+  }
+
+  export type User_AnswerUncheckedUpdateManyWithoutChoiceNestedInput = {
+    create?: XOR<User_AnswerCreateWithoutChoiceInput, User_AnswerUncheckedCreateWithoutChoiceInput> | User_AnswerCreateWithoutChoiceInput[] | User_AnswerUncheckedCreateWithoutChoiceInput[]
+    connectOrCreate?: User_AnswerCreateOrConnectWithoutChoiceInput | User_AnswerCreateOrConnectWithoutChoiceInput[]
+    upsert?: User_AnswerUpsertWithWhereUniqueWithoutChoiceInput | User_AnswerUpsertWithWhereUniqueWithoutChoiceInput[]
+    createMany?: User_AnswerCreateManyChoiceInputEnvelope
+    set?: User_AnswerWhereUniqueInput | User_AnswerWhereUniqueInput[]
+    disconnect?: User_AnswerWhereUniqueInput | User_AnswerWhereUniqueInput[]
+    delete?: User_AnswerWhereUniqueInput | User_AnswerWhereUniqueInput[]
+    connect?: User_AnswerWhereUniqueInput | User_AnswerWhereUniqueInput[]
+    update?: User_AnswerUpdateWithWhereUniqueWithoutChoiceInput | User_AnswerUpdateWithWhereUniqueWithoutChoiceInput[]
+    updateMany?: User_AnswerUpdateManyWithWhereWithoutChoiceInput | User_AnswerUpdateManyWithWhereWithoutChoiceInput[]
+    deleteMany?: User_AnswerScalarWhereInput | User_AnswerScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutUser_Study_SetInput = {
+    create?: XOR<UserCreateWithoutUser_Study_SetInput, UserUncheckedCreateWithoutUser_Study_SetInput>
+    connectOrCreate?: UserCreateOrConnectWithoutUser_Study_SetInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type Study_SetCreateNestedOneWithoutUser_Study_SetInput = {
+    create?: XOR<Study_SetCreateWithoutUser_Study_SetInput, Study_SetUncheckedCreateWithoutUser_Study_SetInput>
+    connectOrCreate?: Study_SetCreateOrConnectWithoutUser_Study_SetInput
+    connect?: Study_SetWhereUniqueInput
+  }
+
+  export type User_AnswerCreateNestedManyWithoutUser_Study_SetInput = {
+    create?: XOR<User_AnswerCreateWithoutUser_Study_SetInput, User_AnswerUncheckedCreateWithoutUser_Study_SetInput> | User_AnswerCreateWithoutUser_Study_SetInput[] | User_AnswerUncheckedCreateWithoutUser_Study_SetInput[]
+    connectOrCreate?: User_AnswerCreateOrConnectWithoutUser_Study_SetInput | User_AnswerCreateOrConnectWithoutUser_Study_SetInput[]
+    createMany?: User_AnswerCreateManyUser_Study_SetInputEnvelope
+    connect?: User_AnswerWhereUniqueInput | User_AnswerWhereUniqueInput[]
+  }
+
+  export type User_AnswerUncheckedCreateNestedManyWithoutUser_Study_SetInput = {
+    create?: XOR<User_AnswerCreateWithoutUser_Study_SetInput, User_AnswerUncheckedCreateWithoutUser_Study_SetInput> | User_AnswerCreateWithoutUser_Study_SetInput[] | User_AnswerUncheckedCreateWithoutUser_Study_SetInput[]
+    connectOrCreate?: User_AnswerCreateOrConnectWithoutUser_Study_SetInput | User_AnswerCreateOrConnectWithoutUser_Study_SetInput[]
+    createMany?: User_AnswerCreateManyUser_Study_SetInputEnvelope
+    connect?: User_AnswerWhereUniqueInput | User_AnswerWhereUniqueInput[]
+  }
+
+  export type UserUpdateOneRequiredWithoutUser_Study_SetNestedInput = {
+    create?: XOR<UserCreateWithoutUser_Study_SetInput, UserUncheckedCreateWithoutUser_Study_SetInput>
+    connectOrCreate?: UserCreateOrConnectWithoutUser_Study_SetInput
+    upsert?: UserUpsertWithoutUser_Study_SetInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutUser_Study_SetInput, UserUpdateWithoutUser_Study_SetInput>, UserUncheckedUpdateWithoutUser_Study_SetInput>
+  }
+
+  export type Study_SetUpdateOneRequiredWithoutUser_Study_SetNestedInput = {
+    create?: XOR<Study_SetCreateWithoutUser_Study_SetInput, Study_SetUncheckedCreateWithoutUser_Study_SetInput>
+    connectOrCreate?: Study_SetCreateOrConnectWithoutUser_Study_SetInput
+    upsert?: Study_SetUpsertWithoutUser_Study_SetInput
+    connect?: Study_SetWhereUniqueInput
+    update?: XOR<XOR<Study_SetUpdateToOneWithWhereWithoutUser_Study_SetInput, Study_SetUpdateWithoutUser_Study_SetInput>, Study_SetUncheckedUpdateWithoutUser_Study_SetInput>
+  }
+
+  export type User_AnswerUpdateManyWithoutUser_Study_SetNestedInput = {
+    create?: XOR<User_AnswerCreateWithoutUser_Study_SetInput, User_AnswerUncheckedCreateWithoutUser_Study_SetInput> | User_AnswerCreateWithoutUser_Study_SetInput[] | User_AnswerUncheckedCreateWithoutUser_Study_SetInput[]
+    connectOrCreate?: User_AnswerCreateOrConnectWithoutUser_Study_SetInput | User_AnswerCreateOrConnectWithoutUser_Study_SetInput[]
+    upsert?: User_AnswerUpsertWithWhereUniqueWithoutUser_Study_SetInput | User_AnswerUpsertWithWhereUniqueWithoutUser_Study_SetInput[]
+    createMany?: User_AnswerCreateManyUser_Study_SetInputEnvelope
+    set?: User_AnswerWhereUniqueInput | User_AnswerWhereUniqueInput[]
+    disconnect?: User_AnswerWhereUniqueInput | User_AnswerWhereUniqueInput[]
+    delete?: User_AnswerWhereUniqueInput | User_AnswerWhereUniqueInput[]
+    connect?: User_AnswerWhereUniqueInput | User_AnswerWhereUniqueInput[]
+    update?: User_AnswerUpdateWithWhereUniqueWithoutUser_Study_SetInput | User_AnswerUpdateWithWhereUniqueWithoutUser_Study_SetInput[]
+    updateMany?: User_AnswerUpdateManyWithWhereWithoutUser_Study_SetInput | User_AnswerUpdateManyWithWhereWithoutUser_Study_SetInput[]
+    deleteMany?: User_AnswerScalarWhereInput | User_AnswerScalarWhereInput[]
+  }
+
+  export type User_AnswerUncheckedUpdateManyWithoutUser_Study_SetNestedInput = {
+    create?: XOR<User_AnswerCreateWithoutUser_Study_SetInput, User_AnswerUncheckedCreateWithoutUser_Study_SetInput> | User_AnswerCreateWithoutUser_Study_SetInput[] | User_AnswerUncheckedCreateWithoutUser_Study_SetInput[]
+    connectOrCreate?: User_AnswerCreateOrConnectWithoutUser_Study_SetInput | User_AnswerCreateOrConnectWithoutUser_Study_SetInput[]
+    upsert?: User_AnswerUpsertWithWhereUniqueWithoutUser_Study_SetInput | User_AnswerUpsertWithWhereUniqueWithoutUser_Study_SetInput[]
+    createMany?: User_AnswerCreateManyUser_Study_SetInputEnvelope
+    set?: User_AnswerWhereUniqueInput | User_AnswerWhereUniqueInput[]
+    disconnect?: User_AnswerWhereUniqueInput | User_AnswerWhereUniqueInput[]
+    delete?: User_AnswerWhereUniqueInput | User_AnswerWhereUniqueInput[]
+    connect?: User_AnswerWhereUniqueInput | User_AnswerWhereUniqueInput[]
+    update?: User_AnswerUpdateWithWhereUniqueWithoutUser_Study_SetInput | User_AnswerUpdateWithWhereUniqueWithoutUser_Study_SetInput[]
+    updateMany?: User_AnswerUpdateManyWithWhereWithoutUser_Study_SetInput | User_AnswerUpdateManyWithWhereWithoutUser_Study_SetInput[]
+    deleteMany?: User_AnswerScalarWhereInput | User_AnswerScalarWhereInput[]
+  }
+
+  export type User_Study_SetCreateNestedOneWithoutUser_AnswerInput = {
+    create?: XOR<User_Study_SetCreateWithoutUser_AnswerInput, User_Study_SetUncheckedCreateWithoutUser_AnswerInput>
+    connectOrCreate?: User_Study_SetCreateOrConnectWithoutUser_AnswerInput
+    connect?: User_Study_SetWhereUniqueInput
+  }
+
+  export type ChoiceCreateNestedOneWithoutUser_AnswerInput = {
+    create?: XOR<ChoiceCreateWithoutUser_AnswerInput, ChoiceUncheckedCreateWithoutUser_AnswerInput>
+    connectOrCreate?: ChoiceCreateOrConnectWithoutUser_AnswerInput
+    connect?: ChoiceWhereUniqueInput
+  }
+
+  export type QuestionCreateNestedOneWithoutUser_AnswerInput = {
+    create?: XOR<QuestionCreateWithoutUser_AnswerInput, QuestionUncheckedCreateWithoutUser_AnswerInput>
+    connectOrCreate?: QuestionCreateOrConnectWithoutUser_AnswerInput
+    connect?: QuestionWhereUniqueInput
+  }
+
+  export type User_Study_SetUpdateOneRequiredWithoutUser_AnswerNestedInput = {
+    create?: XOR<User_Study_SetCreateWithoutUser_AnswerInput, User_Study_SetUncheckedCreateWithoutUser_AnswerInput>
+    connectOrCreate?: User_Study_SetCreateOrConnectWithoutUser_AnswerInput
+    upsert?: User_Study_SetUpsertWithoutUser_AnswerInput
+    connect?: User_Study_SetWhereUniqueInput
+    update?: XOR<XOR<User_Study_SetUpdateToOneWithWhereWithoutUser_AnswerInput, User_Study_SetUpdateWithoutUser_AnswerInput>, User_Study_SetUncheckedUpdateWithoutUser_AnswerInput>
+  }
+
+  export type ChoiceUpdateOneRequiredWithoutUser_AnswerNestedInput = {
+    create?: XOR<ChoiceCreateWithoutUser_AnswerInput, ChoiceUncheckedCreateWithoutUser_AnswerInput>
+    connectOrCreate?: ChoiceCreateOrConnectWithoutUser_AnswerInput
+    upsert?: ChoiceUpsertWithoutUser_AnswerInput
+    connect?: ChoiceWhereUniqueInput
+    update?: XOR<XOR<ChoiceUpdateToOneWithWhereWithoutUser_AnswerInput, ChoiceUpdateWithoutUser_AnswerInput>, ChoiceUncheckedUpdateWithoutUser_AnswerInput>
+  }
+
+  export type QuestionUpdateOneRequiredWithoutUser_AnswerNestedInput = {
+    create?: XOR<QuestionCreateWithoutUser_AnswerInput, QuestionUncheckedCreateWithoutUser_AnswerInput>
+    connectOrCreate?: QuestionCreateOrConnectWithoutUser_AnswerInput
+    upsert?: QuestionUpsertWithoutUser_AnswerInput
+    connect?: QuestionWhereUniqueInput
+    update?: XOR<XOR<QuestionUpdateToOneWithWhereWithoutUser_AnswerInput, QuestionUpdateWithoutUser_AnswerInput>, QuestionUncheckedUpdateWithoutUser_AnswerInput>
   }
 
   export type ChoiceCreateNestedManyWithoutQuestionInput = {
@@ -8270,6 +11264,13 @@ export namespace Prisma {
     connect?: AnswerWhereUniqueInput | AnswerWhereUniqueInput[]
   }
 
+  export type User_AnswerCreateNestedManyWithoutQuestionInput = {
+    create?: XOR<User_AnswerCreateWithoutQuestionInput, User_AnswerUncheckedCreateWithoutQuestionInput> | User_AnswerCreateWithoutQuestionInput[] | User_AnswerUncheckedCreateWithoutQuestionInput[]
+    connectOrCreate?: User_AnswerCreateOrConnectWithoutQuestionInput | User_AnswerCreateOrConnectWithoutQuestionInput[]
+    createMany?: User_AnswerCreateManyQuestionInputEnvelope
+    connect?: User_AnswerWhereUniqueInput | User_AnswerWhereUniqueInput[]
+  }
+
   export type ChoiceUncheckedCreateNestedManyWithoutQuestionInput = {
     create?: XOR<ChoiceCreateWithoutQuestionInput, ChoiceUncheckedCreateWithoutQuestionInput> | ChoiceCreateWithoutQuestionInput[] | ChoiceUncheckedCreateWithoutQuestionInput[]
     connectOrCreate?: ChoiceCreateOrConnectWithoutQuestionInput | ChoiceCreateOrConnectWithoutQuestionInput[]
@@ -8289,6 +11290,13 @@ export namespace Prisma {
     connectOrCreate?: AnswerCreateOrConnectWithoutQuestionInput | AnswerCreateOrConnectWithoutQuestionInput[]
     createMany?: AnswerCreateManyQuestionInputEnvelope
     connect?: AnswerWhereUniqueInput | AnswerWhereUniqueInput[]
+  }
+
+  export type User_AnswerUncheckedCreateNestedManyWithoutQuestionInput = {
+    create?: XOR<User_AnswerCreateWithoutQuestionInput, User_AnswerUncheckedCreateWithoutQuestionInput> | User_AnswerCreateWithoutQuestionInput[] | User_AnswerUncheckedCreateWithoutQuestionInput[]
+    connectOrCreate?: User_AnswerCreateOrConnectWithoutQuestionInput | User_AnswerCreateOrConnectWithoutQuestionInput[]
+    createMany?: User_AnswerCreateManyQuestionInputEnvelope
+    connect?: User_AnswerWhereUniqueInput | User_AnswerWhereUniqueInput[]
   }
 
   export type ChoiceUpdateManyWithoutQuestionNestedInput = {
@@ -8333,6 +11341,20 @@ export namespace Prisma {
     deleteMany?: AnswerScalarWhereInput | AnswerScalarWhereInput[]
   }
 
+  export type User_AnswerUpdateManyWithoutQuestionNestedInput = {
+    create?: XOR<User_AnswerCreateWithoutQuestionInput, User_AnswerUncheckedCreateWithoutQuestionInput> | User_AnswerCreateWithoutQuestionInput[] | User_AnswerUncheckedCreateWithoutQuestionInput[]
+    connectOrCreate?: User_AnswerCreateOrConnectWithoutQuestionInput | User_AnswerCreateOrConnectWithoutQuestionInput[]
+    upsert?: User_AnswerUpsertWithWhereUniqueWithoutQuestionInput | User_AnswerUpsertWithWhereUniqueWithoutQuestionInput[]
+    createMany?: User_AnswerCreateManyQuestionInputEnvelope
+    set?: User_AnswerWhereUniqueInput | User_AnswerWhereUniqueInput[]
+    disconnect?: User_AnswerWhereUniqueInput | User_AnswerWhereUniqueInput[]
+    delete?: User_AnswerWhereUniqueInput | User_AnswerWhereUniqueInput[]
+    connect?: User_AnswerWhereUniqueInput | User_AnswerWhereUniqueInput[]
+    update?: User_AnswerUpdateWithWhereUniqueWithoutQuestionInput | User_AnswerUpdateWithWhereUniqueWithoutQuestionInput[]
+    updateMany?: User_AnswerUpdateManyWithWhereWithoutQuestionInput | User_AnswerUpdateManyWithWhereWithoutQuestionInput[]
+    deleteMany?: User_AnswerScalarWhereInput | User_AnswerScalarWhereInput[]
+  }
+
   export type ChoiceUncheckedUpdateManyWithoutQuestionNestedInput = {
     create?: XOR<ChoiceCreateWithoutQuestionInput, ChoiceUncheckedCreateWithoutQuestionInput> | ChoiceCreateWithoutQuestionInput[] | ChoiceUncheckedCreateWithoutQuestionInput[]
     connectOrCreate?: ChoiceCreateOrConnectWithoutQuestionInput | ChoiceCreateOrConnectWithoutQuestionInput[]
@@ -8375,6 +11397,20 @@ export namespace Prisma {
     deleteMany?: AnswerScalarWhereInput | AnswerScalarWhereInput[]
   }
 
+  export type User_AnswerUncheckedUpdateManyWithoutQuestionNestedInput = {
+    create?: XOR<User_AnswerCreateWithoutQuestionInput, User_AnswerUncheckedCreateWithoutQuestionInput> | User_AnswerCreateWithoutQuestionInput[] | User_AnswerUncheckedCreateWithoutQuestionInput[]
+    connectOrCreate?: User_AnswerCreateOrConnectWithoutQuestionInput | User_AnswerCreateOrConnectWithoutQuestionInput[]
+    upsert?: User_AnswerUpsertWithWhereUniqueWithoutQuestionInput | User_AnswerUpsertWithWhereUniqueWithoutQuestionInput[]
+    createMany?: User_AnswerCreateManyQuestionInputEnvelope
+    set?: User_AnswerWhereUniqueInput | User_AnswerWhereUniqueInput[]
+    disconnect?: User_AnswerWhereUniqueInput | User_AnswerWhereUniqueInput[]
+    delete?: User_AnswerWhereUniqueInput | User_AnswerWhereUniqueInput[]
+    connect?: User_AnswerWhereUniqueInput | User_AnswerWhereUniqueInput[]
+    update?: User_AnswerUpdateWithWhereUniqueWithoutQuestionInput | User_AnswerUpdateWithWhereUniqueWithoutQuestionInput[]
+    updateMany?: User_AnswerUpdateManyWithWhereWithoutQuestionInput | User_AnswerUpdateManyWithWhereWithoutQuestionInput[]
+    deleteMany?: User_AnswerScalarWhereInput | User_AnswerScalarWhereInput[]
+  }
+
   export type QuestionCreateNestedOneWithoutAnswerInput = {
     create?: XOR<QuestionCreateWithoutAnswerInput, QuestionUncheckedCreateWithoutAnswerInput>
     connectOrCreate?: QuestionCreateOrConnectWithoutAnswerInput
@@ -8410,11 +11446,25 @@ export namespace Prisma {
     connect?: Study_Set_Questions_ListWhereUniqueInput | Study_Set_Questions_ListWhereUniqueInput[]
   }
 
+  export type User_Study_SetCreateNestedManyWithoutStudy_SetInput = {
+    create?: XOR<User_Study_SetCreateWithoutStudy_SetInput, User_Study_SetUncheckedCreateWithoutStudy_SetInput> | User_Study_SetCreateWithoutStudy_SetInput[] | User_Study_SetUncheckedCreateWithoutStudy_SetInput[]
+    connectOrCreate?: User_Study_SetCreateOrConnectWithoutStudy_SetInput | User_Study_SetCreateOrConnectWithoutStudy_SetInput[]
+    createMany?: User_Study_SetCreateManyStudy_SetInputEnvelope
+    connect?: User_Study_SetWhereUniqueInput | User_Study_SetWhereUniqueInput[]
+  }
+
   export type Study_Set_Questions_ListUncheckedCreateNestedManyWithoutStudy_SetInput = {
     create?: XOR<Study_Set_Questions_ListCreateWithoutStudy_SetInput, Study_Set_Questions_ListUncheckedCreateWithoutStudy_SetInput> | Study_Set_Questions_ListCreateWithoutStudy_SetInput[] | Study_Set_Questions_ListUncheckedCreateWithoutStudy_SetInput[]
     connectOrCreate?: Study_Set_Questions_ListCreateOrConnectWithoutStudy_SetInput | Study_Set_Questions_ListCreateOrConnectWithoutStudy_SetInput[]
     createMany?: Study_Set_Questions_ListCreateManyStudy_SetInputEnvelope
     connect?: Study_Set_Questions_ListWhereUniqueInput | Study_Set_Questions_ListWhereUniqueInput[]
+  }
+
+  export type User_Study_SetUncheckedCreateNestedManyWithoutStudy_SetInput = {
+    create?: XOR<User_Study_SetCreateWithoutStudy_SetInput, User_Study_SetUncheckedCreateWithoutStudy_SetInput> | User_Study_SetCreateWithoutStudy_SetInput[] | User_Study_SetUncheckedCreateWithoutStudy_SetInput[]
+    connectOrCreate?: User_Study_SetCreateOrConnectWithoutStudy_SetInput | User_Study_SetCreateOrConnectWithoutStudy_SetInput[]
+    createMany?: User_Study_SetCreateManyStudy_SetInputEnvelope
+    connect?: User_Study_SetWhereUniqueInput | User_Study_SetWhereUniqueInput[]
   }
 
   export type Study_Set_Questions_ListUpdateManyWithoutStudy_SetNestedInput = {
@@ -8431,6 +11481,20 @@ export namespace Prisma {
     deleteMany?: Study_Set_Questions_ListScalarWhereInput | Study_Set_Questions_ListScalarWhereInput[]
   }
 
+  export type User_Study_SetUpdateManyWithoutStudy_SetNestedInput = {
+    create?: XOR<User_Study_SetCreateWithoutStudy_SetInput, User_Study_SetUncheckedCreateWithoutStudy_SetInput> | User_Study_SetCreateWithoutStudy_SetInput[] | User_Study_SetUncheckedCreateWithoutStudy_SetInput[]
+    connectOrCreate?: User_Study_SetCreateOrConnectWithoutStudy_SetInput | User_Study_SetCreateOrConnectWithoutStudy_SetInput[]
+    upsert?: User_Study_SetUpsertWithWhereUniqueWithoutStudy_SetInput | User_Study_SetUpsertWithWhereUniqueWithoutStudy_SetInput[]
+    createMany?: User_Study_SetCreateManyStudy_SetInputEnvelope
+    set?: User_Study_SetWhereUniqueInput | User_Study_SetWhereUniqueInput[]
+    disconnect?: User_Study_SetWhereUniqueInput | User_Study_SetWhereUniqueInput[]
+    delete?: User_Study_SetWhereUniqueInput | User_Study_SetWhereUniqueInput[]
+    connect?: User_Study_SetWhereUniqueInput | User_Study_SetWhereUniqueInput[]
+    update?: User_Study_SetUpdateWithWhereUniqueWithoutStudy_SetInput | User_Study_SetUpdateWithWhereUniqueWithoutStudy_SetInput[]
+    updateMany?: User_Study_SetUpdateManyWithWhereWithoutStudy_SetInput | User_Study_SetUpdateManyWithWhereWithoutStudy_SetInput[]
+    deleteMany?: User_Study_SetScalarWhereInput | User_Study_SetScalarWhereInput[]
+  }
+
   export type Study_Set_Questions_ListUncheckedUpdateManyWithoutStudy_SetNestedInput = {
     create?: XOR<Study_Set_Questions_ListCreateWithoutStudy_SetInput, Study_Set_Questions_ListUncheckedCreateWithoutStudy_SetInput> | Study_Set_Questions_ListCreateWithoutStudy_SetInput[] | Study_Set_Questions_ListUncheckedCreateWithoutStudy_SetInput[]
     connectOrCreate?: Study_Set_Questions_ListCreateOrConnectWithoutStudy_SetInput | Study_Set_Questions_ListCreateOrConnectWithoutStudy_SetInput[]
@@ -8443,6 +11507,20 @@ export namespace Prisma {
     update?: Study_Set_Questions_ListUpdateWithWhereUniqueWithoutStudy_SetInput | Study_Set_Questions_ListUpdateWithWhereUniqueWithoutStudy_SetInput[]
     updateMany?: Study_Set_Questions_ListUpdateManyWithWhereWithoutStudy_SetInput | Study_Set_Questions_ListUpdateManyWithWhereWithoutStudy_SetInput[]
     deleteMany?: Study_Set_Questions_ListScalarWhereInput | Study_Set_Questions_ListScalarWhereInput[]
+  }
+
+  export type User_Study_SetUncheckedUpdateManyWithoutStudy_SetNestedInput = {
+    create?: XOR<User_Study_SetCreateWithoutStudy_SetInput, User_Study_SetUncheckedCreateWithoutStudy_SetInput> | User_Study_SetCreateWithoutStudy_SetInput[] | User_Study_SetUncheckedCreateWithoutStudy_SetInput[]
+    connectOrCreate?: User_Study_SetCreateOrConnectWithoutStudy_SetInput | User_Study_SetCreateOrConnectWithoutStudy_SetInput[]
+    upsert?: User_Study_SetUpsertWithWhereUniqueWithoutStudy_SetInput | User_Study_SetUpsertWithWhereUniqueWithoutStudy_SetInput[]
+    createMany?: User_Study_SetCreateManyStudy_SetInputEnvelope
+    set?: User_Study_SetWhereUniqueInput | User_Study_SetWhereUniqueInput[]
+    disconnect?: User_Study_SetWhereUniqueInput | User_Study_SetWhereUniqueInput[]
+    delete?: User_Study_SetWhereUniqueInput | User_Study_SetWhereUniqueInput[]
+    connect?: User_Study_SetWhereUniqueInput | User_Study_SetWhereUniqueInput[]
+    update?: User_Study_SetUpdateWithWhereUniqueWithoutStudy_SetInput | User_Study_SetUpdateWithWhereUniqueWithoutStudy_SetInput[]
+    updateMany?: User_Study_SetUpdateManyWithWhereWithoutStudy_SetInput | User_Study_SetUpdateManyWithWhereWithoutStudy_SetInput[]
+    deleteMany?: User_Study_SetScalarWhereInput | User_Study_SetScalarWhereInput[]
   }
 
   export type QuestionCreateNestedOneWithoutStudy_Set_Questions_ListInput = {
@@ -8559,19 +11637,72 @@ export namespace Prisma {
     _max?: NestedEnumRoleFilter<$PrismaModel>
   }
 
+  export type User_Study_SetCreateWithoutUserInput = {
+    time: number
+    Study_Set: Study_SetCreateNestedOneWithoutUser_Study_SetInput
+    User_Answer?: User_AnswerCreateNestedManyWithoutUser_Study_SetInput
+  }
+
+  export type User_Study_SetUncheckedCreateWithoutUserInput = {
+    id?: number
+    studyset_id: number
+    time: number
+    User_Answer?: User_AnswerUncheckedCreateNestedManyWithoutUser_Study_SetInput
+  }
+
+  export type User_Study_SetCreateOrConnectWithoutUserInput = {
+    where: User_Study_SetWhereUniqueInput
+    create: XOR<User_Study_SetCreateWithoutUserInput, User_Study_SetUncheckedCreateWithoutUserInput>
+  }
+
+  export type User_Study_SetCreateManyUserInputEnvelope = {
+    data: User_Study_SetCreateManyUserInput | User_Study_SetCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type User_Study_SetUpsertWithWhereUniqueWithoutUserInput = {
+    where: User_Study_SetWhereUniqueInput
+    update: XOR<User_Study_SetUpdateWithoutUserInput, User_Study_SetUncheckedUpdateWithoutUserInput>
+    create: XOR<User_Study_SetCreateWithoutUserInput, User_Study_SetUncheckedCreateWithoutUserInput>
+  }
+
+  export type User_Study_SetUpdateWithWhereUniqueWithoutUserInput = {
+    where: User_Study_SetWhereUniqueInput
+    data: XOR<User_Study_SetUpdateWithoutUserInput, User_Study_SetUncheckedUpdateWithoutUserInput>
+  }
+
+  export type User_Study_SetUpdateManyWithWhereWithoutUserInput = {
+    where: User_Study_SetScalarWhereInput
+    data: XOR<User_Study_SetUpdateManyMutationInput, User_Study_SetUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type User_Study_SetScalarWhereInput = {
+    AND?: User_Study_SetScalarWhereInput | User_Study_SetScalarWhereInput[]
+    OR?: User_Study_SetScalarWhereInput[]
+    NOT?: User_Study_SetScalarWhereInput | User_Study_SetScalarWhereInput[]
+    id?: IntFilter<"User_Study_Set"> | number
+    user_id?: IntFilter<"User_Study_Set"> | number
+    studyset_id?: IntFilter<"User_Study_Set"> | number
+    time?: IntFilter<"User_Study_Set"> | number
+  }
+
   export type QuestionCreateWithoutChoiceInput = {
     content: string
     explanation: string
+    type: string
     Study_Set_Questions_List?: Study_Set_Questions_ListCreateNestedManyWithoutQuestionInput
     Answer?: AnswerCreateNestedManyWithoutQuestionInput
+    User_Answer?: User_AnswerCreateNestedManyWithoutQuestionInput
   }
 
   export type QuestionUncheckedCreateWithoutChoiceInput = {
     id?: number
     content: string
     explanation: string
+    type: string
     Study_Set_Questions_List?: Study_Set_Questions_ListUncheckedCreateNestedManyWithoutQuestionInput
     Answer?: AnswerUncheckedCreateNestedManyWithoutQuestionInput
+    User_Answer?: User_AnswerUncheckedCreateNestedManyWithoutQuestionInput
   }
 
   export type QuestionCreateOrConnectWithoutChoiceInput = {
@@ -8597,6 +11728,29 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type User_AnswerCreateWithoutChoiceInput = {
+    studyset_id: number
+    User_Study_Set: User_Study_SetCreateNestedOneWithoutUser_AnswerInput
+    Question: QuestionCreateNestedOneWithoutUser_AnswerInput
+  }
+
+  export type User_AnswerUncheckedCreateWithoutChoiceInput = {
+    id?: number
+    user_StudySet_id: number
+    studyset_id: number
+    question_id: number
+  }
+
+  export type User_AnswerCreateOrConnectWithoutChoiceInput = {
+    where: User_AnswerWhereUniqueInput
+    create: XOR<User_AnswerCreateWithoutChoiceInput, User_AnswerUncheckedCreateWithoutChoiceInput>
+  }
+
+  export type User_AnswerCreateManyChoiceInputEnvelope = {
+    data: User_AnswerCreateManyChoiceInput | User_AnswerCreateManyChoiceInput[]
+    skipDuplicates?: boolean
+  }
+
   export type QuestionUpsertWithoutChoiceInput = {
     update: XOR<QuestionUpdateWithoutChoiceInput, QuestionUncheckedUpdateWithoutChoiceInput>
     create: XOR<QuestionCreateWithoutChoiceInput, QuestionUncheckedCreateWithoutChoiceInput>
@@ -8611,16 +11765,20 @@ export namespace Prisma {
   export type QuestionUpdateWithoutChoiceInput = {
     content?: StringFieldUpdateOperationsInput | string
     explanation?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
     Study_Set_Questions_List?: Study_Set_Questions_ListUpdateManyWithoutQuestionNestedInput
     Answer?: AnswerUpdateManyWithoutQuestionNestedInput
+    User_Answer?: User_AnswerUpdateManyWithoutQuestionNestedInput
   }
 
   export type QuestionUncheckedUpdateWithoutChoiceInput = {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     explanation?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
     Study_Set_Questions_List?: Study_Set_Questions_ListUncheckedUpdateManyWithoutQuestionNestedInput
     Answer?: AnswerUncheckedUpdateManyWithoutQuestionNestedInput
+    User_Answer?: User_AnswerUncheckedUpdateManyWithoutQuestionNestedInput
   }
 
   export type AnswerUpsertWithWhereUniqueWithoutChoiceInput = {
@@ -8647,10 +11805,307 @@ export namespace Prisma {
     choice_id?: IntFilter<"Answer"> | number
   }
 
+  export type User_AnswerUpsertWithWhereUniqueWithoutChoiceInput = {
+    where: User_AnswerWhereUniqueInput
+    update: XOR<User_AnswerUpdateWithoutChoiceInput, User_AnswerUncheckedUpdateWithoutChoiceInput>
+    create: XOR<User_AnswerCreateWithoutChoiceInput, User_AnswerUncheckedCreateWithoutChoiceInput>
+  }
+
+  export type User_AnswerUpdateWithWhereUniqueWithoutChoiceInput = {
+    where: User_AnswerWhereUniqueInput
+    data: XOR<User_AnswerUpdateWithoutChoiceInput, User_AnswerUncheckedUpdateWithoutChoiceInput>
+  }
+
+  export type User_AnswerUpdateManyWithWhereWithoutChoiceInput = {
+    where: User_AnswerScalarWhereInput
+    data: XOR<User_AnswerUpdateManyMutationInput, User_AnswerUncheckedUpdateManyWithoutChoiceInput>
+  }
+
+  export type User_AnswerScalarWhereInput = {
+    AND?: User_AnswerScalarWhereInput | User_AnswerScalarWhereInput[]
+    OR?: User_AnswerScalarWhereInput[]
+    NOT?: User_AnswerScalarWhereInput | User_AnswerScalarWhereInput[]
+    id?: IntFilter<"User_Answer"> | number
+    user_StudySet_id?: IntFilter<"User_Answer"> | number
+    studyset_id?: IntFilter<"User_Answer"> | number
+    question_id?: IntFilter<"User_Answer"> | number
+    choice_id?: IntFilter<"User_Answer"> | number
+  }
+
+  export type UserCreateWithoutUser_Study_SetInput = {
+    email: string
+    password: string
+    name: string
+    role: $Enums.Role
+  }
+
+  export type UserUncheckedCreateWithoutUser_Study_SetInput = {
+    id?: number
+    email: string
+    password: string
+    name: string
+    role: $Enums.Role
+  }
+
+  export type UserCreateOrConnectWithoutUser_Study_SetInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutUser_Study_SetInput, UserUncheckedCreateWithoutUser_Study_SetInput>
+  }
+
+  export type Study_SetCreateWithoutUser_Study_SetInput = {
+    label: string
+    description: string
+    Study_Set_Questions_List?: Study_Set_Questions_ListCreateNestedManyWithoutStudy_SetInput
+  }
+
+  export type Study_SetUncheckedCreateWithoutUser_Study_SetInput = {
+    id?: number
+    label: string
+    description: string
+    Study_Set_Questions_List?: Study_Set_Questions_ListUncheckedCreateNestedManyWithoutStudy_SetInput
+  }
+
+  export type Study_SetCreateOrConnectWithoutUser_Study_SetInput = {
+    where: Study_SetWhereUniqueInput
+    create: XOR<Study_SetCreateWithoutUser_Study_SetInput, Study_SetUncheckedCreateWithoutUser_Study_SetInput>
+  }
+
+  export type User_AnswerCreateWithoutUser_Study_SetInput = {
+    studyset_id: number
+    Choice: ChoiceCreateNestedOneWithoutUser_AnswerInput
+    Question: QuestionCreateNestedOneWithoutUser_AnswerInput
+  }
+
+  export type User_AnswerUncheckedCreateWithoutUser_Study_SetInput = {
+    id?: number
+    studyset_id: number
+    question_id: number
+    choice_id: number
+  }
+
+  export type User_AnswerCreateOrConnectWithoutUser_Study_SetInput = {
+    where: User_AnswerWhereUniqueInput
+    create: XOR<User_AnswerCreateWithoutUser_Study_SetInput, User_AnswerUncheckedCreateWithoutUser_Study_SetInput>
+  }
+
+  export type User_AnswerCreateManyUser_Study_SetInputEnvelope = {
+    data: User_AnswerCreateManyUser_Study_SetInput | User_AnswerCreateManyUser_Study_SetInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutUser_Study_SetInput = {
+    update: XOR<UserUpdateWithoutUser_Study_SetInput, UserUncheckedUpdateWithoutUser_Study_SetInput>
+    create: XOR<UserCreateWithoutUser_Study_SetInput, UserUncheckedCreateWithoutUser_Study_SetInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutUser_Study_SetInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutUser_Study_SetInput, UserUncheckedUpdateWithoutUser_Study_SetInput>
+  }
+
+  export type UserUpdateWithoutUser_Study_SetInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  }
+
+  export type UserUncheckedUpdateWithoutUser_Study_SetInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  }
+
+  export type Study_SetUpsertWithoutUser_Study_SetInput = {
+    update: XOR<Study_SetUpdateWithoutUser_Study_SetInput, Study_SetUncheckedUpdateWithoutUser_Study_SetInput>
+    create: XOR<Study_SetCreateWithoutUser_Study_SetInput, Study_SetUncheckedCreateWithoutUser_Study_SetInput>
+    where?: Study_SetWhereInput
+  }
+
+  export type Study_SetUpdateToOneWithWhereWithoutUser_Study_SetInput = {
+    where?: Study_SetWhereInput
+    data: XOR<Study_SetUpdateWithoutUser_Study_SetInput, Study_SetUncheckedUpdateWithoutUser_Study_SetInput>
+  }
+
+  export type Study_SetUpdateWithoutUser_Study_SetInput = {
+    label?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    Study_Set_Questions_List?: Study_Set_Questions_ListUpdateManyWithoutStudy_SetNestedInput
+  }
+
+  export type Study_SetUncheckedUpdateWithoutUser_Study_SetInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    label?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    Study_Set_Questions_List?: Study_Set_Questions_ListUncheckedUpdateManyWithoutStudy_SetNestedInput
+  }
+
+  export type User_AnswerUpsertWithWhereUniqueWithoutUser_Study_SetInput = {
+    where: User_AnswerWhereUniqueInput
+    update: XOR<User_AnswerUpdateWithoutUser_Study_SetInput, User_AnswerUncheckedUpdateWithoutUser_Study_SetInput>
+    create: XOR<User_AnswerCreateWithoutUser_Study_SetInput, User_AnswerUncheckedCreateWithoutUser_Study_SetInput>
+  }
+
+  export type User_AnswerUpdateWithWhereUniqueWithoutUser_Study_SetInput = {
+    where: User_AnswerWhereUniqueInput
+    data: XOR<User_AnswerUpdateWithoutUser_Study_SetInput, User_AnswerUncheckedUpdateWithoutUser_Study_SetInput>
+  }
+
+  export type User_AnswerUpdateManyWithWhereWithoutUser_Study_SetInput = {
+    where: User_AnswerScalarWhereInput
+    data: XOR<User_AnswerUpdateManyMutationInput, User_AnswerUncheckedUpdateManyWithoutUser_Study_SetInput>
+  }
+
+  export type User_Study_SetCreateWithoutUser_AnswerInput = {
+    time: number
+    User: UserCreateNestedOneWithoutUser_Study_SetInput
+    Study_Set: Study_SetCreateNestedOneWithoutUser_Study_SetInput
+  }
+
+  export type User_Study_SetUncheckedCreateWithoutUser_AnswerInput = {
+    id?: number
+    user_id: number
+    studyset_id: number
+    time: number
+  }
+
+  export type User_Study_SetCreateOrConnectWithoutUser_AnswerInput = {
+    where: User_Study_SetWhereUniqueInput
+    create: XOR<User_Study_SetCreateWithoutUser_AnswerInput, User_Study_SetUncheckedCreateWithoutUser_AnswerInput>
+  }
+
+  export type ChoiceCreateWithoutUser_AnswerInput = {
+    content: string
+    number: number
+    Question: QuestionCreateNestedOneWithoutChoiceInput
+    Answer?: AnswerCreateNestedManyWithoutChoiceInput
+  }
+
+  export type ChoiceUncheckedCreateWithoutUser_AnswerInput = {
+    id?: number
+    content: string
+    number: number
+    question_id: number
+    Answer?: AnswerUncheckedCreateNestedManyWithoutChoiceInput
+  }
+
+  export type ChoiceCreateOrConnectWithoutUser_AnswerInput = {
+    where: ChoiceWhereUniqueInput
+    create: XOR<ChoiceCreateWithoutUser_AnswerInput, ChoiceUncheckedCreateWithoutUser_AnswerInput>
+  }
+
+  export type QuestionCreateWithoutUser_AnswerInput = {
+    content: string
+    explanation: string
+    type: string
+    Choice?: ChoiceCreateNestedManyWithoutQuestionInput
+    Study_Set_Questions_List?: Study_Set_Questions_ListCreateNestedManyWithoutQuestionInput
+    Answer?: AnswerCreateNestedManyWithoutQuestionInput
+  }
+
+  export type QuestionUncheckedCreateWithoutUser_AnswerInput = {
+    id?: number
+    content: string
+    explanation: string
+    type: string
+    Choice?: ChoiceUncheckedCreateNestedManyWithoutQuestionInput
+    Study_Set_Questions_List?: Study_Set_Questions_ListUncheckedCreateNestedManyWithoutQuestionInput
+    Answer?: AnswerUncheckedCreateNestedManyWithoutQuestionInput
+  }
+
+  export type QuestionCreateOrConnectWithoutUser_AnswerInput = {
+    where: QuestionWhereUniqueInput
+    create: XOR<QuestionCreateWithoutUser_AnswerInput, QuestionUncheckedCreateWithoutUser_AnswerInput>
+  }
+
+  export type User_Study_SetUpsertWithoutUser_AnswerInput = {
+    update: XOR<User_Study_SetUpdateWithoutUser_AnswerInput, User_Study_SetUncheckedUpdateWithoutUser_AnswerInput>
+    create: XOR<User_Study_SetCreateWithoutUser_AnswerInput, User_Study_SetUncheckedCreateWithoutUser_AnswerInput>
+    where?: User_Study_SetWhereInput
+  }
+
+  export type User_Study_SetUpdateToOneWithWhereWithoutUser_AnswerInput = {
+    where?: User_Study_SetWhereInput
+    data: XOR<User_Study_SetUpdateWithoutUser_AnswerInput, User_Study_SetUncheckedUpdateWithoutUser_AnswerInput>
+  }
+
+  export type User_Study_SetUpdateWithoutUser_AnswerInput = {
+    time?: IntFieldUpdateOperationsInput | number
+    User?: UserUpdateOneRequiredWithoutUser_Study_SetNestedInput
+    Study_Set?: Study_SetUpdateOneRequiredWithoutUser_Study_SetNestedInput
+  }
+
+  export type User_Study_SetUncheckedUpdateWithoutUser_AnswerInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+    studyset_id?: IntFieldUpdateOperationsInput | number
+    time?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ChoiceUpsertWithoutUser_AnswerInput = {
+    update: XOR<ChoiceUpdateWithoutUser_AnswerInput, ChoiceUncheckedUpdateWithoutUser_AnswerInput>
+    create: XOR<ChoiceCreateWithoutUser_AnswerInput, ChoiceUncheckedCreateWithoutUser_AnswerInput>
+    where?: ChoiceWhereInput
+  }
+
+  export type ChoiceUpdateToOneWithWhereWithoutUser_AnswerInput = {
+    where?: ChoiceWhereInput
+    data: XOR<ChoiceUpdateWithoutUser_AnswerInput, ChoiceUncheckedUpdateWithoutUser_AnswerInput>
+  }
+
+  export type ChoiceUpdateWithoutUser_AnswerInput = {
+    content?: StringFieldUpdateOperationsInput | string
+    number?: IntFieldUpdateOperationsInput | number
+    Question?: QuestionUpdateOneRequiredWithoutChoiceNestedInput
+    Answer?: AnswerUpdateManyWithoutChoiceNestedInput
+  }
+
+  export type ChoiceUncheckedUpdateWithoutUser_AnswerInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    number?: IntFieldUpdateOperationsInput | number
+    question_id?: IntFieldUpdateOperationsInput | number
+    Answer?: AnswerUncheckedUpdateManyWithoutChoiceNestedInput
+  }
+
+  export type QuestionUpsertWithoutUser_AnswerInput = {
+    update: XOR<QuestionUpdateWithoutUser_AnswerInput, QuestionUncheckedUpdateWithoutUser_AnswerInput>
+    create: XOR<QuestionCreateWithoutUser_AnswerInput, QuestionUncheckedCreateWithoutUser_AnswerInput>
+    where?: QuestionWhereInput
+  }
+
+  export type QuestionUpdateToOneWithWhereWithoutUser_AnswerInput = {
+    where?: QuestionWhereInput
+    data: XOR<QuestionUpdateWithoutUser_AnswerInput, QuestionUncheckedUpdateWithoutUser_AnswerInput>
+  }
+
+  export type QuestionUpdateWithoutUser_AnswerInput = {
+    content?: StringFieldUpdateOperationsInput | string
+    explanation?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    Choice?: ChoiceUpdateManyWithoutQuestionNestedInput
+    Study_Set_Questions_List?: Study_Set_Questions_ListUpdateManyWithoutQuestionNestedInput
+    Answer?: AnswerUpdateManyWithoutQuestionNestedInput
+  }
+
+  export type QuestionUncheckedUpdateWithoutUser_AnswerInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    explanation?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    Choice?: ChoiceUncheckedUpdateManyWithoutQuestionNestedInput
+    Study_Set_Questions_List?: Study_Set_Questions_ListUncheckedUpdateManyWithoutQuestionNestedInput
+    Answer?: AnswerUncheckedUpdateManyWithoutQuestionNestedInput
+  }
+
   export type ChoiceCreateWithoutQuestionInput = {
     content: string
     number: number
     Answer?: AnswerCreateNestedManyWithoutChoiceInput
+    User_Answer?: User_AnswerCreateNestedManyWithoutChoiceInput
   }
 
   export type ChoiceUncheckedCreateWithoutQuestionInput = {
@@ -8658,6 +12113,7 @@ export namespace Prisma {
     content: string
     number: number
     Answer?: AnswerUncheckedCreateNestedManyWithoutChoiceInput
+    User_Answer?: User_AnswerUncheckedCreateNestedManyWithoutChoiceInput
   }
 
   export type ChoiceCreateOrConnectWithoutQuestionInput = {
@@ -8704,6 +12160,29 @@ export namespace Prisma {
 
   export type AnswerCreateManyQuestionInputEnvelope = {
     data: AnswerCreateManyQuestionInput | AnswerCreateManyQuestionInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type User_AnswerCreateWithoutQuestionInput = {
+    studyset_id: number
+    User_Study_Set: User_Study_SetCreateNestedOneWithoutUser_AnswerInput
+    Choice: ChoiceCreateNestedOneWithoutUser_AnswerInput
+  }
+
+  export type User_AnswerUncheckedCreateWithoutQuestionInput = {
+    id?: number
+    user_StudySet_id: number
+    studyset_id: number
+    choice_id: number
+  }
+
+  export type User_AnswerCreateOrConnectWithoutQuestionInput = {
+    where: User_AnswerWhereUniqueInput
+    create: XOR<User_AnswerCreateWithoutQuestionInput, User_AnswerUncheckedCreateWithoutQuestionInput>
+  }
+
+  export type User_AnswerCreateManyQuestionInputEnvelope = {
+    data: User_AnswerCreateManyQuestionInput | User_AnswerCreateManyQuestionInput[]
     skipDuplicates?: boolean
   }
 
@@ -8774,19 +12253,39 @@ export namespace Prisma {
     data: XOR<AnswerUpdateManyMutationInput, AnswerUncheckedUpdateManyWithoutQuestionInput>
   }
 
+  export type User_AnswerUpsertWithWhereUniqueWithoutQuestionInput = {
+    where: User_AnswerWhereUniqueInput
+    update: XOR<User_AnswerUpdateWithoutQuestionInput, User_AnswerUncheckedUpdateWithoutQuestionInput>
+    create: XOR<User_AnswerCreateWithoutQuestionInput, User_AnswerUncheckedCreateWithoutQuestionInput>
+  }
+
+  export type User_AnswerUpdateWithWhereUniqueWithoutQuestionInput = {
+    where: User_AnswerWhereUniqueInput
+    data: XOR<User_AnswerUpdateWithoutQuestionInput, User_AnswerUncheckedUpdateWithoutQuestionInput>
+  }
+
+  export type User_AnswerUpdateManyWithWhereWithoutQuestionInput = {
+    where: User_AnswerScalarWhereInput
+    data: XOR<User_AnswerUpdateManyMutationInput, User_AnswerUncheckedUpdateManyWithoutQuestionInput>
+  }
+
   export type QuestionCreateWithoutAnswerInput = {
     content: string
     explanation: string
+    type: string
     Choice?: ChoiceCreateNestedManyWithoutQuestionInput
     Study_Set_Questions_List?: Study_Set_Questions_ListCreateNestedManyWithoutQuestionInput
+    User_Answer?: User_AnswerCreateNestedManyWithoutQuestionInput
   }
 
   export type QuestionUncheckedCreateWithoutAnswerInput = {
     id?: number
     content: string
     explanation: string
+    type: string
     Choice?: ChoiceUncheckedCreateNestedManyWithoutQuestionInput
     Study_Set_Questions_List?: Study_Set_Questions_ListUncheckedCreateNestedManyWithoutQuestionInput
+    User_Answer?: User_AnswerUncheckedCreateNestedManyWithoutQuestionInput
   }
 
   export type QuestionCreateOrConnectWithoutAnswerInput = {
@@ -8798,6 +12297,7 @@ export namespace Prisma {
     content: string
     number: number
     Question: QuestionCreateNestedOneWithoutChoiceInput
+    User_Answer?: User_AnswerCreateNestedManyWithoutChoiceInput
   }
 
   export type ChoiceUncheckedCreateWithoutAnswerInput = {
@@ -8805,6 +12305,7 @@ export namespace Prisma {
     content: string
     number: number
     question_id: number
+    User_Answer?: User_AnswerUncheckedCreateNestedManyWithoutChoiceInput
   }
 
   export type ChoiceCreateOrConnectWithoutAnswerInput = {
@@ -8826,16 +12327,20 @@ export namespace Prisma {
   export type QuestionUpdateWithoutAnswerInput = {
     content?: StringFieldUpdateOperationsInput | string
     explanation?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
     Choice?: ChoiceUpdateManyWithoutQuestionNestedInput
     Study_Set_Questions_List?: Study_Set_Questions_ListUpdateManyWithoutQuestionNestedInput
+    User_Answer?: User_AnswerUpdateManyWithoutQuestionNestedInput
   }
 
   export type QuestionUncheckedUpdateWithoutAnswerInput = {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     explanation?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
     Choice?: ChoiceUncheckedUpdateManyWithoutQuestionNestedInput
     Study_Set_Questions_List?: Study_Set_Questions_ListUncheckedUpdateManyWithoutQuestionNestedInput
+    User_Answer?: User_AnswerUncheckedUpdateManyWithoutQuestionNestedInput
   }
 
   export type ChoiceUpsertWithoutAnswerInput = {
@@ -8853,6 +12358,7 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     number?: IntFieldUpdateOperationsInput | number
     Question?: QuestionUpdateOneRequiredWithoutChoiceNestedInput
+    User_Answer?: User_AnswerUpdateManyWithoutChoiceNestedInput
   }
 
   export type ChoiceUncheckedUpdateWithoutAnswerInput = {
@@ -8860,6 +12366,7 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     number?: IntFieldUpdateOperationsInput | number
     question_id?: IntFieldUpdateOperationsInput | number
+    User_Answer?: User_AnswerUncheckedUpdateManyWithoutChoiceNestedInput
   }
 
   export type Study_Set_Questions_ListCreateWithoutStudy_SetInput = {
@@ -8881,6 +12388,29 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type User_Study_SetCreateWithoutStudy_SetInput = {
+    time: number
+    User: UserCreateNestedOneWithoutUser_Study_SetInput
+    User_Answer?: User_AnswerCreateNestedManyWithoutUser_Study_SetInput
+  }
+
+  export type User_Study_SetUncheckedCreateWithoutStudy_SetInput = {
+    id?: number
+    user_id: number
+    time: number
+    User_Answer?: User_AnswerUncheckedCreateNestedManyWithoutUser_Study_SetInput
+  }
+
+  export type User_Study_SetCreateOrConnectWithoutStudy_SetInput = {
+    where: User_Study_SetWhereUniqueInput
+    create: XOR<User_Study_SetCreateWithoutStudy_SetInput, User_Study_SetUncheckedCreateWithoutStudy_SetInput>
+  }
+
+  export type User_Study_SetCreateManyStudy_SetInputEnvelope = {
+    data: User_Study_SetCreateManyStudy_SetInput | User_Study_SetCreateManyStudy_SetInput[]
+    skipDuplicates?: boolean
+  }
+
   export type Study_Set_Questions_ListUpsertWithWhereUniqueWithoutStudy_SetInput = {
     where: Study_Set_Questions_ListWhereUniqueInput
     update: XOR<Study_Set_Questions_ListUpdateWithoutStudy_SetInput, Study_Set_Questions_ListUncheckedUpdateWithoutStudy_SetInput>
@@ -8897,19 +12427,39 @@ export namespace Prisma {
     data: XOR<Study_Set_Questions_ListUpdateManyMutationInput, Study_Set_Questions_ListUncheckedUpdateManyWithoutStudy_SetInput>
   }
 
+  export type User_Study_SetUpsertWithWhereUniqueWithoutStudy_SetInput = {
+    where: User_Study_SetWhereUniqueInput
+    update: XOR<User_Study_SetUpdateWithoutStudy_SetInput, User_Study_SetUncheckedUpdateWithoutStudy_SetInput>
+    create: XOR<User_Study_SetCreateWithoutStudy_SetInput, User_Study_SetUncheckedCreateWithoutStudy_SetInput>
+  }
+
+  export type User_Study_SetUpdateWithWhereUniqueWithoutStudy_SetInput = {
+    where: User_Study_SetWhereUniqueInput
+    data: XOR<User_Study_SetUpdateWithoutStudy_SetInput, User_Study_SetUncheckedUpdateWithoutStudy_SetInput>
+  }
+
+  export type User_Study_SetUpdateManyWithWhereWithoutStudy_SetInput = {
+    where: User_Study_SetScalarWhereInput
+    data: XOR<User_Study_SetUpdateManyMutationInput, User_Study_SetUncheckedUpdateManyWithoutStudy_SetInput>
+  }
+
   export type QuestionCreateWithoutStudy_Set_Questions_ListInput = {
     content: string
     explanation: string
+    type: string
     Choice?: ChoiceCreateNestedManyWithoutQuestionInput
     Answer?: AnswerCreateNestedManyWithoutQuestionInput
+    User_Answer?: User_AnswerCreateNestedManyWithoutQuestionInput
   }
 
   export type QuestionUncheckedCreateWithoutStudy_Set_Questions_ListInput = {
     id?: number
     content: string
     explanation: string
+    type: string
     Choice?: ChoiceUncheckedCreateNestedManyWithoutQuestionInput
     Answer?: AnswerUncheckedCreateNestedManyWithoutQuestionInput
+    User_Answer?: User_AnswerUncheckedCreateNestedManyWithoutQuestionInput
   }
 
   export type QuestionCreateOrConnectWithoutStudy_Set_Questions_ListInput = {
@@ -8920,12 +12470,14 @@ export namespace Prisma {
   export type Study_SetCreateWithoutStudy_Set_Questions_ListInput = {
     label: string
     description: string
+    User_Study_Set?: User_Study_SetCreateNestedManyWithoutStudy_SetInput
   }
 
   export type Study_SetUncheckedCreateWithoutStudy_Set_Questions_ListInput = {
     id?: number
     label: string
     description: string
+    User_Study_Set?: User_Study_SetUncheckedCreateNestedManyWithoutStudy_SetInput
   }
 
   export type Study_SetCreateOrConnectWithoutStudy_Set_Questions_ListInput = {
@@ -8947,16 +12499,20 @@ export namespace Prisma {
   export type QuestionUpdateWithoutStudy_Set_Questions_ListInput = {
     content?: StringFieldUpdateOperationsInput | string
     explanation?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
     Choice?: ChoiceUpdateManyWithoutQuestionNestedInput
     Answer?: AnswerUpdateManyWithoutQuestionNestedInput
+    User_Answer?: User_AnswerUpdateManyWithoutQuestionNestedInput
   }
 
   export type QuestionUncheckedUpdateWithoutStudy_Set_Questions_ListInput = {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     explanation?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
     Choice?: ChoiceUncheckedUpdateManyWithoutQuestionNestedInput
     Answer?: AnswerUncheckedUpdateManyWithoutQuestionNestedInput
+    User_Answer?: User_AnswerUncheckedUpdateManyWithoutQuestionNestedInput
   }
 
   export type Study_SetUpsertWithoutStudy_Set_Questions_ListInput = {
@@ -8973,15 +12529,49 @@ export namespace Prisma {
   export type Study_SetUpdateWithoutStudy_Set_Questions_ListInput = {
     label?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    User_Study_Set?: User_Study_SetUpdateManyWithoutStudy_SetNestedInput
   }
 
   export type Study_SetUncheckedUpdateWithoutStudy_Set_Questions_ListInput = {
     id?: IntFieldUpdateOperationsInput | number
     label?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    User_Study_Set?: User_Study_SetUncheckedUpdateManyWithoutStudy_SetNestedInput
+  }
+
+  export type User_Study_SetCreateManyUserInput = {
+    id?: number
+    studyset_id: number
+    time: number
+  }
+
+  export type User_Study_SetUpdateWithoutUserInput = {
+    time?: IntFieldUpdateOperationsInput | number
+    Study_Set?: Study_SetUpdateOneRequiredWithoutUser_Study_SetNestedInput
+    User_Answer?: User_AnswerUpdateManyWithoutUser_Study_SetNestedInput
+  }
+
+  export type User_Study_SetUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    studyset_id?: IntFieldUpdateOperationsInput | number
+    time?: IntFieldUpdateOperationsInput | number
+    User_Answer?: User_AnswerUncheckedUpdateManyWithoutUser_Study_SetNestedInput
+  }
+
+  export type User_Study_SetUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    studyset_id?: IntFieldUpdateOperationsInput | number
+    time?: IntFieldUpdateOperationsInput | number
   }
 
   export type AnswerCreateManyChoiceInput = {
+    question_id: number
+  }
+
+  export type User_AnswerCreateManyChoiceInput = {
+    id?: number
+    user_StudySet_id: number
+    studyset_id: number
     question_id: number
   }
 
@@ -8995,6 +12585,53 @@ export namespace Prisma {
 
   export type AnswerUncheckedUpdateManyWithoutChoiceInput = {
     question_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type User_AnswerUpdateWithoutChoiceInput = {
+    studyset_id?: IntFieldUpdateOperationsInput | number
+    User_Study_Set?: User_Study_SetUpdateOneRequiredWithoutUser_AnswerNestedInput
+    Question?: QuestionUpdateOneRequiredWithoutUser_AnswerNestedInput
+  }
+
+  export type User_AnswerUncheckedUpdateWithoutChoiceInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    user_StudySet_id?: IntFieldUpdateOperationsInput | number
+    studyset_id?: IntFieldUpdateOperationsInput | number
+    question_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type User_AnswerUncheckedUpdateManyWithoutChoiceInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    user_StudySet_id?: IntFieldUpdateOperationsInput | number
+    studyset_id?: IntFieldUpdateOperationsInput | number
+    question_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type User_AnswerCreateManyUser_Study_SetInput = {
+    id?: number
+    studyset_id: number
+    question_id: number
+    choice_id: number
+  }
+
+  export type User_AnswerUpdateWithoutUser_Study_SetInput = {
+    studyset_id?: IntFieldUpdateOperationsInput | number
+    Choice?: ChoiceUpdateOneRequiredWithoutUser_AnswerNestedInput
+    Question?: QuestionUpdateOneRequiredWithoutUser_AnswerNestedInput
+  }
+
+  export type User_AnswerUncheckedUpdateWithoutUser_Study_SetInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    studyset_id?: IntFieldUpdateOperationsInput | number
+    question_id?: IntFieldUpdateOperationsInput | number
+    choice_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type User_AnswerUncheckedUpdateManyWithoutUser_Study_SetInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    studyset_id?: IntFieldUpdateOperationsInput | number
+    question_id?: IntFieldUpdateOperationsInput | number
+    choice_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type ChoiceCreateManyQuestionInput = {
@@ -9012,10 +12649,18 @@ export namespace Prisma {
     choice_id: number
   }
 
+  export type User_AnswerCreateManyQuestionInput = {
+    id?: number
+    user_StudySet_id: number
+    studyset_id: number
+    choice_id: number
+  }
+
   export type ChoiceUpdateWithoutQuestionInput = {
     content?: StringFieldUpdateOperationsInput | string
     number?: IntFieldUpdateOperationsInput | number
     Answer?: AnswerUpdateManyWithoutChoiceNestedInput
+    User_Answer?: User_AnswerUpdateManyWithoutChoiceNestedInput
   }
 
   export type ChoiceUncheckedUpdateWithoutQuestionInput = {
@@ -9023,6 +12668,7 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     number?: IntFieldUpdateOperationsInput | number
     Answer?: AnswerUncheckedUpdateManyWithoutChoiceNestedInput
+    User_Answer?: User_AnswerUncheckedUpdateManyWithoutChoiceNestedInput
   }
 
   export type ChoiceUncheckedUpdateManyWithoutQuestionInput = {
@@ -9057,9 +12703,35 @@ export namespace Prisma {
     choice_id?: IntFieldUpdateOperationsInput | number
   }
 
+  export type User_AnswerUpdateWithoutQuestionInput = {
+    studyset_id?: IntFieldUpdateOperationsInput | number
+    User_Study_Set?: User_Study_SetUpdateOneRequiredWithoutUser_AnswerNestedInput
+    Choice?: ChoiceUpdateOneRequiredWithoutUser_AnswerNestedInput
+  }
+
+  export type User_AnswerUncheckedUpdateWithoutQuestionInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    user_StudySet_id?: IntFieldUpdateOperationsInput | number
+    studyset_id?: IntFieldUpdateOperationsInput | number
+    choice_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type User_AnswerUncheckedUpdateManyWithoutQuestionInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    user_StudySet_id?: IntFieldUpdateOperationsInput | number
+    studyset_id?: IntFieldUpdateOperationsInput | number
+    choice_id?: IntFieldUpdateOperationsInput | number
+  }
+
   export type Study_Set_Questions_ListCreateManyStudy_SetInput = {
     id?: number
     question_id: number
+  }
+
+  export type User_Study_SetCreateManyStudy_SetInput = {
+    id?: number
+    user_id: number
+    time: number
   }
 
   export type Study_Set_Questions_ListUpdateWithoutStudy_SetInput = {
@@ -9076,15 +12748,42 @@ export namespace Prisma {
     question_id?: IntFieldUpdateOperationsInput | number
   }
 
+  export type User_Study_SetUpdateWithoutStudy_SetInput = {
+    time?: IntFieldUpdateOperationsInput | number
+    User?: UserUpdateOneRequiredWithoutUser_Study_SetNestedInput
+    User_Answer?: User_AnswerUpdateManyWithoutUser_Study_SetNestedInput
+  }
+
+  export type User_Study_SetUncheckedUpdateWithoutStudy_SetInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+    time?: IntFieldUpdateOperationsInput | number
+    User_Answer?: User_AnswerUncheckedUpdateManyWithoutUser_Study_SetNestedInput
+  }
+
+  export type User_Study_SetUncheckedUpdateManyWithoutStudy_SetInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+    time?: IntFieldUpdateOperationsInput | number
+  }
+
 
 
   /**
    * Aliases for legacy arg types
    */
     /**
+     * @deprecated Use UserCountOutputTypeDefaultArgs instead
+     */
+    export type UserCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserCountOutputTypeDefaultArgs<ExtArgs>
+    /**
      * @deprecated Use ChoiceCountOutputTypeDefaultArgs instead
      */
     export type ChoiceCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ChoiceCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use User_Study_SetCountOutputTypeDefaultArgs instead
+     */
+    export type User_Study_SetCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = User_Study_SetCountOutputTypeDefaultArgs<ExtArgs>
     /**
      * @deprecated Use QuestionCountOutputTypeDefaultArgs instead
      */
@@ -9101,6 +12800,14 @@ export namespace Prisma {
      * @deprecated Use ChoiceDefaultArgs instead
      */
     export type ChoiceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ChoiceDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use User_Study_SetDefaultArgs instead
+     */
+    export type User_Study_SetArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = User_Study_SetDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use User_AnswerDefaultArgs instead
+     */
+    export type User_AnswerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = User_AnswerDefaultArgs<ExtArgs>
     /**
      * @deprecated Use QuestionDefaultArgs instead
      */

@@ -2,10 +2,10 @@ import React from "react";
 import { Button } from "./ui/button";
 
 interface ChoiceButtonProps {
-  id: string;
+  id: number;
   label: string;
   isSelected: boolean;
-  onSelect: (id: string) => void;
+  onSelect: (id: number) => void;
 }
 
 const ChoiceButton: React.FC<ChoiceButtonProps> = ({

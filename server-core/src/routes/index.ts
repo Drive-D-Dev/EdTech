@@ -5,6 +5,7 @@ import { studySetRouter } from './studySet.routes';
 import { authRouter } from './auth.routes';
 import { cors } from 'hono/cors';
 import { AIserviceRouter } from './AIservice.routes';
+import { submitRouter } from './submit.routes';
 
 const mainRouter = new Hono({ strict: false });
 
@@ -24,5 +25,6 @@ mainRouter.route('/ai', AIserviceRouter);
 mainRouter.route('/example', exampleRouter);
 mainRouter.route('/question', questionRouter);
 mainRouter.route('/set', studySetRouter);
+mainRouter.route('/submit', submitRouter);
 
 export { mainRouter };

@@ -134,10 +134,26 @@ exports.Prisma.ChoiceScalarFieldEnum = {
   question_id: 'question_id'
 };
 
+exports.Prisma.User_Study_SetScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  studyset_id: 'studyset_id',
+  time: 'time'
+};
+
+exports.Prisma.User_AnswerScalarFieldEnum = {
+  id: 'id',
+  user_StudySet_id: 'user_StudySet_id',
+  studyset_id: 'studyset_id',
+  question_id: 'question_id',
+  choice_id: 'choice_id'
+};
+
 exports.Prisma.QuestionScalarFieldEnum = {
   id: 'id',
   content: 'content',
-  explanation: 'explanation'
+  explanation: 'explanation',
+  type: 'type'
 };
 
 exports.Prisma.AnswerScalarFieldEnum = {
@@ -174,6 +190,8 @@ exports.Role = exports.$Enums.Role = {
 exports.Prisma.ModelName = {
   User: 'User',
   Choice: 'Choice',
+  User_Study_Set: 'User_Study_Set',
+  User_Answer: 'User_Answer',
   Question: 'Question',
   Answer: 'Answer',
   Study_Set: 'Study_Set',
