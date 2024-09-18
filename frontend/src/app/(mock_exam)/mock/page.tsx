@@ -6,8 +6,6 @@ import TwoRowLayout from "@/components/twolayout";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { getQuestionAPI } from "@/api/question";
-import { mockExam } from "@/data/mockData";
-
 import {
   Dialog,
   DialogContent,
@@ -56,6 +54,24 @@ export default function ExamplePage() {
 
   const totalQuestions = data.data.length;
 
+  const handleFinishExam = () => {
+    const unansweredQuestions = data.data.some(
+      (exam) => !selectedChoices[exam.id]
+    );
+    if (unansweredQuestions) {
+      setShowWarning(true);
+      setOpen(false);
+    } else {
+      setOpen(true);
+      setShowWarning(false);
+    }
+  };
+
+  const navigateToResults = () => {
+    router.push(`/mockanswer`);
+    setOpen(false);
+  };
+
   const DoneDialog = () => {
     return (
       <>
@@ -65,7 +81,7 @@ export default function ExamplePage() {
               <Button
                 className="flex ml-auto  mt-4"
                 size="lg"
-                // onClick={handleFinishExam}
+                onClick={handleFinishExam}
               >
                 <p>Finish</p>
               </Button>
@@ -82,7 +98,7 @@ export default function ExamplePage() {
               <Button variant="outline" onClick={() => setOpen(false)}>
                 Cancel
               </Button>
-              <Button>Yes</Button>
+              <Button onClick={navigateToResults}>Yes</Button>
             </DialogFooter>
           </DialogContent>
         </Dialog>
@@ -93,14 +109,12 @@ export default function ExamplePage() {
               <DialogTitle>Warning</DialogTitle>
             </DialogHeader>
             <DialogDescription>
-              You have unanswered questions. Are you sure you want to finish the
-              exam?
+              You have unanswered questions.
             </DialogDescription>
             <DialogFooter>
               <Button variant="outline" onClick={() => setShowWarning(false)}>
-                Cancel
+                OK
               </Button>
-              <Button>Yes, finish</Button>
             </DialogFooter>
           </DialogContent>
         </Dialog>
