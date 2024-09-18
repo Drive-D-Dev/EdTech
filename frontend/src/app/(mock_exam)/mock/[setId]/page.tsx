@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ChoiceButton from "@/components/choicebutton";
 import CountdownTimer from "@/components/timer-countdown";
 import TwoRowLayout from "@/components/twolayout";
@@ -32,7 +32,7 @@ export default function ExamplePage() {
 
   const [open, setOpen] = React.useState(false);
   const [showWarning, setShowWarning] = React.useState(false);
-  const [currentTimeLeft, setCurrentTimeLeft] = useState<number>(0);
+  const timerRef = useRef<any>(null);
   const router = useRouter();
   const params = useParams<{ setId: string }>();
 
@@ -53,7 +53,6 @@ export default function ExamplePage() {
       ...prev,
       [questionId]: choiceId,
     }));
-
     const questionIndex = answerPayload.Question.findIndex(
       (q) => q.question_id === questionId
     );
@@ -66,10 +65,7 @@ export default function ExamplePage() {
         choice_id: choiceId,
       });
     }
-  };
-
-  const handleTimeLeftChange = (timeLeft: number) => {
-    setCurrentTimeLeft(timeLeft);
+    console.log(answerPayload);
   };
 
   const selectedCount = Object.keys(selectedChoices).filter(
@@ -92,7 +88,8 @@ export default function ExamplePage() {
   };
 
   const navigateToResults = () => {
-    answerPayload.time = currentTimeLeft;
+    answerPayload.time = timerRef.current.getTimeLeft();
+    console.log(answerPayload);
     router.push(`/mockanswer`);
     setOpen(false);
   };
@@ -143,6 +140,18 @@ export default function ExamplePage() {
             </DialogFooter>
           </DialogContent>
         </Dialog>
+
+        <Dialog>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Submit Failed</DialogTitle>
+            </DialogHeader>
+            <DialogDescription>Please try again.</DialogDescription>
+            <DialogFooter>
+              <Button variant="outline">Retry</Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       </>
     );
   };
@@ -150,10 +159,7 @@ export default function ExamplePage() {
   return (
     <div>
       <div className="w-[97dvw] flex justify-center pl-4">
-        <CountdownTimer
-          duration={300}
-          onTimeLeftChange={handleTimeLeftChange}
-        />
+        <CountdownTimer ref={timerRef} duration={300} />
       </div>
       <TwoRowLayout
         leftContent={
