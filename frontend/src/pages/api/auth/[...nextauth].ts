@@ -1,7 +1,6 @@
-// pages/api/auth/[...nextauth].ts
-import NextAuth, { NextAuthOptions } from 'next-auth';
+import NextAuth, { NextAuthOptions, DefaultSession, DefaultUser } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { BACKEND_URL } from '@/constant/global';
+import { loginAPI } from '@/api/login';
 
 export const authOptions: NextAuthOptions = {
 	providers: [
@@ -19,27 +18,18 @@ export const authOptions: NextAuthOptions = {
 				const email = credentials.email;
 				const password = credentials.password;
 
-				const response = await fetch(`${BACKEND_URL}/auth/login`, {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify({ email, password }),
-				});
+				const response = await loginAPI(email, password);
 
-				if (!response.ok) {
+				if (!response.success) {
 					throw new Error('Invalid credentials');
 				}
 
-				const user = await response.json();
-
-				if (user) {
-					// Return the user object with the required fields, including `id` and other properties.
+				if (response.success) {
 					return {
-						id: user.id, // Ensure your backend returns an `id` field
-						name: user.name,
-						email: user.email, // If available
-						// Add other user fields as necessary
+						id: '1',
+						email: email,
+						name: email,
+						token: response.data.token,
 					};
 				}
 
@@ -50,7 +40,7 @@ export const authOptions: NextAuthOptions = {
 	session: {
 		strategy: 'jwt',
 		maxAge: 30 * 24 * 60 * 60, // 30 days
-		updateAge: 24 * 60 * 60, // 24 hours
+		updateAge: 24 * 60 * 60, // Update the JWT token every 24 hours
 	},
 	pages: {
 		signIn: '/auth/signin',

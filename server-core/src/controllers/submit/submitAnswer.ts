@@ -6,7 +6,7 @@ import { createUserAnswer } from '../../services/user_answer/create';
 const submitAnswerController = async (c: Context) => {
 	try {
 		const data = await c.req.json<User_Answer_Request>();
-		const userId = 12;
+		const userId = c.var.userId;
 		if (!data.setId) {
 			throw 'setId is required';
 		}

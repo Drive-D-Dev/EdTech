@@ -3,7 +3,7 @@ import { getUserStudySetAnswersWithAnswers } from '../../services/user_studyset/
 
 const getUserAnswerController = async (c: Context) => {
 	try {
-		const userId = 12;
+		const userId = c.var.userId;
 		const studySetId = c.req.param('studySetId');
 		const answers = await getUserStudySetAnswersWithAnswers(parseInt(studySetId), userId);
 		return c.json({
