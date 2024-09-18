@@ -1,10 +1,20 @@
-import { BACKEND_URL } from '@/constant/global';
-import useSWR from 'swr'
+import { getStydySetsAPI } from '@/api/studySet';
+// import { BACKEND_URL } from '@/constant/global';
+import { BaseResponse } from '@/model/baseResponse';
+import { STUDY_SET_RESPONSE } from '@/model/studySetResponse';
+import useSWR from 'swr';
 
-const fetcher = (...args: any[]) => fetch(...args).then(res => res.json())
+// const fetcher = (...args: any[]) => {
+// 	console.log(args);
 
-const fetchStudysetByAmount = (amount: number) =>useSWR(BACKEND_URL+"/set/"+amount, fetcher)
+// 	return fetch(...args).then((res) => {
+// 		return res.json();
+// 	});
+// };
 
-const fetchAllStudyset = (amount: number) =>useSWR(BACKEND_URL+"/set/" , fetcher)
+const FetchStudysetByAmount = (amount?: number) =>
+	useSWR<BaseResponse<STUDY_SET_RESPONSE[]>, boolean>(`${amount}`, (amount: string) =>
+		getStydySetsAPI(amount)
+	);
 
-export { fetchStudysetByAmount };
+export { FetchStudysetByAmount };
