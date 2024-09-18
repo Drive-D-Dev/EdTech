@@ -1,6 +1,13 @@
 import React from "react";
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
+// Constants
+const timeUsed = "100"; 
+const totalTime = "120"; 
+const correctAnswers = 20;
+const wrongAnswers = 30;
+const correctPercentage =
+  100 * (correctAnswers / (correctAnswers + wrongAnswers));
 
 const TimerSummary = ({
   fullTime,
@@ -21,15 +28,13 @@ const TimerSummary = ({
     <div className="flex items-center justify-center">
       <div className="relative w-32 h-32">
         {/* Outer circle with progress */}
-        <div
-          className="w-full h-full rounded-full"
-          style={circleStyle}
-        />
+        <div className="w-full h-full rounded-full" style={circleStyle} />
         {/* Inner white circle */}
         <div className="absolute inset-3 bg-white rounded-full flex items-center justify-center">
           {/* Center text */}
           <div className="text-center">
-            <div className="text-xl font-bold">20:04</div>
+            <div className="text-xl font-bold">{elapsedTime}</div>{" "}
+            {/* Time used */}
             <div className="text-sm">นาที</div>
           </div>
         </div>
@@ -47,15 +52,23 @@ const CardSummary = () => {
       <CardContent>
         <div className="flex flex-row space-x-4">
           <div>
-            <TimerSummary fullTime={100} elapsedTime={40} />
+            <TimerSummary
+              fullTime={Number(totalTime)}
+              elapsedTime={Number(timeUsed)}
+            />
+            {/* Converted timeUsed and totalTime to numbers */}
           </div>
           <div className="flex flex-col space-y-2">
-            <div className="bg-gray-200 px-4 py-2 rounded-sm">ถูกต้อง 40%</div>
+            <div className="bg-gray-200 px-4 py-2 rounded-sm">
+              ถูกต้อง {correctPercentage.toFixed(2)}%
+            </div>
             <div className="flex flex-row space-x-2">
               <div className="bg-green-200 px-4 py-2 rounded-sm">
-                ถูก 20 ข้อ
+                ถูก {correctAnswers} ข้อ
               </div>
-              <div className="bg-red-200 px-4 py-2 rounded-sm">ผิด 30 ข้อ</div>
+              <div className="bg-red-200 px-4 py-2 rounded-sm">
+                ผิด {wrongAnswers} ข้อ
+              </div>
             </div>
           </div>
         </div>
