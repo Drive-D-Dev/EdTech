@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "./ui/button";
+import { useStore } from "@/app/(mock_exam)/mock/page";
 
 interface ChoiceButtonProps {
   id: string;
@@ -14,6 +15,7 @@ const ChoiceButton: React.FC<ChoiceButtonProps> = ({
   isSelected,
   onSelect,
 }) => {
+
   const handleClick = () => {
     onSelect(id);
   };

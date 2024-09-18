@@ -17,14 +17,24 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { create } from "zustand";
+
+export const useStore = create((set) => ({
+  answers: [],
+  setAnswer: (data) => {
+    set(() => ({ answers: data }));
+  },
+}))
 
 export default function ExamplePage() {
+
   const [selectedChoices, setSelectedChoices] = useState<{
     [questionId: string]: string | null;
   }>({});
   const [open, setOpen] = React.useState(false);
   const [showWarning, setShowWarning] = React.useState(false);
   const router = useRouter();
+  const setAnswer = useStore((state) => state.setAnswer)
 
   const handleSelect = (questionId: string, choiceId: string) => {
     setSelectedChoices((prev) => ({
@@ -37,6 +47,8 @@ export default function ExamplePage() {
     const unansweredQuestions = mockExam.some(
       (exam) => !selectedChoices[exam.id]
     );
+
+    setAnswer({ selectedChoices })
 
     if (unansweredQuestions) {
       setShowWarning(true);
@@ -132,9 +144,8 @@ export default function ExamplePage() {
                 <a
                   key={question.id}
                   href={`#question${index + 1}`}
-                  className={`flex items-center justify-center w-10 h-10 text-center rounded cursor-pointer ${
-                    selectedChoices[question.id] ? "bg-blue-300" : "bg-gray-300"
-                  }`}
+                  className={`flex items-center justify-center w-10 h-10 text-center rounded cursor-pointer ${selectedChoices[question.id] ? "bg-blue-300" : "bg-gray-300"
+                    }`}
                 >
                   <p className="text-black">{question.id}</p>
                 </a>
