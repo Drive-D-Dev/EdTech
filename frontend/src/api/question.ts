@@ -1,13 +1,15 @@
 import { Axios } from "@/lib/axiosConfig";
 import { BaseResponse } from "@/model/baseResponse";
 import { QuestionResponse } from "@/model/questionResponse";
-import { AxiosResponse } from "axios";
+import useSWR from "swr";
 
-const getQuestionAPI = async (setId: number) => {
-  const response = await Axios.get<BaseResponse<QuestionResponse>>(
+const fetcher = async (setId: number) => {
+  const response = await Axios.get<BaseResponse<QuestionResponse[]>>(
     `/question/fromSet/${setId}`
   );
   return response.data;
 };
+const getQuestionAPI = (setId: number) =>
+  useSWR([setId], ([setId]) => fetcher(setId));
 
 export { getQuestionAPI };
