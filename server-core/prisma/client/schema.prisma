@@ -9,11 +9,12 @@ datasource db {
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  email    String @unique
-  password String
-  name     String
-  role     Role
+  id             Int              @id @default(autoincrement())
+  email          String           @unique
+  password       String
+  name           String
+  role           Role
+  User_Study_Set User_Study_Set[]
 }
 
 enum Role {
@@ -22,14 +23,44 @@ enum Role {
 }
 
 model Choice {
-  id          Int      @id @default(autoincrement())
-  content     String   @db.Text
+  id          Int           @id @default(autoincrement())
+  content     String        @db.Text
   number      Int
   question_id Int
-  Question    Question @relation(fields: [question_id], references: [id], onUpdate: Restrict, onDelete: Cascade)
+  Question    Question      @relation(fields: [question_id], references: [id], onUpdate: Restrict, onDelete: Cascade)
   Answer      Answer[]
+  User_Answer User_Answer[]
 
   @@index([question_id], map: "Choice_Question_id_fk")
+}
+
+model User_Study_Set {
+  id          Int           @id @default(autoincrement())
+  user_id     Int
+  studyset_id Int
+  time        Int
+  User        User          @relation(fields: [user_id], references: [id], onUpdate: Restrict, onDelete: Cascade)
+  Study_Set   Study_Set     @relation(fields: [studyset_id], references: [id], onUpdate: Restrict, onDelete: Cascade)
+  User_Answer User_Answer[]
+
+  @@index([user_id], map: "User_Study_Set_User_id_fk")
+  @@index([studyset_id], map: "User_Study_Set_Study_Set_id_fk")
+}
+
+model User_Answer {
+  id               Int            @id @default(autoincrement())
+  user_StudySet_id Int
+  studyset_id      Int
+  question_id      Int
+  choice_id        Int
+  User_Study_Set   User_Study_Set @relation(fields: [user_StudySet_id], references: [id], onUpdate: Restrict, onDelete: Cascade)
+  Choice           Choice         @relation(fields: [choice_id], references: [id], onUpdate: Restrict, onDelete: Cascade)
+  Question         Question       @relation(fields: [question_id], references: [id], onUpdate: Restrict, onDelete: Cascade)
+
+  @@index([user_StudySet_id], map: "User_Answer_User_StudySet_id_fk")
+  @@index([studyset_id], map: "User_Answer_Study_Set_id_fk")
+  @@index([question_id], map: "User_Answer_Question_id_fk")
+  @@index([choice_id], map: "User_Answer_Choice_id_fk")
 }
 
 model Question {
@@ -40,6 +71,7 @@ model Question {
   Choice                   Choice[]
   Study_Set_Questions_List Study_Set_Questions_List[]
   Answer                   Answer[]
+  User_Answer              User_Answer[]
 }
 
 model Answer {
@@ -57,6 +89,7 @@ model Study_Set {
   label                    String                     @db.VarChar(255)
   description              String                     @db.Text
   Study_Set_Questions_List Study_Set_Questions_List[]
+  User_Study_Set           User_Study_Set[]
 }
 
 model Study_Set_Questions_List {
