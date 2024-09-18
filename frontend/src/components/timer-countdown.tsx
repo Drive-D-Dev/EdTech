@@ -50,7 +50,7 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({
         </div>
       </p>
       <div
-        className="absolute bottom-0 left-0 w-[62dvw] rounded"
+        className="absolute bottom-0 left-0 w-[67%] rounded"
         style={{ height: "10px", backgroundColor: "#f4f4f4" }}
       >
         <div

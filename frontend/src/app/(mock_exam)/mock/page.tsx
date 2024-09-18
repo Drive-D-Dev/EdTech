@@ -1,12 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ChoiceButton from "@/components/choicebutton";
 import CountdownTimer from "@/components/timer-countdown";
 import TwoRowLayout from "@/components/twolayout";
-import { mockExam } from "@/data/mockData";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-
+import { getQuestionAPI } from "@/api/question";
 import {
   Dialog,
   DialogContent,
@@ -20,35 +19,45 @@ import { create } from "zustand";
 
 export const useStore = create((set) => ({
   answers: [],
-  setAnswer: (data) => {
+  setAnswer: (data: any) => {
     set(() => ({ answers: data }));
   },
-}))
+}));
 
 export default function ExamplePage() {
-
   const [selectedChoices, setSelectedChoices] = useState<{
-    [questionId: string]: string | null;
+    [questionId: string]: number | null;
   }>({});
+
   const [open, setOpen] = React.useState(false);
   const [showWarning, setShowWarning] = React.useState(false);
   const router = useRouter();
-  const setAnswer = useStore((state) => state.setAnswer)
 
-  const handleSelect = (questionId: string, choiceId: string) => {
+  const { data, error, isLoading, mutate } = getQuestionAPI(107);
+
+  console.log(isLoading);
+
+  if (isLoading || !data) return <div>Loading</div>;
+
+  console.log(data);
+
+  const handleSelect = (questionId: number, choiceId: number) => {
     setSelectedChoices((prev) => ({
       ...prev,
       [questionId]: choiceId,
     }));
   };
 
+  const selectedCount = Object.keys(selectedChoices).filter(
+    (key) => selectedChoices[key]
+  ).length;
+
+  const totalQuestions = data.data.length;
+
   const handleFinishExam = () => {
-    const unansweredQuestions = mockExam.some(
+    const unansweredQuestions = data.data.some(
       (exam) => !selectedChoices[exam.id]
     );
-
-    setAnswer({ selectedChoices })
-
     if (unansweredQuestions) {
       setShowWarning(true);
       setOpen(false);
@@ -58,18 +67,8 @@ export default function ExamplePage() {
     }
   };
 
-  const selectedCount = Object.keys(selectedChoices).filter(
-    (key) => selectedChoices[key]
-  ).length;
-
-  const totalQuestions = mockExam.length;
-
   const navigateToResults = () => {
-    const queryParams = new URLSearchParams({
-      answers: JSON.stringify(selectedChoices),
-    }).toString();
-
-    router.push(`/mockanswer?${queryParams}`);
+    router.push(`/mockanswer`);
     setOpen(false);
   };
 
@@ -110,14 +109,12 @@ export default function ExamplePage() {
               <DialogTitle>Warning</DialogTitle>
             </DialogHeader>
             <DialogDescription>
-              You have unanswered questions. Are you sure you want to finish the
-              exam?
+              You have unanswered questions.
             </DialogDescription>
             <DialogFooter>
               <Button variant="outline" onClick={() => setShowWarning(false)}>
-                Cancel
+                OK
               </Button>
-              <Button onClick={navigateToResults}>Yes, finish</Button>
             </DialogFooter>
           </DialogContent>
         </Dialog>
@@ -139,14 +136,15 @@ export default function ExamplePage() {
               </p>
             </div>
             <div className="flex flex-row flex-wrap gap-3 mx-auto">
-              {mockExam.map((question, index) => (
+              {data.data.map((question, index) => (
                 <a
                   key={question.id}
                   href={`#question${index + 1}`}
-                  className={`flex items-center justify-center w-10 h-10 text-center rounded cursor-pointer ${selectedChoices[question.id] ? "bg-blue-300" : "bg-gray-300"
-                    }`}
+                  className={`flex items-center justify-center w-10 h-10 text-center rounded cursor-pointer ${
+                    selectedChoices[question.id] ? "bg-blue-300" : "bg-gray-300"
+                  }`}
                 >
-                  <p className="text-black">{question.id}</p>
+                  <p className="text-black">{index + 1}</p>
                 </a>
               ))}
             </div>
@@ -154,7 +152,7 @@ export default function ExamplePage() {
         }
         rightContent={
           <div className="space-y-4">
-            {mockExam.map((question, index) => (
+            {data.data.map((question, index) => (
               <div
                 key={question.id}
                 id={`question${index + 1}`}
@@ -168,20 +166,18 @@ export default function ExamplePage() {
                         className="flex items-center justify-center w-8 h-8 text-center rounded cursor-pointer"
                         style={{ backgroundColor: "#DB7801" }}
                       >
-                        <p className="text-background">{question.id}</p>
+                        <p className="text-background">{index + 1}</p>
                       </div>
-                      <p className="text-foreground ml-4">
-                        {question.question}
-                      </p>
+                      <p className="text-foreground ml-4">{question.content}</p>
                     </div>
                   </p>
                 </div>
                 <div className="w-full justify-center">
-                  {question.choice.map((choice) => (
+                  {question.Choice.map((choice) => (
                     <ChoiceButton
                       key={choice.id}
                       id={choice.id}
-                      label={choice.label}
+                      label={choice.content}
                       isSelected={selectedChoices[question.id] === choice.id}
                       onSelect={(id) => handleSelect(question.id, id)}
                     />

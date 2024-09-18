@@ -173,7 +173,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/sunthewhat/Documents/Code/Projects/ddev/edtech/server-core/prisma/schema.prisma",
+    "sourceFilePath": "/Users/melchanatan/Documents/WebDevelopment/EdTech/server-core/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
