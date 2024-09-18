@@ -13,7 +13,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { loginAPI } from "@/api/login";
+import { registerAPI } from "@/api/register";
 import { toast } from "sonner";
 import Link from "next/link";
 
@@ -28,7 +28,7 @@ export default function RegisterForm() {
     e.preventDefault();
 
     try {
-      const response = await loginAPI(email, password, name);
+      const response = await registerAPI(email, password, name);
       if (response.success) {
         router.push("/auth/login");
       } else {
