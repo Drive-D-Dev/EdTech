@@ -12,6 +12,9 @@ const StudySetWrapper = () => {
     fetchStudysetByAmount(studysetAmount);
 
   if (error) return <RetryButton retry={mutate} />;
+
+  console.log(data)
+
   if (isLoading)
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -21,16 +24,17 @@ const StudySetWrapper = () => {
       </div>
     );
 
+  const transformData = data.data ?? []
+
   if (!data || data?.success === false) return <RetryButton retry={mutate} />;
 
-  const mutatedData = data.data ?? []
   return (
     <>
       <h3 className="text-xl font-semibold mb-4">โจทย์สำหรับคุณ</h3>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {mutatedData.map((index) => (
-          <StudySetCard key={index} />
+        {transformData.map((studyset, index) => (
+          <StudySetCard key={index} title={studyset.label} id={studyset.id} />
         ))}
       </div>
       {studysetAmount < 16 && (

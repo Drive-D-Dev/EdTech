@@ -1,6 +1,7 @@
+"use client"
 import React from 'react';
 import { NAV_LINKS } from '@/constant/global';
-import { HiOutlineMenuAlt3 } from 'react-icons/hi';
+import { PanelsLeftBottom, Star, Menu } from "lucide-react";
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -14,6 +15,8 @@ import {
 } from '@/components/ui/sheet';
 import useIsMobile from '@/hooks/use-is-mobile';
 
+const customButtonStyle = "w-full flex justify-start items-center gap-2";
+
 export const NavbarMenu = () => {
 	const isMobile = useIsMobile();
 
@@ -25,9 +28,11 @@ export const NavbarMenu = () => {
 		<>
 			{NAV_LINKS.map((link, index: number) => (
 				<Link href={link.href} key={index}>
-					<Button variant='ghost'>{link.title}</Button>
+					<Button variant='ghost' className={customButtonStyle}>
+						{link.icon}{link.title}</Button>
 				</Link>
 			))}
+
 		</>
 	);
 };
@@ -35,8 +40,10 @@ export const NavbarMenu = () => {
 const MobileMenu = () => {
 	return (
 		<Sheet>
-			<SheetTrigger>
-				<HiOutlineMenuAlt3 className='text-2xl' />
+			<SheetTrigger asChild>
+				<Button size="icon" variant="ghost">
+					<Menu />
+				</Button>
 			</SheetTrigger>
 			<SheetContent side='right'>
 				<SheetHeader>
@@ -51,6 +58,7 @@ const MobileMenu = () => {
 						</Link>
 					))}
 				</div>
+
 			</SheetContent>
 		</Sheet>
 	);

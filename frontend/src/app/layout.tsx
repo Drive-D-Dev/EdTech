@@ -34,10 +34,9 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       >
         <div
           vaul-drawer-wrapper=""
-          className="flex flex-row max-w-screen-xl mx-auto px-6 py-4 h-screen gap-2"
+          className="flex flex-col sm:flex-row max-w-screen-xl mx-auto sm:px-6 px-2 sm:py-4 py-1 h-screen gap-4"
         >
           <NextAuthProvider session={session}>
-            {" "}
             <ThemeProvider
               attribute="class"
               defaultTheme="system"
@@ -45,7 +44,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
               disableTransitionOnChange
             >
               <SideNav />
-              <main className="bg-background w-full rounded-2xl min-h-full p-6 overflow-y-auto overflow-x-hidden">
+              <main className="bg-background w-full rounded-2xl min-h-full p-4 sm:p-6 overflow-y-auto overflow-x-hidden">
                 <ProfileNav />
                 {children}
                 <Toaster />

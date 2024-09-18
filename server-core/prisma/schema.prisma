@@ -26,7 +26,7 @@ model Choice {
   content     String   @db.Text
   number      Int
   question_id Int
-  Question    Question @relation(fields: [question_id], references: [id], onUpdate: Restrict)
+  Question    Question @relation(fields: [question_id], references: [id], onUpdate: Restrict, onDelete: Cascade)
   Answer      Answer[]
 
   @@index([question_id], map: "Choice_Question_id_fk")
@@ -36,7 +36,6 @@ model Question {
   id                       Int                        @id @default(autoincrement())
   content                  String                     @db.Text
   explanation              String                     @db.Text
-  accuracy_percentage      Decimal                    @db.Decimal(5, 2)
   Choice                   Choice[]
   Study_Set_Questions_List Study_Set_Questions_List[]
   Answer                   Answer[]
@@ -45,8 +44,8 @@ model Question {
 model Answer {
   question_id Int      @unique
   choice_id   Int
-  Question    Question @relation(fields: [question_id], references: [id], onUpdate: Restrict)
-  Choice      Choice   @relation(fields: [choice_id], references: [id], onUpdate: Restrict)
+  Question    Question @relation(fields: [question_id], references: [id], onUpdate: Restrict, onDelete: Cascade)
+  Choice      Choice   @relation(fields: [choice_id], references: [id], onUpdate: Restrict, onDelete: Cascade)
 
   @@index([question_id], map: "Answer_Question_id_fk")
   @@index([choice_id], map: "Answer_Choice_id_fk")
@@ -55,15 +54,16 @@ model Answer {
 model Study_Set {
   id                       Int                        @id @default(autoincrement())
   label                    String                     @db.VarChar(255)
+  description              String                     @db.Text
   Study_Set_Questions_List Study_Set_Questions_List[]
 }
 
 model Study_Set_Questions_List {
-  id          Int        @id @default(autoincrement())
+  id          Int       @id @default(autoincrement())
   question_id Int
-  studyset_id Int?
-  Question    Question   @relation(fields: [question_id], references: [id], onUpdate: Restrict)
-  Study_Set   Study_Set? @relation(fields: [studyset_id], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  studyset_id Int
+  Question    Question  @relation(fields: [question_id], references: [id], onUpdate: Restrict, onDelete: Cascade)
+  Study_Set   Study_Set @relation(fields: [studyset_id], references: [id], onUpdate: Restrict, onDelete: Cascade)
 
   @@index([question_id], map: "Study_Set_Questions_List_Question_id_fk")
   @@index([studyset_id], map: "Study_Set_Questions_List_Study_Set_id_fk")

@@ -3313,66 +3313,56 @@ export namespace Prisma {
 
   export type QuestionAvgAggregateOutputType = {
     id: number | null
-    accuracy_percentage: Decimal | null
   }
 
   export type QuestionSumAggregateOutputType = {
     id: number | null
-    accuracy_percentage: Decimal | null
   }
 
   export type QuestionMinAggregateOutputType = {
     id: number | null
     content: string | null
     explanation: string | null
-    accuracy_percentage: Decimal | null
   }
 
   export type QuestionMaxAggregateOutputType = {
     id: number | null
     content: string | null
     explanation: string | null
-    accuracy_percentage: Decimal | null
   }
 
   export type QuestionCountAggregateOutputType = {
     id: number
     content: number
     explanation: number
-    accuracy_percentage: number
     _all: number
   }
 
 
   export type QuestionAvgAggregateInputType = {
     id?: true
-    accuracy_percentage?: true
   }
 
   export type QuestionSumAggregateInputType = {
     id?: true
-    accuracy_percentage?: true
   }
 
   export type QuestionMinAggregateInputType = {
     id?: true
     content?: true
     explanation?: true
-    accuracy_percentage?: true
   }
 
   export type QuestionMaxAggregateInputType = {
     id?: true
     content?: true
     explanation?: true
-    accuracy_percentage?: true
   }
 
   export type QuestionCountAggregateInputType = {
     id?: true
     content?: true
     explanation?: true
-    accuracy_percentage?: true
     _all?: true
   }
 
@@ -3466,7 +3456,6 @@ export namespace Prisma {
     id: number
     content: string
     explanation: string
-    accuracy_percentage: Decimal
     _count: QuestionCountAggregateOutputType | null
     _avg: QuestionAvgAggregateOutputType | null
     _sum: QuestionSumAggregateOutputType | null
@@ -3492,7 +3481,6 @@ export namespace Prisma {
     id?: boolean
     content?: boolean
     explanation?: boolean
-    accuracy_percentage?: boolean
     Choice?: boolean | Question$ChoiceArgs<ExtArgs>
     Study_Set_Questions_List?: boolean | Question$Study_Set_Questions_ListArgs<ExtArgs>
     Answer?: boolean | Question$AnswerArgs<ExtArgs>
@@ -3503,14 +3491,12 @@ export namespace Prisma {
     id?: boolean
     content?: boolean
     explanation?: boolean
-    accuracy_percentage?: boolean
   }, ExtArgs["result"]["question"]>
 
   export type QuestionSelectScalar = {
     id?: boolean
     content?: boolean
     explanation?: boolean
-    accuracy_percentage?: boolean
   }
 
   export type QuestionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3532,7 +3518,6 @@ export namespace Prisma {
       id: number
       content: string
       explanation: string
-      accuracy_percentage: Prisma.Decimal
     }, ExtArgs["result"]["question"]>
     composites: {}
   }
@@ -3932,7 +3917,6 @@ export namespace Prisma {
     readonly id: FieldRef<"Question", 'Int'>
     readonly content: FieldRef<"Question", 'String'>
     readonly explanation: FieldRef<"Question", 'String'>
-    readonly accuracy_percentage: FieldRef<"Question", 'Decimal'>
   }
     
 
@@ -5285,16 +5269,19 @@ export namespace Prisma {
   export type Study_SetMinAggregateOutputType = {
     id: number | null
     label: string | null
+    description: string | null
   }
 
   export type Study_SetMaxAggregateOutputType = {
     id: number | null
     label: string | null
+    description: string | null
   }
 
   export type Study_SetCountAggregateOutputType = {
     id: number
     label: number
+    description: number
     _all: number
   }
 
@@ -5310,16 +5297,19 @@ export namespace Prisma {
   export type Study_SetMinAggregateInputType = {
     id?: true
     label?: true
+    description?: true
   }
 
   export type Study_SetMaxAggregateInputType = {
     id?: true
     label?: true
+    description?: true
   }
 
   export type Study_SetCountAggregateInputType = {
     id?: true
     label?: true
+    description?: true
     _all?: true
   }
 
@@ -5412,6 +5402,7 @@ export namespace Prisma {
   export type Study_SetGroupByOutputType = {
     id: number
     label: string
+    description: string
     _count: Study_SetCountAggregateOutputType | null
     _avg: Study_SetAvgAggregateOutputType | null
     _sum: Study_SetSumAggregateOutputType | null
@@ -5436,6 +5427,7 @@ export namespace Prisma {
   export type Study_SetSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     label?: boolean
+    description?: boolean
     Study_Set_Questions_List?: boolean | Study_Set$Study_Set_Questions_ListArgs<ExtArgs>
     _count?: boolean | Study_SetCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["study_Set"]>
@@ -5443,11 +5435,13 @@ export namespace Prisma {
   export type Study_SetSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     label?: boolean
+    description?: boolean
   }, ExtArgs["result"]["study_Set"]>
 
   export type Study_SetSelectScalar = {
     id?: boolean
     label?: boolean
+    description?: boolean
   }
 
   export type Study_SetInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5464,6 +5458,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       label: string
+      description: string
     }, ExtArgs["result"]["study_Set"]>
     composites: {}
   }
@@ -5860,6 +5855,7 @@ export namespace Prisma {
   interface Study_SetFieldRefs {
     readonly id: FieldRef<"Study_Set", 'Int'>
     readonly label: FieldRef<"Study_Set", 'String'>
+    readonly description: FieldRef<"Study_Set", 'String'>
   }
     
 
@@ -6372,7 +6368,7 @@ export namespace Prisma {
   export type Study_Set_Questions_ListGroupByOutputType = {
     id: number
     question_id: number
-    studyset_id: number | null
+    studyset_id: number
     _count: Study_Set_Questions_ListCountAggregateOutputType | null
     _avg: Study_Set_Questions_ListAvgAggregateOutputType | null
     _sum: Study_Set_Questions_ListSumAggregateOutputType | null
@@ -6399,7 +6395,7 @@ export namespace Prisma {
     question_id?: boolean
     studyset_id?: boolean
     Question?: boolean | QuestionDefaultArgs<ExtArgs>
-    Study_Set?: boolean | Study_Set_Questions_List$Study_SetArgs<ExtArgs>
+    Study_Set?: boolean | Study_SetDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["study_Set_Questions_List"]>
 
   export type Study_Set_Questions_ListSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6407,7 +6403,7 @@ export namespace Prisma {
     question_id?: boolean
     studyset_id?: boolean
     Question?: boolean | QuestionDefaultArgs<ExtArgs>
-    Study_Set?: boolean | Study_Set_Questions_List$Study_SetArgs<ExtArgs>
+    Study_Set?: boolean | Study_SetDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["study_Set_Questions_List"]>
 
   export type Study_Set_Questions_ListSelectScalar = {
@@ -6418,23 +6414,23 @@ export namespace Prisma {
 
   export type Study_Set_Questions_ListInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Question?: boolean | QuestionDefaultArgs<ExtArgs>
-    Study_Set?: boolean | Study_Set_Questions_List$Study_SetArgs<ExtArgs>
+    Study_Set?: boolean | Study_SetDefaultArgs<ExtArgs>
   }
   export type Study_Set_Questions_ListIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Question?: boolean | QuestionDefaultArgs<ExtArgs>
-    Study_Set?: boolean | Study_Set_Questions_List$Study_SetArgs<ExtArgs>
+    Study_Set?: boolean | Study_SetDefaultArgs<ExtArgs>
   }
 
   export type $Study_Set_Questions_ListPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Study_Set_Questions_List"
     objects: {
       Question: Prisma.$QuestionPayload<ExtArgs>
-      Study_Set: Prisma.$Study_SetPayload<ExtArgs> | null
+      Study_Set: Prisma.$Study_SetPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       question_id: number
-      studyset_id: number | null
+      studyset_id: number
     }, ExtArgs["result"]["study_Set_Questions_List"]>
     composites: {}
   }
@@ -6800,7 +6796,7 @@ export namespace Prisma {
   export interface Prisma__Study_Set_Questions_ListClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     Question<T extends QuestionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, QuestionDefaultArgs<ExtArgs>>): Prisma__QuestionClient<$Result.GetResult<Prisma.$QuestionPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
-    Study_Set<T extends Study_Set_Questions_List$Study_SetArgs<ExtArgs> = {}>(args?: Subset<T, Study_Set_Questions_List$Study_SetArgs<ExtArgs>>): Prisma__Study_SetClient<$Result.GetResult<Prisma.$Study_SetPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    Study_Set<T extends Study_SetDefaultArgs<ExtArgs> = {}>(args?: Subset<T, Study_SetDefaultArgs<ExtArgs>>): Prisma__Study_SetClient<$Result.GetResult<Prisma.$Study_SetPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7151,21 +7147,6 @@ export namespace Prisma {
   }
 
   /**
-   * Study_Set_Questions_List.Study_Set
-   */
-  export type Study_Set_Questions_List$Study_SetArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Study_Set
-     */
-    select?: Study_SetSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: Study_SetInclude<ExtArgs> | null
-    where?: Study_SetWhereInput
-  }
-
-  /**
    * Study_Set_Questions_List without action
    */
   export type Study_Set_Questions_ListDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7218,8 +7199,7 @@ export namespace Prisma {
   export const QuestionScalarFieldEnum: {
     id: 'id',
     content: 'content',
-    explanation: 'explanation',
-    accuracy_percentage: 'accuracy_percentage'
+    explanation: 'explanation'
   };
 
   export type QuestionScalarFieldEnum = (typeof QuestionScalarFieldEnum)[keyof typeof QuestionScalarFieldEnum]
@@ -7235,7 +7215,8 @@ export namespace Prisma {
 
   export const Study_SetScalarFieldEnum: {
     id: 'id',
-    label: 'label'
+    label: 'label',
+    description: 'description'
   };
 
   export type Study_SetScalarFieldEnum = (typeof Study_SetScalarFieldEnum)[keyof typeof Study_SetScalarFieldEnum]
@@ -7264,14 +7245,6 @@ export namespace Prisma {
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
-
-
-  export const NullsOrder: {
-    first: 'first',
-    last: 'last'
-  };
-
-  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -7318,20 +7291,6 @@ export namespace Prisma {
    * Reference to a field of type 'Role[]'
    */
   export type ListEnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Decimal'
-   */
-  export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
-    
-
-
-  /**
-   * Reference to a field of type 'Decimal[]'
-   */
-  export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
     
 
 
@@ -7468,7 +7427,6 @@ export namespace Prisma {
     id?: IntFilter<"Question"> | number
     content?: StringFilter<"Question"> | string
     explanation?: StringFilter<"Question"> | string
-    accuracy_percentage?: DecimalFilter<"Question"> | Decimal | DecimalJsLike | number | string
     Choice?: ChoiceListRelationFilter
     Study_Set_Questions_List?: Study_Set_Questions_ListListRelationFilter
     Answer?: AnswerListRelationFilter
@@ -7478,7 +7436,6 @@ export namespace Prisma {
     id?: SortOrder
     content?: SortOrder
     explanation?: SortOrder
-    accuracy_percentage?: SortOrder
     Choice?: ChoiceOrderByRelationAggregateInput
     Study_Set_Questions_List?: Study_Set_Questions_ListOrderByRelationAggregateInput
     Answer?: AnswerOrderByRelationAggregateInput
@@ -7491,7 +7448,6 @@ export namespace Prisma {
     NOT?: QuestionWhereInput | QuestionWhereInput[]
     content?: StringFilter<"Question"> | string
     explanation?: StringFilter<"Question"> | string
-    accuracy_percentage?: DecimalFilter<"Question"> | Decimal | DecimalJsLike | number | string
     Choice?: ChoiceListRelationFilter
     Study_Set_Questions_List?: Study_Set_Questions_ListListRelationFilter
     Answer?: AnswerListRelationFilter
@@ -7501,7 +7457,6 @@ export namespace Prisma {
     id?: SortOrder
     content?: SortOrder
     explanation?: SortOrder
-    accuracy_percentage?: SortOrder
     _count?: QuestionCountOrderByAggregateInput
     _avg?: QuestionAvgOrderByAggregateInput
     _max?: QuestionMaxOrderByAggregateInput
@@ -7516,7 +7471,6 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Question"> | number
     content?: StringWithAggregatesFilter<"Question"> | string
     explanation?: StringWithAggregatesFilter<"Question"> | string
-    accuracy_percentage?: DecimalWithAggregatesFilter<"Question"> | Decimal | DecimalJsLike | number | string
   }
 
   export type AnswerWhereInput = {
@@ -7570,12 +7524,14 @@ export namespace Prisma {
     NOT?: Study_SetWhereInput | Study_SetWhereInput[]
     id?: IntFilter<"Study_Set"> | number
     label?: StringFilter<"Study_Set"> | string
+    description?: StringFilter<"Study_Set"> | string
     Study_Set_Questions_List?: Study_Set_Questions_ListListRelationFilter
   }
 
   export type Study_SetOrderByWithRelationInput = {
     id?: SortOrder
     label?: SortOrder
+    description?: SortOrder
     Study_Set_Questions_List?: Study_Set_Questions_ListOrderByRelationAggregateInput
   }
 
@@ -7585,12 +7541,14 @@ export namespace Prisma {
     OR?: Study_SetWhereInput[]
     NOT?: Study_SetWhereInput | Study_SetWhereInput[]
     label?: StringFilter<"Study_Set"> | string
+    description?: StringFilter<"Study_Set"> | string
     Study_Set_Questions_List?: Study_Set_Questions_ListListRelationFilter
   }, "id">
 
   export type Study_SetOrderByWithAggregationInput = {
     id?: SortOrder
     label?: SortOrder
+    description?: SortOrder
     _count?: Study_SetCountOrderByAggregateInput
     _avg?: Study_SetAvgOrderByAggregateInput
     _max?: Study_SetMaxOrderByAggregateInput
@@ -7604,6 +7562,7 @@ export namespace Prisma {
     NOT?: Study_SetScalarWhereWithAggregatesInput | Study_SetScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Study_Set"> | number
     label?: StringWithAggregatesFilter<"Study_Set"> | string
+    description?: StringWithAggregatesFilter<"Study_Set"> | string
   }
 
   export type Study_Set_Questions_ListWhereInput = {
@@ -7612,15 +7571,15 @@ export namespace Prisma {
     NOT?: Study_Set_Questions_ListWhereInput | Study_Set_Questions_ListWhereInput[]
     id?: IntFilter<"Study_Set_Questions_List"> | number
     question_id?: IntFilter<"Study_Set_Questions_List"> | number
-    studyset_id?: IntNullableFilter<"Study_Set_Questions_List"> | number | null
+    studyset_id?: IntFilter<"Study_Set_Questions_List"> | number
     Question?: XOR<QuestionRelationFilter, QuestionWhereInput>
-    Study_Set?: XOR<Study_SetNullableRelationFilter, Study_SetWhereInput> | null
+    Study_Set?: XOR<Study_SetRelationFilter, Study_SetWhereInput>
   }
 
   export type Study_Set_Questions_ListOrderByWithRelationInput = {
     id?: SortOrder
     question_id?: SortOrder
-    studyset_id?: SortOrderInput | SortOrder
+    studyset_id?: SortOrder
     Question?: QuestionOrderByWithRelationInput
     Study_Set?: Study_SetOrderByWithRelationInput
   }
@@ -7631,15 +7590,15 @@ export namespace Prisma {
     OR?: Study_Set_Questions_ListWhereInput[]
     NOT?: Study_Set_Questions_ListWhereInput | Study_Set_Questions_ListWhereInput[]
     question_id?: IntFilter<"Study_Set_Questions_List"> | number
-    studyset_id?: IntNullableFilter<"Study_Set_Questions_List"> | number | null
+    studyset_id?: IntFilter<"Study_Set_Questions_List"> | number
     Question?: XOR<QuestionRelationFilter, QuestionWhereInput>
-    Study_Set?: XOR<Study_SetNullableRelationFilter, Study_SetWhereInput> | null
+    Study_Set?: XOR<Study_SetRelationFilter, Study_SetWhereInput>
   }, "id">
 
   export type Study_Set_Questions_ListOrderByWithAggregationInput = {
     id?: SortOrder
     question_id?: SortOrder
-    studyset_id?: SortOrderInput | SortOrder
+    studyset_id?: SortOrder
     _count?: Study_Set_Questions_ListCountOrderByAggregateInput
     _avg?: Study_Set_Questions_ListAvgOrderByAggregateInput
     _max?: Study_Set_Questions_ListMaxOrderByAggregateInput
@@ -7653,7 +7612,7 @@ export namespace Prisma {
     NOT?: Study_Set_Questions_ListScalarWhereWithAggregatesInput | Study_Set_Questions_ListScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Study_Set_Questions_List"> | number
     question_id?: IntWithAggregatesFilter<"Study_Set_Questions_List"> | number
-    studyset_id?: IntNullableWithAggregatesFilter<"Study_Set_Questions_List"> | number | null
+    studyset_id?: IntWithAggregatesFilter<"Study_Set_Questions_List"> | number
   }
 
   export type UserCreateInput = {
@@ -7761,7 +7720,6 @@ export namespace Prisma {
   export type QuestionCreateInput = {
     content: string
     explanation: string
-    accuracy_percentage: Decimal | DecimalJsLike | number | string
     Choice?: ChoiceCreateNestedManyWithoutQuestionInput
     Study_Set_Questions_List?: Study_Set_Questions_ListCreateNestedManyWithoutQuestionInput
     Answer?: AnswerCreateNestedManyWithoutQuestionInput
@@ -7771,7 +7729,6 @@ export namespace Prisma {
     id?: number
     content: string
     explanation: string
-    accuracy_percentage: Decimal | DecimalJsLike | number | string
     Choice?: ChoiceUncheckedCreateNestedManyWithoutQuestionInput
     Study_Set_Questions_List?: Study_Set_Questions_ListUncheckedCreateNestedManyWithoutQuestionInput
     Answer?: AnswerUncheckedCreateNestedManyWithoutQuestionInput
@@ -7780,7 +7737,6 @@ export namespace Prisma {
   export type QuestionUpdateInput = {
     content?: StringFieldUpdateOperationsInput | string
     explanation?: StringFieldUpdateOperationsInput | string
-    accuracy_percentage?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     Choice?: ChoiceUpdateManyWithoutQuestionNestedInput
     Study_Set_Questions_List?: Study_Set_Questions_ListUpdateManyWithoutQuestionNestedInput
     Answer?: AnswerUpdateManyWithoutQuestionNestedInput
@@ -7790,7 +7746,6 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     explanation?: StringFieldUpdateOperationsInput | string
-    accuracy_percentage?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     Choice?: ChoiceUncheckedUpdateManyWithoutQuestionNestedInput
     Study_Set_Questions_List?: Study_Set_Questions_ListUncheckedUpdateManyWithoutQuestionNestedInput
     Answer?: AnswerUncheckedUpdateManyWithoutQuestionNestedInput
@@ -7800,20 +7755,17 @@ export namespace Prisma {
     id?: number
     content: string
     explanation: string
-    accuracy_percentage: Decimal | DecimalJsLike | number | string
   }
 
   export type QuestionUpdateManyMutationInput = {
     content?: StringFieldUpdateOperationsInput | string
     explanation?: StringFieldUpdateOperationsInput | string
-    accuracy_percentage?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
   }
 
   export type QuestionUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     explanation?: StringFieldUpdateOperationsInput | string
-    accuracy_percentage?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
   }
 
   export type AnswerCreateInput = {
@@ -7852,66 +7804,73 @@ export namespace Prisma {
 
   export type Study_SetCreateInput = {
     label: string
+    description: string
     Study_Set_Questions_List?: Study_Set_Questions_ListCreateNestedManyWithoutStudy_SetInput
   }
 
   export type Study_SetUncheckedCreateInput = {
     id?: number
     label: string
+    description: string
     Study_Set_Questions_List?: Study_Set_Questions_ListUncheckedCreateNestedManyWithoutStudy_SetInput
   }
 
   export type Study_SetUpdateInput = {
     label?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
     Study_Set_Questions_List?: Study_Set_Questions_ListUpdateManyWithoutStudy_SetNestedInput
   }
 
   export type Study_SetUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     label?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
     Study_Set_Questions_List?: Study_Set_Questions_ListUncheckedUpdateManyWithoutStudy_SetNestedInput
   }
 
   export type Study_SetCreateManyInput = {
     id?: number
     label: string
+    description: string
   }
 
   export type Study_SetUpdateManyMutationInput = {
     label?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
   }
 
   export type Study_SetUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     label?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
   }
 
   export type Study_Set_Questions_ListCreateInput = {
     Question: QuestionCreateNestedOneWithoutStudy_Set_Questions_ListInput
-    Study_Set?: Study_SetCreateNestedOneWithoutStudy_Set_Questions_ListInput
+    Study_Set: Study_SetCreateNestedOneWithoutStudy_Set_Questions_ListInput
   }
 
   export type Study_Set_Questions_ListUncheckedCreateInput = {
     id?: number
     question_id: number
-    studyset_id?: number | null
+    studyset_id: number
   }
 
   export type Study_Set_Questions_ListUpdateInput = {
     Question?: QuestionUpdateOneRequiredWithoutStudy_Set_Questions_ListNestedInput
-    Study_Set?: Study_SetUpdateOneWithoutStudy_Set_Questions_ListNestedInput
+    Study_Set?: Study_SetUpdateOneRequiredWithoutStudy_Set_Questions_ListNestedInput
   }
 
   export type Study_Set_Questions_ListUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     question_id?: IntFieldUpdateOperationsInput | number
-    studyset_id?: NullableIntFieldUpdateOperationsInput | number | null
+    studyset_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type Study_Set_Questions_ListCreateManyInput = {
     id?: number
     question_id: number
-    studyset_id?: number | null
+    studyset_id: number
   }
 
   export type Study_Set_Questions_ListUpdateManyMutationInput = {
@@ -7921,7 +7880,7 @@ export namespace Prisma {
   export type Study_Set_Questions_ListUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     question_id?: IntFieldUpdateOperationsInput | number
-    studyset_id?: NullableIntFieldUpdateOperationsInput | number | null
+    studyset_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -8081,17 +8040,6 @@ export namespace Prisma {
     question_id?: SortOrder
   }
 
-  export type DecimalFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-  }
-
   export type ChoiceListRelationFilter = {
     every?: ChoiceWhereInput
     some?: ChoiceWhereInput
@@ -8116,47 +8064,26 @@ export namespace Prisma {
     id?: SortOrder
     content?: SortOrder
     explanation?: SortOrder
-    accuracy_percentage?: SortOrder
   }
 
   export type QuestionAvgOrderByAggregateInput = {
     id?: SortOrder
-    accuracy_percentage?: SortOrder
   }
 
   export type QuestionMaxOrderByAggregateInput = {
     id?: SortOrder
     content?: SortOrder
     explanation?: SortOrder
-    accuracy_percentage?: SortOrder
   }
 
   export type QuestionMinOrderByAggregateInput = {
     id?: SortOrder
     content?: SortOrder
     explanation?: SortOrder
-    accuracy_percentage?: SortOrder
   }
 
   export type QuestionSumOrderByAggregateInput = {
     id?: SortOrder
-    accuracy_percentage?: SortOrder
-  }
-
-  export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedDecimalFilter<$PrismaModel>
-    _sum?: NestedDecimalFilter<$PrismaModel>
-    _min?: NestedDecimalFilter<$PrismaModel>
-    _max?: NestedDecimalFilter<$PrismaModel>
   }
 
   export type ChoiceRelationFilter = {
@@ -8192,6 +8119,7 @@ export namespace Prisma {
   export type Study_SetCountOrderByAggregateInput = {
     id?: SortOrder
     label?: SortOrder
+    description?: SortOrder
   }
 
   export type Study_SetAvgOrderByAggregateInput = {
@@ -8201,36 +8129,22 @@ export namespace Prisma {
   export type Study_SetMaxOrderByAggregateInput = {
     id?: SortOrder
     label?: SortOrder
+    description?: SortOrder
   }
 
   export type Study_SetMinOrderByAggregateInput = {
     id?: SortOrder
     label?: SortOrder
+    description?: SortOrder
   }
 
   export type Study_SetSumOrderByAggregateInput = {
     id?: SortOrder
   }
 
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type Study_SetNullableRelationFilter = {
-    is?: Study_SetWhereInput | null
-    isNot?: Study_SetWhereInput | null
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
+  export type Study_SetRelationFilter = {
+    is?: Study_SetWhereInput
+    isNot?: Study_SetWhereInput
   }
 
   export type Study_Set_Questions_ListCountOrderByAggregateInput = {
@@ -8261,22 +8175,6 @@ export namespace Prisma {
     id?: SortOrder
     question_id?: SortOrder
     studyset_id?: SortOrder
-  }
-
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -8391,14 +8289,6 @@ export namespace Prisma {
     connectOrCreate?: AnswerCreateOrConnectWithoutQuestionInput | AnswerCreateOrConnectWithoutQuestionInput[]
     createMany?: AnswerCreateManyQuestionInputEnvelope
     connect?: AnswerWhereUniqueInput | AnswerWhereUniqueInput[]
-  }
-
-  export type DecimalFieldUpdateOperationsInput = {
-    set?: Decimal | DecimalJsLike | number | string
-    increment?: Decimal | DecimalJsLike | number | string
-    decrement?: Decimal | DecimalJsLike | number | string
-    multiply?: Decimal | DecimalJsLike | number | string
-    divide?: Decimal | DecimalJsLike | number | string
   }
 
   export type ChoiceUpdateManyWithoutQuestionNestedInput = {
@@ -8575,22 +8465,12 @@ export namespace Prisma {
     update?: XOR<XOR<QuestionUpdateToOneWithWhereWithoutStudy_Set_Questions_ListInput, QuestionUpdateWithoutStudy_Set_Questions_ListInput>, QuestionUncheckedUpdateWithoutStudy_Set_Questions_ListInput>
   }
 
-  export type Study_SetUpdateOneWithoutStudy_Set_Questions_ListNestedInput = {
+  export type Study_SetUpdateOneRequiredWithoutStudy_Set_Questions_ListNestedInput = {
     create?: XOR<Study_SetCreateWithoutStudy_Set_Questions_ListInput, Study_SetUncheckedCreateWithoutStudy_Set_Questions_ListInput>
     connectOrCreate?: Study_SetCreateOrConnectWithoutStudy_Set_Questions_ListInput
     upsert?: Study_SetUpsertWithoutStudy_Set_Questions_ListInput
-    disconnect?: Study_SetWhereInput | boolean
-    delete?: Study_SetWhereInput | boolean
     connect?: Study_SetWhereUniqueInput
     update?: XOR<XOR<Study_SetUpdateToOneWithWhereWithoutStudy_Set_Questions_ListInput, Study_SetUpdateWithoutStudy_Set_Questions_ListInput>, Study_SetUncheckedUpdateWithoutStudy_Set_Questions_ListInput>
-  }
-
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -8679,75 +8559,9 @@ export namespace Prisma {
     _max?: NestedEnumRoleFilter<$PrismaModel>
   }
 
-  export type NestedDecimalFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-  }
-
-  export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedDecimalFilter<$PrismaModel>
-    _sum?: NestedDecimalFilter<$PrismaModel>
-    _min?: NestedDecimalFilter<$PrismaModel>
-    _max?: NestedDecimalFilter<$PrismaModel>
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
   export type QuestionCreateWithoutChoiceInput = {
     content: string
     explanation: string
-    accuracy_percentage: Decimal | DecimalJsLike | number | string
     Study_Set_Questions_List?: Study_Set_Questions_ListCreateNestedManyWithoutQuestionInput
     Answer?: AnswerCreateNestedManyWithoutQuestionInput
   }
@@ -8756,7 +8570,6 @@ export namespace Prisma {
     id?: number
     content: string
     explanation: string
-    accuracy_percentage: Decimal | DecimalJsLike | number | string
     Study_Set_Questions_List?: Study_Set_Questions_ListUncheckedCreateNestedManyWithoutQuestionInput
     Answer?: AnswerUncheckedCreateNestedManyWithoutQuestionInput
   }
@@ -8798,7 +8611,6 @@ export namespace Prisma {
   export type QuestionUpdateWithoutChoiceInput = {
     content?: StringFieldUpdateOperationsInput | string
     explanation?: StringFieldUpdateOperationsInput | string
-    accuracy_percentage?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     Study_Set_Questions_List?: Study_Set_Questions_ListUpdateManyWithoutQuestionNestedInput
     Answer?: AnswerUpdateManyWithoutQuestionNestedInput
   }
@@ -8807,7 +8619,6 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     explanation?: StringFieldUpdateOperationsInput | string
-    accuracy_percentage?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     Study_Set_Questions_List?: Study_Set_Questions_ListUncheckedUpdateManyWithoutQuestionNestedInput
     Answer?: AnswerUncheckedUpdateManyWithoutQuestionNestedInput
   }
@@ -8860,12 +8671,12 @@ export namespace Prisma {
   }
 
   export type Study_Set_Questions_ListCreateWithoutQuestionInput = {
-    Study_Set?: Study_SetCreateNestedOneWithoutStudy_Set_Questions_ListInput
+    Study_Set: Study_SetCreateNestedOneWithoutStudy_Set_Questions_ListInput
   }
 
   export type Study_Set_Questions_ListUncheckedCreateWithoutQuestionInput = {
     id?: number
-    studyset_id?: number | null
+    studyset_id: number
   }
 
   export type Study_Set_Questions_ListCreateOrConnectWithoutQuestionInput = {
@@ -8944,7 +8755,7 @@ export namespace Prisma {
     NOT?: Study_Set_Questions_ListScalarWhereInput | Study_Set_Questions_ListScalarWhereInput[]
     id?: IntFilter<"Study_Set_Questions_List"> | number
     question_id?: IntFilter<"Study_Set_Questions_List"> | number
-    studyset_id?: IntNullableFilter<"Study_Set_Questions_List"> | number | null
+    studyset_id?: IntFilter<"Study_Set_Questions_List"> | number
   }
 
   export type AnswerUpsertWithWhereUniqueWithoutQuestionInput = {
@@ -8966,7 +8777,6 @@ export namespace Prisma {
   export type QuestionCreateWithoutAnswerInput = {
     content: string
     explanation: string
-    accuracy_percentage: Decimal | DecimalJsLike | number | string
     Choice?: ChoiceCreateNestedManyWithoutQuestionInput
     Study_Set_Questions_List?: Study_Set_Questions_ListCreateNestedManyWithoutQuestionInput
   }
@@ -8975,7 +8785,6 @@ export namespace Prisma {
     id?: number
     content: string
     explanation: string
-    accuracy_percentage: Decimal | DecimalJsLike | number | string
     Choice?: ChoiceUncheckedCreateNestedManyWithoutQuestionInput
     Study_Set_Questions_List?: Study_Set_Questions_ListUncheckedCreateNestedManyWithoutQuestionInput
   }
@@ -9017,7 +8826,6 @@ export namespace Prisma {
   export type QuestionUpdateWithoutAnswerInput = {
     content?: StringFieldUpdateOperationsInput | string
     explanation?: StringFieldUpdateOperationsInput | string
-    accuracy_percentage?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     Choice?: ChoiceUpdateManyWithoutQuestionNestedInput
     Study_Set_Questions_List?: Study_Set_Questions_ListUpdateManyWithoutQuestionNestedInput
   }
@@ -9026,7 +8834,6 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     explanation?: StringFieldUpdateOperationsInput | string
-    accuracy_percentage?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     Choice?: ChoiceUncheckedUpdateManyWithoutQuestionNestedInput
     Study_Set_Questions_List?: Study_Set_Questions_ListUncheckedUpdateManyWithoutQuestionNestedInput
   }
@@ -9093,7 +8900,6 @@ export namespace Prisma {
   export type QuestionCreateWithoutStudy_Set_Questions_ListInput = {
     content: string
     explanation: string
-    accuracy_percentage: Decimal | DecimalJsLike | number | string
     Choice?: ChoiceCreateNestedManyWithoutQuestionInput
     Answer?: AnswerCreateNestedManyWithoutQuestionInput
   }
@@ -9102,7 +8908,6 @@ export namespace Prisma {
     id?: number
     content: string
     explanation: string
-    accuracy_percentage: Decimal | DecimalJsLike | number | string
     Choice?: ChoiceUncheckedCreateNestedManyWithoutQuestionInput
     Answer?: AnswerUncheckedCreateNestedManyWithoutQuestionInput
   }
@@ -9114,11 +8919,13 @@ export namespace Prisma {
 
   export type Study_SetCreateWithoutStudy_Set_Questions_ListInput = {
     label: string
+    description: string
   }
 
   export type Study_SetUncheckedCreateWithoutStudy_Set_Questions_ListInput = {
     id?: number
     label: string
+    description: string
   }
 
   export type Study_SetCreateOrConnectWithoutStudy_Set_Questions_ListInput = {
@@ -9140,7 +8947,6 @@ export namespace Prisma {
   export type QuestionUpdateWithoutStudy_Set_Questions_ListInput = {
     content?: StringFieldUpdateOperationsInput | string
     explanation?: StringFieldUpdateOperationsInput | string
-    accuracy_percentage?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     Choice?: ChoiceUpdateManyWithoutQuestionNestedInput
     Answer?: AnswerUpdateManyWithoutQuestionNestedInput
   }
@@ -9149,7 +8955,6 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     explanation?: StringFieldUpdateOperationsInput | string
-    accuracy_percentage?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     Choice?: ChoiceUncheckedUpdateManyWithoutQuestionNestedInput
     Answer?: AnswerUncheckedUpdateManyWithoutQuestionNestedInput
   }
@@ -9167,11 +8972,13 @@ export namespace Prisma {
 
   export type Study_SetUpdateWithoutStudy_Set_Questions_ListInput = {
     label?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
   }
 
   export type Study_SetUncheckedUpdateWithoutStudy_Set_Questions_ListInput = {
     id?: IntFieldUpdateOperationsInput | number
     label?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
   }
 
   export type AnswerCreateManyChoiceInput = {
@@ -9198,7 +9005,7 @@ export namespace Prisma {
 
   export type Study_Set_Questions_ListCreateManyQuestionInput = {
     id?: number
-    studyset_id?: number | null
+    studyset_id: number
   }
 
   export type AnswerCreateManyQuestionInput = {
@@ -9225,17 +9032,17 @@ export namespace Prisma {
   }
 
   export type Study_Set_Questions_ListUpdateWithoutQuestionInput = {
-    Study_Set?: Study_SetUpdateOneWithoutStudy_Set_Questions_ListNestedInput
+    Study_Set?: Study_SetUpdateOneRequiredWithoutStudy_Set_Questions_ListNestedInput
   }
 
   export type Study_Set_Questions_ListUncheckedUpdateWithoutQuestionInput = {
     id?: IntFieldUpdateOperationsInput | number
-    studyset_id?: NullableIntFieldUpdateOperationsInput | number | null
+    studyset_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type Study_Set_Questions_ListUncheckedUpdateManyWithoutQuestionInput = {
     id?: IntFieldUpdateOperationsInput | number
-    studyset_id?: NullableIntFieldUpdateOperationsInput | number | null
+    studyset_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type AnswerUpdateWithoutQuestionInput = {

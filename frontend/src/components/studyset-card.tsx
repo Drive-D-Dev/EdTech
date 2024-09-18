@@ -9,15 +9,31 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useRouter } from "next/navigation"
 
-const StudySetCard = () => {
+const StudySetCard = ({ id, title }) => {
+  const router = useRouter()
+
+  function gotoPractice() {
+    router.push('/practice')
+  }
+
+  function gotoExam() {
+    router.push('/mock')
+
+  }
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-lg">ชุดข้อสอบจำลองชุดที่ </CardTitle>
+        <CardTitle className="text-lg">{title} </CardTitle>
         <div className="flex items-center">
           <span className="text-sm text-gray-500">คำถาม 72 ข้อ</span>
-          <Star className="h-4 w-4 text-yellow-400 ml-2" />
+          <div className="flex ml-auto">
+            <Star className="h-4 w-4 text-yellow-400 ml-2" />
+            <Star className="h-4 w-4 text-yellow-400 ml-2" />
+            <Star className="h-4 w-4 text-yellow-400 ml-2" />
+          </div>
+
         </div>
       </CardHeader>
       <CardContent>
@@ -50,8 +66,8 @@ const StudySetCard = () => {
         </div>
       </CardContent>
       <CardFooter className="flex flex-col gap-1">
-        <Button className="w-full">จำลองสนามสอบ</Button>
-        <Button className="w-full" variant="outline">
+        <Button className="w-full" onClick={gotoExam}>จำลองสนามสอบ</Button>
+        <Button className="w-full" variant="outline" onClick={gotoPractice}>
           ฝึกทำข้อสอบ
         </Button>
       </CardFooter>
