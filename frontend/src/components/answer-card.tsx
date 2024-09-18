@@ -19,7 +19,10 @@ const answerCard = () => {
             fringilla, mattis ligula consectetur.
           </div>
           <div className=" ">
-            <Button size="icon" className="from-[#0009E7] to-[#6686DA] bg-gradient-to-br">
+            <Button
+              size="icon"
+              className="from-[#0009E7] to-[#6686DA] bg-gradient-to-br"
+            >
               <Sparkles color="white" />
             </Button>
           </div>
@@ -29,20 +32,29 @@ const answerCard = () => {
           mi.
         </div>
 
-        <div className="box" style={{
-          border: "6px solid #4ADE80",
-          paddingBottom: "0px",
-          paddingLeft: "0px"
-        }}>
+        <div
+          className="box"
+          style={{
+            border: "6px solid #4ADE80",
+            paddingBottom: "0px",
+            paddingLeft: "0px",
+          }}
+        >
           <div className="pl-5">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et
-            massa mi.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa
+            mi.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et
+            massa mi.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+            et massa mi.
           </div>
 
           <p className="flex mt-2">
-            <span className="bg-blue-400 px-2 pl-3 py-1 ml-[-5px] rounded-tr-lg order-2 relative z-10 ">correct answer</span>
+            <span className="bg-blue-400 px-2 pl-3 py-1 ml-[-5px] rounded-tr-lg order-2 relative z-10 ">
+              correct answer
+            </span>
 
-            <span className="bg-green-400 px-2 py-1 rounded-tr-lg order-1  relative z-20">your answer</span>
+            <span className="bg-green-400 px-2 py-1 rounded-tr-lg order-1  relative z-20">
+              your answer
+            </span>
           </p>
         </div>
 
@@ -55,7 +67,7 @@ const answerCard = () => {
           mi.
         </div>
       </div>
-    </div >
+    </div>
   );
 };
 
