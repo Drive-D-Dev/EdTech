@@ -13,7 +13,7 @@ const mainRouter = new Hono({ strict: false });
 mainRouter.use(
 	'*',
 	cors({
-		origin: '*',
+		origin: ['https://mytestmate.org', 'https://www.mytestmate.org', 'http://localhost:3000'],
 		credentials: true,
 		allowMethods: ['GET', 'POST', 'OPTIONS'],
 		allowHeaders: ['Content-Type'],
