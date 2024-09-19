@@ -2,9 +2,9 @@ FROM oven/bun:latest AS base
 WORKDIR /app
 
 # RUN apk add --no-cache g++ make py3-pip libc6-compat
-RUN apt-get update && apt-get install -y g++ make python3-pip libc6-dev
+# RUN apt-get update && apt-get install -y g++ make python3-pip libc6-dev
 
-COPY package*.json ./
+COPY package.json ./
 
 EXPOSE 3000
 
@@ -21,10 +21,10 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 
-RUN bun install --frozen-lockfile
+RUN bun install
 
-RUN addgroup -g 1001 -S bun && adduser -S nextjs -u 1001
-USER nextjs
+# RUN addgroup -g 1001 -S bun && adduser -S nextjs -u 1001
+# USER nextjs
 
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
