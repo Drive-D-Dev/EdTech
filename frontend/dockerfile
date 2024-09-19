@@ -1,36 +1,33 @@
-# FROM node:18-alpine as base
-FROM oven/bun
-RUN apk add --no-cache g++ make py3-pip libc6-compat
+FROM oven/bun:latest AS base
 WORKDIR /app
+
+RUN apk add --no-cache g++ make py3-pip libc6-compat
+
 COPY package*.json ./
+
 EXPOSE 3000
 
 FROM base AS builder
 WORKDIR /app
-COPY . .
-RUN bun build
 
+COPY . .
+
+RUN bun install
+RUN bun build
 
 FROM base AS production
 WORKDIR /app
 
 ENV NODE_ENV=production
+
 RUN bun install --frozen-lockfile
 
-RUN addgroup -g 1001 -S bun
-RUN adduser -S nextjs -u 1001
+RUN addgroup -g 1001 -S bun && adduser -S nextjs -u 1001
 USER nextjs
 
-
-COPY --from=builder --chown=nextjs:bun /app/.next ./.next
+COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/public ./public
 
-CMD bun start
-
-FROM base AS dev
-ENV NODE_ENV=development
-RUN bun install
-COPY . .
-CMD bun dev
+CMD ["bun", "start"]
