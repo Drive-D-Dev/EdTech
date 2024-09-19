@@ -15,6 +15,7 @@ FROM builder AS worker
 WORKDIR /mnt
 
 COPY --from=builder /mnt/dist/index.js .
+COPY --from=builder /mnt/prisma ./prisma
 
 EXPOSE 8000
 ENTRYPOINT [ "bun", "index.js" ]
