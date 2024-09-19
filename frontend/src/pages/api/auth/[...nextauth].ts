@@ -1,7 +1,16 @@
-// pages/api/auth/[...nextauth].ts
-import NextAuth, { NextAuthOptions } from 'next-auth';
+import NextAuth, { NextAuthOptions, DefaultSession, DefaultUser } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { BACKEND_URL } from '@/constant/global';
+import { loginAPI } from '@/api/login';
+
+declare module 'next-auth' {
+	interface User extends DefaultUser {
+		token?: string;
+	}
+
+	interface Session extends DefaultSession {
+		accessToken?: string;
+	}
+}
 
 export const authOptions: NextAuthOptions = {
 	providers: [
@@ -19,31 +28,18 @@ export const authOptions: NextAuthOptions = {
 				const email = credentials.email;
 				const password = credentials.password;
 
-				const response = await fetch(`${BACKEND_URL}/auth/login`, {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify({ email, password }),
-				});
+				// Call your API to authenticate
+				const response = await loginAPI(email, password);
 
-				if (!response.ok) {
+				if (!response.success) {
 					throw new Error('Invalid credentials');
 				}
 
-				const user = await response.json();
-
-				if (user) {
-					// Return the user object with the required fields, including `id` and other properties.
-					return {
-						id: user.id, // Ensure your backend returns an `id` field
-						name: user.name,
-						email: user.email, // If available
-						// Add other user fields as necessary
-					};
-				}
-
-				return null;
+				// Return the user object with the token
+				return {
+					id: '0', // You can assign a real user id here if available
+					token: response.data.token,
+				};
 			},
 		}),
 	],
@@ -53,7 +49,23 @@ export const authOptions: NextAuthOptions = {
 		updateAge: 24 * 60 * 60, // 24 hours
 	},
 	pages: {
-		signIn: '/auth/signin',
+		signIn: '/auth/signin', // Custom sign-in page
+	},
+	callbacks: {
+		// Handle the JWT creation and mapping
+		async jwt({ token, user }) {
+			if (user) {
+				token.accessToken = user.token || undefined;
+			}
+			return token;
+		},
+
+		// Include the accessToken in the session
+		async session({ session, token }) {
+			session.accessToken =
+				typeof token.accessToken === 'string' ? token.accessToken : undefined;
+			return session;
+		},
 	},
 };
 
