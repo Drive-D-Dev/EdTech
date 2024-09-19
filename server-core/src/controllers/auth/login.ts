@@ -1,7 +1,6 @@
 import { Context } from 'hono';
 import { sign } from 'hono/jwt';
 import { getUserByEmail } from '../../services/auth/getUser';
-import { compare } from 'bcrypt';
 
 const loginController = async (c: Context) => {
 	try {
@@ -10,7 +9,8 @@ const loginController = async (c: Context) => {
 
 		const userData = await getUserByEmail(email);
 		if (!userData) throw 'User not found';
-		if (!(await compare(password, userData.password))) throw 'Password is incorrect';
+		// if (!(await compare(password, userData.password))) throw 'Password is incorrect';
+		if (!Bun.password.verifySync(password, userData.password)) throw 'Password is incorrect';
 
 		const SECRET = Bun.env.JWT_SECRET;
 		if (!SECRET) throw 'JWT_SECRET is not defined';
