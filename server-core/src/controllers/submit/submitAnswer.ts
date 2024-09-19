@@ -6,11 +6,12 @@ import { createUserAnswer } from '../../services/user_answer/create';
 const submitAnswerController = async (c: Context) => {
 	try {
 		const data = await c.req.json<User_Answer_Request>();
-		const userId = 12;
+		const userId = c.var.userId;
 		if (!data.setId) {
 			throw 'setId is required';
 		}
 		const newUserStudySet = await createUserStudySet(userId, data.setId, data.time);
+		console.log(newUserStudySet);
 		const newUserAnswer = await createUserAnswer(data, newUserStudySet.id);
 
 		return c.json({
@@ -19,6 +20,8 @@ const submitAnswerController = async (c: Context) => {
 			message: 'Answer submitted successfully',
 		});
 	} catch (e) {
+		console.log(e);
+
 		return c.json({
 			success: false,
 			message: e,
