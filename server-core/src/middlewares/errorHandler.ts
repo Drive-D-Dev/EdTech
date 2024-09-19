@@ -4,15 +4,15 @@ import { createMiddleware } from 'hono/factory';
 const errorHandler = createMiddleware(async (c: Context, next: Next) => {
 	try {
 		await next();
-	} catch (error) {
-		console.error(error);
+	} catch (e) {
+		console.error(e);
 		c.json(
 			{
 				success: false,
 				message: 'Internal Server Error',
 				data: null,
 			},
-			500
+			501
 		);
 	}
 });
