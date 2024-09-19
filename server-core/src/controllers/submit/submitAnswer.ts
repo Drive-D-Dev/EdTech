@@ -4,7 +4,6 @@ import { createUserStudySet } from '../../services/user_studyset/create';
 import { createUserAnswer } from '../../services/user_answer/create';
 
 const submitAnswerController = async (c: Context) => {
-	try {
 		const data = await c.req.json<User_Answer_Request>();
 		const userId = c.var.userId;
 		if (!data.setId) {
@@ -19,15 +18,7 @@ const submitAnswerController = async (c: Context) => {
 			data: newUserAnswer,
 			message: 'Answer submitted successfully',
 		});
-	} catch (e) {
-		console.log(e);
 
-		return c.json({
-			success: false,
-			message: e,
-			data: null,
-		});
-	}
 };
 
 export { submitAnswerController };
