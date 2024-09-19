@@ -14,7 +14,7 @@ WORKDIR /app
 COPY . .
 
 RUN bun install
-RUN bun build
+RUN bun run build
 
 FROM base AS production
 WORKDIR /app
