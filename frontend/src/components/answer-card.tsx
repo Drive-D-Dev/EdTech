@@ -11,6 +11,19 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { GetExamResultAPI } from "@/api/getExamResult";
+import { Skeleton } from "@/components/ui/skeleton";
+
+const SkeletonCard = () => {
+  return (
+    <div className="flex flex-col space-y-3">
+      <Skeleton className="h-[125px] w-[250px] rounded-xl" />
+      <div className="space-y-2">
+        <Skeleton className="h-4 w-[250px]" />
+        <Skeleton className="h-4 w-[200px]" />
+      </div>
+    </div>
+  );
+}
 
 const AnswerCard: FC<{ setId: string }> = ({ setId }) => {
   const [visibleSolution, setVisibleSolution] = useState<string | null>(null);
@@ -25,7 +38,7 @@ const AnswerCard: FC<{ setId: string }> = ({ setId }) => {
   };  
 
   const { data, error, isLoading, mutate } = GetExamResultAPI(parseInt(setId));
-  if (isLoading || !data) return <div>Loading</div>;
+  if (isLoading || !data) return <SkeletonCard />;
 
   // Filter questions based on the selected filter
   const filteredExams = data.data.userAnswers.filter((exam) => {
