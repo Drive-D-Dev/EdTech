@@ -46,7 +46,7 @@ const HomePage = () => {
 
   return (
     <main >
-      <SummaryCard />
+      {/* <SummaryCard /> */}
       <div className="flex flex-col space-y-4">
         {isVisible && (
           <div className="box relative flex flex-col items-center space-y-6 pt-6">

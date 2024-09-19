@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import ChoiceButton from '@/components/choicebutton';
 import CountdownTimer from '@/components/timer-countdown';
 import TwoRowLayout from '@/components/twolayout';
@@ -17,14 +17,6 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from '@/components/ui/dialog';
-import { create } from 'zustand';
-
-export const useStore = create((set) => ({
-	answers: [],
-	setAnswer: (data: any) => {
-		set(() => ({ answers: data }));
-	},
-}));
 
 export default function ExamplePage() {
 	const [selectedChoices, setSelectedChoices] = useState<{

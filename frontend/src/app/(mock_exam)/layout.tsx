@@ -1,16 +1,14 @@
-import { create } from 'zustand'
+import { FC, ReactNode } from 'react';
 
-
-
-const RootLayout = ({ children }) => {
-    return (
-        <>
-            <div>
-                <p></p>
-                {children}
-            </div>
-        </>
-    );
+const RootLayout: FC<{ children: ReactNode }> = ({ children }) => {
+	return (
+		<>
+			<div>
+				<p></p>
+				{children}
+			</div>
+		</>
+	);
 };
 
 export default RootLayout;
