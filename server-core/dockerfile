@@ -1,4 +1,4 @@
-FROM oven/bun as builder
+FROM oven/bun AS builder
 
 WORKDIR /mnt
 
@@ -10,7 +10,7 @@ COPY . .
 
 RUN bun bundle
 
-FROM builder as worker
+FROM builder AS worker
 
 WORKDIR /mnt
 
