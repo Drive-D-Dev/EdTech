@@ -23,4 +23,4 @@ export const NAV_LINKS = [
 	},
 ];
 
-export const BACKEND_URL = process.env.NEXT_PUBLIC_AXIOSBASEURL || 'http://localhost:8000';
+export const BACKEND_URL = process.env.NEXT_PUBLIC_AXIOSBASEURL || 'https://api.mytestmate.org';
