@@ -9,12 +9,12 @@ const verifyMiddleware = createMiddleware<{ Variables: { userId: number } }>(
 		try {
 			const token = getCookie(c, 'next-auth.session-token');
 			if (!token) throw 'Token not found';
-			const result = (
-				(await decode({ token, secret: Bun.env.JWT_SECRET ?? '' })) as {
-					accessToken: string;
-				}
-			).accessToken;
-			const verified = await verify(result, Bun.env.JWT_SECRET ?? '');
+			const JWT_SECRET = Bun.env.JWT_SECRET ?? '';
+
+			const nextDecode = await decode({ token, secret: JWT_SECRET });
+
+			const accessToken = (nextDecode as { accessToken: string }).accessToken;
+			const verified = await verify(accessToken, JWT_SECRET);
 			c.set('userId', verified.id);
 			await next();
 		} catch (e) {

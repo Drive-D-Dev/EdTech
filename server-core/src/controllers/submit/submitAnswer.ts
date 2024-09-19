@@ -11,6 +11,7 @@ const submitAnswerController = async (c: Context) => {
 			throw 'setId is required';
 		}
 		const newUserStudySet = await createUserStudySet(userId, data.setId, data.time);
+		console.log(newUserStudySet);
 		const newUserAnswer = await createUserAnswer(data, newUserStudySet.id);
 
 		return c.json({
@@ -19,6 +20,8 @@ const submitAnswerController = async (c: Context) => {
 			message: 'Answer submitted successfully',
 		});
 	} catch (e) {
+		console.log(e);
+
 		return c.json({
 			success: false,
 			message: e,

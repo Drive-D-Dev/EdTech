@@ -2,6 +2,16 @@ import NextAuth, { NextAuthOptions, DefaultSession, DefaultUser } from 'next-aut
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { loginAPI } from '@/api/login';
 
+declare module 'next-auth' {
+	interface User extends DefaultUser {
+		token?: string;
+	}
+
+	interface Session extends DefaultSession {
+		accessToken?: string;
+	}
+}
+
 export const authOptions: NextAuthOptions = {
 	providers: [
 		CredentialsProvider({
@@ -18,32 +28,44 @@ export const authOptions: NextAuthOptions = {
 				const email = credentials.email;
 				const password = credentials.password;
 
+				// Call your API to authenticate
 				const response = await loginAPI(email, password);
 
 				if (!response.success) {
 					throw new Error('Invalid credentials');
 				}
 
-				if (response.success) {
-					return {
-						id: '1',
-						email: email,
-						name: email,
-						token: response.data.token,
-					};
-				}
-
-				return null;
+				// Return the user object with the token
+				return {
+					id: '0', // You can assign a real user id here if available
+					token: response.data.token,
+				};
 			},
 		}),
 	],
 	session: {
 		strategy: 'jwt',
 		maxAge: 30 * 24 * 60 * 60, // 30 days
-		updateAge: 24 * 60 * 60, // Update the JWT token every 24 hours
+		updateAge: 24 * 60 * 60, // 24 hours
 	},
 	pages: {
-		signIn: '/auth/signin',
+		signIn: '/auth/signin', // Custom sign-in page
+	},
+	callbacks: {
+		// Handle the JWT creation and mapping
+		async jwt({ token, user }) {
+			if (user) {
+				token.accessToken = user.token || undefined;
+			}
+			return token;
+		},
+
+		// Include the accessToken in the session
+		async session({ session, token }) {
+			session.accessToken =
+				typeof token.accessToken === 'string' ? token.accessToken : undefined;
+			return session;
+		},
 	},
 };
 
