@@ -1,7 +1,8 @@
 FROM oven/bun:latest AS base
 WORKDIR /app
 
-RUN apk add --no-cache g++ make py3-pip libc6-compat
+# RUN apk add --no-cache g++ make py3-pip libc6-compat
+RUN apt-get update && apt-get install -y g++ make python3-pip libc6-dev
 
 COPY package*.json ./
 
