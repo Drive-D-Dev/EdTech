@@ -6,10 +6,11 @@ import { cors } from 'hono/cors';
 import { AIserviceRouter } from './AIservice.routes';
 import { submitRouter } from './submit.routes';
 import { verifyMiddleware } from '../middlewares/verify';
+import { errorHandler } from '../middlewares/errorHandler';
 
 const mainRouter = new Hono({ strict: false });
 
-authRouter.use(
+mainRouter.use(
 	'*',
 	cors({
 		origin: '*',
@@ -18,6 +19,8 @@ authRouter.use(
 		allowHeaders: ['Content-Type'],
 	})
 );
+
+mainRouter.use(errorHandler);
 
 mainRouter.route('/auth', authRouter);
 mainRouter.route('/ai', AIserviceRouter);
