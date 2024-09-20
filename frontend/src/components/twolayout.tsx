@@ -12,7 +12,7 @@ export default function TwoRowLayout({
 }: TwoRowLayoutProps) {
   return (
     <div className="min-h-screen bg-background">
-      <div className="w-full px-4 py-10">
+      <div className="w-full sm:px-4 py-10">
         <div className="flex flex-col gap-8">
           <div className="w-full rounded-lg border bg-card text-card-foreground shadow-sm p-4">
             {leftContent}

@@ -77,5 +77,5 @@
 }
 
 .box {
-  @apply rounded-lg border border-slate-300 shadow-sm px-7 py-5;
+  @apply rounded-lg border border-slate-300 shadow-sm px-4 sm:px-7 py-5;
 }
