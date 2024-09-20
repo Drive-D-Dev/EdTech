@@ -49,7 +49,7 @@ const CountdownTimer = forwardRef(
     const percentageLeft = (timeLeft / duration) * 100;
 
     return (
-      <div className={cn(" w-full sm:p-4 relative", className)}>
+      <div className={cn("sm:p-4 relative", className)}>
         <p className="text-foreground text-lg font-normal mb-2">
           <div className="w-full flex justify-start text-foreground">
             <CiAlarmOn size={24} />

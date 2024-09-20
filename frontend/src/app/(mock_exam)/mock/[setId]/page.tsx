@@ -17,12 +17,24 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer"
+import useIsMobile from "@/hooks/use-is-mobile";
+import { Grid2X2 } from "lucide-react";
 
 export default function ExamplePage() {
   const [selectedChoices, setSelectedChoices] = useState<{
     [questionId: string]: number | null;
   }>({});
-
+  const isMobile = useIsMobile();
   const [open, setOpen] = React.useState(false);
   const [showWarning, setShowWarning] = React.useState(false);
   const timerRef = useRef<any>(null);
@@ -151,11 +163,20 @@ export default function ExamplePage() {
 
   return (
     <div>
-      <div className="w-[97dvw] flex justify-center sm:pl-4">
-        <CountdownTimer ref={timerRef} duration={300} className="sticky" />
+      <div className="flex justify-between sm:pl-4">
+        <CountdownTimer ref={timerRef} duration={300} className="sticky flex-1" />
+        {
+          isMobile && <QuestionOverviewBox
+            data={data}
+            selectedCount={selectedCount}
+            totalQuestions={totalQuestions}
+            selectedChoices={selectedChoices}
+          />
+        }
       </div>
       <TwoRowLayout
         leftContent={
+          !isMobile &&
           <QuestionOverviewBox
             data={data}
             selectedCount={selectedCount}
@@ -212,21 +233,59 @@ const QuestionOverviewBox = ({
   totalQuestions,
   selectedChoices,
 }: any) => {
+
+  const isMobile = useIsMobile();
+
+  if (isMobile) {
+    return (
+      <Drawer>
+        <DrawerTrigger asChild><Button variant="outline" size="icon">
+          <Grid2X2 />
+        </Button></DrawerTrigger>
+        <DrawerContent>
+          <DrawerHeader>
+            <DrawerTitle> <div className="mb-4 text-xl text-center">
+              <p className="text-foreground">
+                ทำแล้ว {selectedCount} / {totalQuestions} ข้อ
+              </p>
+            </div></DrawerTitle>
+          </DrawerHeader>
+          <DrawerFooter>
+            <div className="flex flex-row flex-wrap gap-3 mx-auto px-8 pb-5">
+              {data.data.map((question, index) => (
+                <DrawerClose asChild>
+                  <a
+                    key={question.id}
+                    href={`#question${index + 1}`}
+                    className={`flex items-center justify-center w-14 h-14 text-center rounded cursor-pointer ${selectedChoices[question.id] ? "bg-blue-300" : "bg-gray-300"
+                      }`}
+                  >
+                    <p className="text-black">{index + 1}</p>
+                  </a>
+                </DrawerClose>
+
+              ))}
+            </div>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
+    )
+  }
+
   return (
-    <div>
-      <div className="mb-4 text-xl text-center">
+    <div className="flex flex-col justify-center items-center">
+      <div className="mb-4 text-xl">
         <p className="text-foreground">
           {selectedCount} / {totalQuestions} ข้อ
         </p>
       </div>
-      <div className="flex flex-row flex-wrap gap-3 mx-auto">
+      <div className="flex flex-row flex-wrap gap-3 justify-center">
         {data.data.map((question, index) => (
           <a
             key={question.id}
             href={`#question${index + 1}`}
-            className={`flex items-center justify-center w-10 h-10 text-center rounded cursor-pointer ${
-              selectedChoices[question.id] ? "bg-blue-300" : "bg-gray-300"
-            }`}
+            className={`flex items-center justify-center w-10 h-10 text-center rounded cursor-pointer ${selectedChoices[question.id] ? "bg-blue-300" : "bg-gray-300"
+              }`}
           >
             <p className="text-black">{index + 1}</p>
           </a>

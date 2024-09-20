@@ -23,6 +23,6 @@ export const NAV_LINKS = [
 	},
 ];
 
-export const PUBLIC_PATH = ['', 'auth', 'home', 'pricing', 'upcomming', 'event'];
+export const PUBLIC_PATH = ['', 'auth', 'home', 'pricing', 'upcomming', 'event', 'mock'];
 
 export const BACKEND_URL = process.env.NEXT_PUBLIC_AXIOSBASEURL || 'https://api.mytestmate.org';
