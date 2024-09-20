@@ -5,6 +5,7 @@ import { decode } from 'next-auth/jwt';
 
 const verifyMiddleware = async (c: Context, next: Next) => {
 	const token = getCookie(c, 'next-auth.session-token');
+	console.log(token);
 	if (!token) {
 		return c.json(
 			{
