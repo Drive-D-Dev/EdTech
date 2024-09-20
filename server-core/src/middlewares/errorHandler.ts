@@ -1,7 +1,6 @@
 import { Context, Next } from 'hono';
-import { createMiddleware } from 'hono/factory';
 
-const errorHandler = createMiddleware(async (c: Context, next: Next) => {
+const errorHandler = async (c: Context, next: Next) => {
 	try {
 		await next();
 	} catch (e) {
@@ -15,6 +14,6 @@ const errorHandler = createMiddleware(async (c: Context, next: Next) => {
 			501
 		);
 	}
-});
+};
 
 export { errorHandler };
