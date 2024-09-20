@@ -37,9 +37,9 @@ export default function ExamplePage() {
 	});
 	if (!setId) return <div>Exam Not Found</div>;
 
-	const { data, error, isLoading, mutate } = GetQuestionAPI(parseInt(setId));
+	const { data, isLoading } = GetQuestionAPI(parseInt(setId));
 
-	if (isLoading || !data) return <div>Loading</div>;
+	if (isLoading || !data || !Array.isArray(data.data)) return <div>Loading</div>;
 
 	const handleSelect = (questionId: number, choiceId: number) => {
 		setSelectedChoices((prev) => ({

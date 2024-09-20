@@ -41,8 +41,6 @@ const CardSummary: FC<{ setId: string }> = ({ setId }) => {
 	const { data, error, isLoading, mutate } = GetExamResultAPI(parseInt(setId));
 	if (isLoading || !data) return <div>Loading</div>;
 
-	console.log(isLoading, data);
-
 	return (
 		<Card className='w-fit'>
 			<CardHeader>

@@ -9,12 +9,30 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
 import { Button } from '@/components/ui/button';
-import { signOut } from 'next-auth/react';
+import { signoutAPI } from '@/api/signout';
+import { useUserContext } from '@/lib/context';
+import { useRouter } from 'next/navigation';
+// import { signOut } from 'next-auth/react';
 
 // TODO: update dropdown menu
 // TODO: add mode toggle to menu
 
 export function AvatarDropdown() {
+	const user = useUserContext();
+	const router = useRouter();
+	const handleSignout = async (e: any) => {
+		e.preventDefault();
+		const res = await signoutAPI();
+		if (res.success) {
+			user.setState((prev) => ({
+				isLogin: false,
+				setState: prev.setState,
+			}));
+			router.replace('/');
+		} else {
+			console.log('error', res.message);
+		}
+	};
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
@@ -34,7 +52,7 @@ export function AvatarDropdown() {
 				<DropdownMenuItem>Profile</DropdownMenuItem>
 				<DropdownMenuItem>Billing</DropdownMenuItem>
 				<DropdownMenuItem>Subscription</DropdownMenuItem>
-				<DropdownMenuItem className='text-red-600' onClick={(e: any) => signOut(e)}>
+				<DropdownMenuItem className='text-red-600' onClick={handleSignout}>
 					Logout
 				</DropdownMenuItem>
 			</DropdownMenuContent>

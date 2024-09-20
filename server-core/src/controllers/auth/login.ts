@@ -1,5 +1,6 @@
 import { Context } from 'hono';
 import { sign } from 'hono/jwt';
+import { setCookie } from 'hono/cookie';
 import { getUserByEmail } from '../../services/auth/getUser';
 
 const loginController = async (c: Context) => {
@@ -32,6 +33,14 @@ const loginController = async (c: Context) => {
 	if (!SECRET) throw 'JWT_SECRET is not defined';
 
 	const token = await sign({ id: userData.id, email: userData.email }, SECRET);
+
+	setCookie(c, 'userToken', token, {
+		httpOnly: true,
+		secure: true,
+		sameSite: 'Lax',
+		maxAge: 60 * 60 * 24 * 7,
+		path: '/',
+	});
 
 	return c.json(
 		{

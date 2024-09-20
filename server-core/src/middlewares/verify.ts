@@ -1,12 +1,14 @@
 import { Context, Next } from 'hono';
 import { getCookie } from 'hono/cookie';
 import { verify } from 'hono/jwt';
-import { decode } from 'next-auth/jwt';
 
 const verifyMiddleware = async (c: Context, next: Next) => {
-	const token = getCookie(c, 'next-auth.session-token');
-	console.log(token);
-	if (!token) {
+	const userToken = getCookie(c, 'userToken');
+
+	console.log('userToken');
+	console.log(userToken);
+
+	if (!userToken) {
 		return c.json(
 			{
 				success: false,
@@ -18,10 +20,7 @@ const verifyMiddleware = async (c: Context, next: Next) => {
 	}
 	const JWT_SECRET = Bun.env.JWT_SECRET ?? '';
 
-	const nextDecode = await decode({ token, secret: JWT_SECRET });
-
-	const accessToken = (nextDecode as { accessToken: string }).accessToken;
-	const verified = await verify(accessToken, JWT_SECRET);
+	const verified = await verify(userToken, JWT_SECRET);
 	c.set('userId', verified.id);
 	await next();
 };

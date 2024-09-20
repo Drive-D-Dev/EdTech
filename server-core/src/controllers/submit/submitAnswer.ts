@@ -10,7 +10,6 @@ const submitAnswerController = async (c: Context) => {
 			throw 'setId is required';
 		}
 		const newUserStudySet = await createUserStudySet(userId, data.setId, data.time);
-		console.log(newUserStudySet);
 		const newUserAnswer = await createUserAnswer(data, newUserStudySet.id);
 
 		return c.json({

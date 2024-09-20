@@ -1,14 +1,4 @@
-import { Star, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import StudySetWrapper from "@/components/studyset-wrapper";
-import { AspectRatio } from "@/components/ui/aspect-ratio"
 import Image from "next/image"
 
 export default function Component() {
