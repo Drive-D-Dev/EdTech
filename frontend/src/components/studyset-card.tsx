@@ -70,9 +70,9 @@ const StudySetCard: StudySetCardWithSkeleton = ({ id, title }) => {
 				<Button className='w-full' onClick={gotoExam}>
 					จำลองสนามสอบ
 				</Button>
-				<Button className='w-full' variant='outline' onClick={gotoPractice}>
+				{/* <Button className='w-full' variant='outline' onClick={gotoPractice}>
 					ฝึกทำข้อสอบ
-				</Button>
+				</Button> */}
 			</CardFooter>
 		</Card>
 	);
