@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
 
 @layer base {
   :root {
@@ -61,7 +64,6 @@
     --backdrop: 230 3.7% 15.9%;
   }
 }
-
 
 @layer base {
   * {

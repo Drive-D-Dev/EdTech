@@ -12,7 +12,7 @@ mainRouter.route("/auth", authRouter);
 mainRouter.route("/ai", AIserviceRouter);
 mainRouter.route("/set", studySetRouter);
 
-// mainRouter.use(verifyMiddleware);
+mainRouter.use(verifyMiddleware);
 mainRouter.route("/question", questionRouter);
 mainRouter.route("/submit", submitRouter);
 
