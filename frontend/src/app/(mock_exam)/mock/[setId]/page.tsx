@@ -186,7 +186,7 @@ export default function ExamplePage() {
         }
         rightContent={
           <div className="space-y-4">
-            {data.data.map((question, index) => (
+            {data.data.map((question: any, index: number) => (
               <div
                 key={question.id}
                 id={`question${index + 1}`}
@@ -207,7 +207,7 @@ export default function ExamplePage() {
                   </p>
                 </div>
                 <div className="w-full justify-center">
-                  {question.Choice.map((choice) => (
+                  {question.Choice.map((choice: any) => (
                     <ChoiceButton
                       key={choice.id}
                       id={choice.id}
@@ -252,10 +252,10 @@ const QuestionOverviewBox = ({
           </DrawerHeader>
           <DrawerFooter>
             <div className="flex flex-row flex-wrap gap-3 mx-auto px-8 pb-5">
-              {data.data.map((question, index) => (
-                <DrawerClose asChild>
+              {data?.data?.map((question: any, index: number) => (
+                <DrawerClose key={question.id}
+                  asChild >
                   <a
-                    key={question.id}
                     href={`#question${index + 1}`}
                     className={`flex items-center justify-center w-14 h-14 text-center rounded cursor-pointer ${selectedChoices[question.id] ? "bg-blue-300" : "bg-gray-300"
                       }`}
@@ -268,7 +268,7 @@ const QuestionOverviewBox = ({
             </div>
           </DrawerFooter>
         </DrawerContent>
-      </Drawer>
+      </Drawer >
     )
   }
 
@@ -280,7 +280,7 @@ const QuestionOverviewBox = ({
         </p>
       </div>
       <div className="flex flex-row flex-wrap gap-3 justify-center">
-        {data.data.map((question, index) => (
+        {data.data.map((question: any, index: number) => (
           <a
             key={question.id}
             href={`#question${index + 1}`}
