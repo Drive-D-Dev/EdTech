@@ -13,13 +13,11 @@ const MockAnswerPage = () => {
 	const params = useParams<{ setId: string }>();
 	const setId = params?.setId;
 
-	if (!setId) return <div>Exam Not Found</div>;
-
 	const [isLoading, setIsLoading] = useState(true);
 	const [data, setData] = useState<ExamAnswerResultResponse | null>(null);
 
 	const fetchData = async () =>
-		GetExamResultAPI(setId).then((res) => {
+		GetExamResultAPI(setId!).then((res) => {
 			if (res.success) {
 				console.log(res.data);
 				setData(res.data);
@@ -33,6 +31,8 @@ const MockAnswerPage = () => {
 	useEffect(() => {
 		fetchData();
 	}, []);
+
+	if (!setId) return <div>Exam Not Found</div>;
 
 	return (
 		<div>

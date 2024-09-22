@@ -254,9 +254,8 @@ const QuestionOverviewBox: FC<{
 					<DrawerFooter>
 						<div className='flex flex-row flex-wrap gap-3 mx-auto px-8 pb-5'>
 							{data.data.map((question, index) => (
-								<DrawerClose asChild>
+								<DrawerClose asChild key={index}>
 									<a
-										key={question.id}
 										href={`#question${index + 1}`}
 										className={`flex items-center justify-center w-14 h-14 text-center rounded cursor-pointer ${
 											selectedChoices[question.id]
