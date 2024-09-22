@@ -32,7 +32,10 @@ const TimerSummary: FC<{ fullTime: number; elapsedTime: number; theme: string }>
 				>
 					{/* Center text */}
 					<div className='text-center'>
-						<div className='text-xl font-bold'>{elapsedTime}</div> {/* Time used */}
+						<div className='text-xl font-bold'>
+							{elapsedTime / 60 + '.' + (elapsedTime % 60)}
+						</div>{' '}
+						{/* Time used */}
 						<div className='text-sm'>นาที</div>
 					</div>
 				</div>
