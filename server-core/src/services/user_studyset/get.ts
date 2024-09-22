@@ -5,7 +5,7 @@ const getUserStudySetAnswersWithAnswers = async (studySetId: number, userId: num
 	const userStudySet = await prisma.user_Study_Set.findFirst({
 		where: {
 			user_id: userId,
-			studyset_id: studySetId,
+			id: studySetId,
 		},
 		include: {
 			Study_Set: {
@@ -32,7 +32,9 @@ const getUserStudySetAnswersWithAnswers = async (studySetId: number, userId: num
 			user_StudySet_id: userStudySet.id,
 		},
 	});
-	const correctAnswers = await getQuestionsAnswerAndExplanationInStudySet(studySetId);
+	const correctAnswers = await getQuestionsAnswerAndExplanationInStudySet(
+		userStudySet.studyset_id
+	);
 	let correctCount = 0;
 	let wrongCount = 0;
 
