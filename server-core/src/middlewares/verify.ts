@@ -5,9 +5,6 @@ import { verify } from 'hono/jwt';
 const verifyMiddleware = async (c: Context, next: Next) => {
 	const userToken = getCookie(c, 'userToken');
 
-	console.log('userToken');
-	console.log(userToken);
-
 	if (!userToken) {
 		return c.json(
 			{
