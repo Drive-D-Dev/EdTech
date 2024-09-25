@@ -8,6 +8,7 @@ import SideNav from '@/components/sidenav';
 import { ProfileNav } from '@/components/profile-nav';
 import { UserContextProvider } from '@/lib/context';
 import { VerifyProvider } from '@/lib/verifyProvider';
+import { GoogleTagManager } from '@next/third-parties/google';
 
 const fontSans = FontSans({
 	subsets: ['latin'],
@@ -22,6 +23,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 	return (
 		<html lang='en' suppressHydrationWarning>
 			<head />
+			<GoogleTagManager gtmId='G-8KVLQE9B32' />
 			<body
 				className={cn('min-h-screen font-sans antialiased bg-backdrop', fontSans.variable)}
 			>
