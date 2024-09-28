@@ -22,26 +22,28 @@ const TimerSummary: FC<{ fullTime: number; elapsedTime: number; theme: string }>
 	};
 
 	return (
-		<div className='flex items-center justify-center'>
-			<div className='relative w-32 h-32'>
-				{/* Outer circle with progress */}
-				<div className='w-full h-full rounded-full' style={circleStyle} />
-				<div
-					className='absolute inset-3 rounded-full flex items-center justify-center'
-					style={{ backgroundColor: theme === 'light' ? 'white' : 'black' }}
-				>
-					{/* Center text */}
-					<div className='text-center'>
-						<div className='text-xl font-bold'>
-							{elapsedTime / 60 + '.' + (elapsedTime % 60)}
-						</div>{' '}
-						{/* Time used */}
-						<div className='text-sm'>นาที</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	);
+    <div className="flex items-center justify-center">
+      <div className="relative w-32 h-32">
+        {/* Outer circle with progress */}
+        <div className="w-full h-full rounded-full" style={circleStyle} />
+        <div
+          className="absolute inset-3 rounded-full flex items-center justify-center"
+          style={{ backgroundColor: theme === "light" ? "white" : "black" }}
+        >
+          {/* Center text */}
+          <div className="text-center">
+            <div className="text-xl font-bold">
+              {Math.floor(elapsedTime / 60) +
+                ":" +
+                (elapsedTime % 60).toString().padStart(2, "0")}
+            </div>{" "}
+            {/* Time used */}
+            <div className="text-sm">นาที</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 // const RetryButton: FC<{ retry: () => {} }> = ({ retry }) => (
@@ -59,52 +61,52 @@ const CardSummary: FC<{ data: ExamAnswerResultResponse | null; isLoading: boolea
 	const { theme } = useTheme();
 
 	return (
-		<Card className='w-fit'>
-			<CardHeader>
-				<CardTitle className='text-lg'>สรุป</CardTitle>
-			</CardHeader>
-			<CardContent>
-				<div className='flex flex-row space-x-4'>
-					<div>
-						<TimerSummary
-							fullTime={Number(totalTime)}
-							elapsedTime={data ? Number(data.time) : 0}
-							theme={theme!}
-						/>
-						{/* Converted timeUsed and totalTime to numbers */}
-					</div>
-					<div className='flex flex-col space-y-2'>
-						<div
-							className=' px-4 py-2 rounded-sm'
-							style={{
-								backgroundColor: theme === 'light' ? '#DDDDDD' : 'grey',
-							}}
-						>
-							ถูกต้อง {data ? data.stat.percentage : '-'}%
-						</div>
-						<div className='flex flex-row space-x-2'>
-							<div
-								className=' px-4 py-2 rounded-sm'
-								style={{
-									backgroundColor: theme === 'light' ? '#bbf7d0' : '#4caf50EE',
-								}}
-							>
-								ถูก {data ? data.stat.correct : '-'} ข้อ
-							</div>
-							<div
-								className=' px-4 py-2 rounded-sm'
-								style={{
-									backgroundColor: theme === 'light' ? '#fecaca' : '#f44336AA',
-								}}
-							>
-								ผิด {data ? data.stat.wrong : '-'} ข้อ
-							</div>
-						</div>
-					</div>
-				</div>
-			</CardContent>
-		</Card>
-	);
+    <Card className="w-fit">
+      <CardHeader>
+        <CardTitle className="text-lg">สรุป</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <div className="flex flex-row space-x-4">
+          <div>
+            <TimerSummary
+              fullTime={Number(totalTime)}
+              elapsedTime={data ? Number(data.time) : 0}
+              theme={theme!}
+            />
+            {/* Converted timeUsed and totalTime to numbers */}
+          </div>
+          <div className="flex flex-col space-y-2">
+            <div
+              className=" px-4 py-2 rounded-sm"
+              style={{
+                backgroundColor: theme === "light" ? "#DDDDDD" : "grey",
+              }}
+            >
+              ถูกต้อง {data ? Math.floor(data.stat.percentage) : "-"}%
+            </div>
+            <div className="flex flex-row space-x-2">
+              <div
+                className=" px-4 py-2 rounded-sm"
+                style={{
+                  backgroundColor: theme === "light" ? "#bbf7d0" : "#4caf50EE",
+                }}
+              >
+                ถูก {data ? data.stat.correct : "-"} ข้อ
+              </div>
+              <div
+                className=" px-4 py-2 rounded-sm"
+                style={{
+                  backgroundColor: theme === "light" ? "#fecaca" : "#f44336AA",
+                }}
+              >
+                ผิด {data ? data.stat.wrong : "-"} ข้อ
+              </div>
+            </div>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
 };
 
 export default CardSummary;
