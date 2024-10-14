@@ -5672,21 +5672,24 @@ export namespace Prisma {
     id: number | null
     content: string | null
     explanation: string | null
-    type: string | null
+    category: string | null
+    sub_category: string | null
   }
 
   export type QuestionMaxAggregateOutputType = {
     id: number | null
     content: string | null
     explanation: string | null
-    type: string | null
+    category: string | null
+    sub_category: string | null
   }
 
   export type QuestionCountAggregateOutputType = {
     id: number
     content: number
     explanation: number
-    type: number
+    category: number
+    sub_category: number
     _all: number
   }
 
@@ -5703,21 +5706,24 @@ export namespace Prisma {
     id?: true
     content?: true
     explanation?: true
-    type?: true
+    category?: true
+    sub_category?: true
   }
 
   export type QuestionMaxAggregateInputType = {
     id?: true
     content?: true
     explanation?: true
-    type?: true
+    category?: true
+    sub_category?: true
   }
 
   export type QuestionCountAggregateInputType = {
     id?: true
     content?: true
     explanation?: true
-    type?: true
+    category?: true
+    sub_category?: true
     _all?: true
   }
 
@@ -5811,7 +5817,8 @@ export namespace Prisma {
     id: number
     content: string
     explanation: string
-    type: string
+    category: string
+    sub_category: string
     _count: QuestionCountAggregateOutputType | null
     _avg: QuestionAvgAggregateOutputType | null
     _sum: QuestionSumAggregateOutputType | null
@@ -5837,7 +5844,8 @@ export namespace Prisma {
     id?: boolean
     content?: boolean
     explanation?: boolean
-    type?: boolean
+    category?: boolean
+    sub_category?: boolean
     Choice?: boolean | Question$ChoiceArgs<ExtArgs>
     Study_Set_Questions_List?: boolean | Question$Study_Set_Questions_ListArgs<ExtArgs>
     Answer?: boolean | Question$AnswerArgs<ExtArgs>
@@ -5849,14 +5857,16 @@ export namespace Prisma {
     id?: boolean
     content?: boolean
     explanation?: boolean
-    type?: boolean
+    category?: boolean
+    sub_category?: boolean
   }, ExtArgs["result"]["question"]>
 
   export type QuestionSelectScalar = {
     id?: boolean
     content?: boolean
     explanation?: boolean
-    type?: boolean
+    category?: boolean
+    sub_category?: boolean
   }
 
   export type QuestionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5880,7 +5890,8 @@ export namespace Prisma {
       id: number
       content: string
       explanation: string
-      type: string
+      category: string
+      sub_category: string
     }, ExtArgs["result"]["question"]>
     composites: {}
   }
@@ -6281,7 +6292,8 @@ export namespace Prisma {
     readonly id: FieldRef<"Question", 'Int'>
     readonly content: FieldRef<"Question", 'String'>
     readonly explanation: FieldRef<"Question", 'String'>
-    readonly type: FieldRef<"Question", 'String'>
+    readonly category: FieldRef<"Question", 'String'>
+    readonly sub_category: FieldRef<"Question", 'String'>
   }
     
 
@@ -9630,7 +9642,8 @@ export namespace Prisma {
     id: 'id',
     content: 'content',
     explanation: 'explanation',
-    type: 'type'
+    category: 'category',
+    sub_category: 'sub_category'
   };
 
   export type QuestionScalarFieldEnum = (typeof QuestionScalarFieldEnum)[keyof typeof QuestionScalarFieldEnum]
@@ -9985,7 +9998,8 @@ export namespace Prisma {
     id?: IntFilter<"Question"> | number
     content?: StringFilter<"Question"> | string
     explanation?: StringFilter<"Question"> | string
-    type?: StringFilter<"Question"> | string
+    category?: StringFilter<"Question"> | string
+    sub_category?: StringFilter<"Question"> | string
     Choice?: ChoiceListRelationFilter
     Study_Set_Questions_List?: Study_Set_Questions_ListListRelationFilter
     Answer?: AnswerListRelationFilter
@@ -9996,7 +10010,8 @@ export namespace Prisma {
     id?: SortOrder
     content?: SortOrder
     explanation?: SortOrder
-    type?: SortOrder
+    category?: SortOrder
+    sub_category?: SortOrder
     Choice?: ChoiceOrderByRelationAggregateInput
     Study_Set_Questions_List?: Study_Set_Questions_ListOrderByRelationAggregateInput
     Answer?: AnswerOrderByRelationAggregateInput
@@ -10010,7 +10025,8 @@ export namespace Prisma {
     NOT?: QuestionWhereInput | QuestionWhereInput[]
     content?: StringFilter<"Question"> | string
     explanation?: StringFilter<"Question"> | string
-    type?: StringFilter<"Question"> | string
+    category?: StringFilter<"Question"> | string
+    sub_category?: StringFilter<"Question"> | string
     Choice?: ChoiceListRelationFilter
     Study_Set_Questions_List?: Study_Set_Questions_ListListRelationFilter
     Answer?: AnswerListRelationFilter
@@ -10021,7 +10037,8 @@ export namespace Prisma {
     id?: SortOrder
     content?: SortOrder
     explanation?: SortOrder
-    type?: SortOrder
+    category?: SortOrder
+    sub_category?: SortOrder
     _count?: QuestionCountOrderByAggregateInput
     _avg?: QuestionAvgOrderByAggregateInput
     _max?: QuestionMaxOrderByAggregateInput
@@ -10036,7 +10053,8 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Question"> | number
     content?: StringWithAggregatesFilter<"Question"> | string
     explanation?: StringWithAggregatesFilter<"Question"> | string
-    type?: StringWithAggregatesFilter<"Question"> | string
+    category?: StringWithAggregatesFilter<"Question"> | string
+    sub_category?: StringWithAggregatesFilter<"Question"> | string
   }
 
   export type AnswerWhereInput = {
@@ -10395,7 +10413,8 @@ export namespace Prisma {
   export type QuestionCreateInput = {
     content: string
     explanation: string
-    type: string
+    category: string
+    sub_category: string
     Choice?: ChoiceCreateNestedManyWithoutQuestionInput
     Study_Set_Questions_List?: Study_Set_Questions_ListCreateNestedManyWithoutQuestionInput
     Answer?: AnswerCreateNestedManyWithoutQuestionInput
@@ -10406,7 +10425,8 @@ export namespace Prisma {
     id?: number
     content: string
     explanation: string
-    type: string
+    category: string
+    sub_category: string
     Choice?: ChoiceUncheckedCreateNestedManyWithoutQuestionInput
     Study_Set_Questions_List?: Study_Set_Questions_ListUncheckedCreateNestedManyWithoutQuestionInput
     Answer?: AnswerUncheckedCreateNestedManyWithoutQuestionInput
@@ -10416,7 +10436,8 @@ export namespace Prisma {
   export type QuestionUpdateInput = {
     content?: StringFieldUpdateOperationsInput | string
     explanation?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    sub_category?: StringFieldUpdateOperationsInput | string
     Choice?: ChoiceUpdateManyWithoutQuestionNestedInput
     Study_Set_Questions_List?: Study_Set_Questions_ListUpdateManyWithoutQuestionNestedInput
     Answer?: AnswerUpdateManyWithoutQuestionNestedInput
@@ -10427,7 +10448,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     explanation?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    sub_category?: StringFieldUpdateOperationsInput | string
     Choice?: ChoiceUncheckedUpdateManyWithoutQuestionNestedInput
     Study_Set_Questions_List?: Study_Set_Questions_ListUncheckedUpdateManyWithoutQuestionNestedInput
     Answer?: AnswerUncheckedUpdateManyWithoutQuestionNestedInput
@@ -10438,20 +10460,23 @@ export namespace Prisma {
     id?: number
     content: string
     explanation: string
-    type: string
+    category: string
+    sub_category: string
   }
 
   export type QuestionUpdateManyMutationInput = {
     content?: StringFieldUpdateOperationsInput | string
     explanation?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    sub_category?: StringFieldUpdateOperationsInput | string
   }
 
   export type QuestionUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     explanation?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    sub_category?: StringFieldUpdateOperationsInput | string
   }
 
   export type AnswerCreateInput = {
@@ -10869,7 +10894,8 @@ export namespace Prisma {
     id?: SortOrder
     content?: SortOrder
     explanation?: SortOrder
-    type?: SortOrder
+    category?: SortOrder
+    sub_category?: SortOrder
   }
 
   export type QuestionAvgOrderByAggregateInput = {
@@ -10880,14 +10906,16 @@ export namespace Prisma {
     id?: SortOrder
     content?: SortOrder
     explanation?: SortOrder
-    type?: SortOrder
+    category?: SortOrder
+    sub_category?: SortOrder
   }
 
   export type QuestionMinOrderByAggregateInput = {
     id?: SortOrder
     content?: SortOrder
     explanation?: SortOrder
-    type?: SortOrder
+    category?: SortOrder
+    sub_category?: SortOrder
   }
 
   export type QuestionSumOrderByAggregateInput = {
@@ -11689,7 +11717,8 @@ export namespace Prisma {
   export type QuestionCreateWithoutChoiceInput = {
     content: string
     explanation: string
-    type: string
+    category: string
+    sub_category: string
     Study_Set_Questions_List?: Study_Set_Questions_ListCreateNestedManyWithoutQuestionInput
     Answer?: AnswerCreateNestedManyWithoutQuestionInput
     User_Answer?: User_AnswerCreateNestedManyWithoutQuestionInput
@@ -11699,7 +11728,8 @@ export namespace Prisma {
     id?: number
     content: string
     explanation: string
-    type: string
+    category: string
+    sub_category: string
     Study_Set_Questions_List?: Study_Set_Questions_ListUncheckedCreateNestedManyWithoutQuestionInput
     Answer?: AnswerUncheckedCreateNestedManyWithoutQuestionInput
     User_Answer?: User_AnswerUncheckedCreateNestedManyWithoutQuestionInput
@@ -11765,7 +11795,8 @@ export namespace Prisma {
   export type QuestionUpdateWithoutChoiceInput = {
     content?: StringFieldUpdateOperationsInput | string
     explanation?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    sub_category?: StringFieldUpdateOperationsInput | string
     Study_Set_Questions_List?: Study_Set_Questions_ListUpdateManyWithoutQuestionNestedInput
     Answer?: AnswerUpdateManyWithoutQuestionNestedInput
     User_Answer?: User_AnswerUpdateManyWithoutQuestionNestedInput
@@ -11775,7 +11806,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     explanation?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    sub_category?: StringFieldUpdateOperationsInput | string
     Study_Set_Questions_List?: Study_Set_Questions_ListUncheckedUpdateManyWithoutQuestionNestedInput
     Answer?: AnswerUncheckedUpdateManyWithoutQuestionNestedInput
     User_Answer?: User_AnswerUncheckedUpdateManyWithoutQuestionNestedInput
@@ -12000,7 +12032,8 @@ export namespace Prisma {
   export type QuestionCreateWithoutUser_AnswerInput = {
     content: string
     explanation: string
-    type: string
+    category: string
+    sub_category: string
     Choice?: ChoiceCreateNestedManyWithoutQuestionInput
     Study_Set_Questions_List?: Study_Set_Questions_ListCreateNestedManyWithoutQuestionInput
     Answer?: AnswerCreateNestedManyWithoutQuestionInput
@@ -12010,7 +12043,8 @@ export namespace Prisma {
     id?: number
     content: string
     explanation: string
-    type: string
+    category: string
+    sub_category: string
     Choice?: ChoiceUncheckedCreateNestedManyWithoutQuestionInput
     Study_Set_Questions_List?: Study_Set_Questions_ListUncheckedCreateNestedManyWithoutQuestionInput
     Answer?: AnswerUncheckedCreateNestedManyWithoutQuestionInput
@@ -12085,7 +12119,8 @@ export namespace Prisma {
   export type QuestionUpdateWithoutUser_AnswerInput = {
     content?: StringFieldUpdateOperationsInput | string
     explanation?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    sub_category?: StringFieldUpdateOperationsInput | string
     Choice?: ChoiceUpdateManyWithoutQuestionNestedInput
     Study_Set_Questions_List?: Study_Set_Questions_ListUpdateManyWithoutQuestionNestedInput
     Answer?: AnswerUpdateManyWithoutQuestionNestedInput
@@ -12095,7 +12130,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     explanation?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    sub_category?: StringFieldUpdateOperationsInput | string
     Choice?: ChoiceUncheckedUpdateManyWithoutQuestionNestedInput
     Study_Set_Questions_List?: Study_Set_Questions_ListUncheckedUpdateManyWithoutQuestionNestedInput
     Answer?: AnswerUncheckedUpdateManyWithoutQuestionNestedInput
@@ -12272,7 +12308,8 @@ export namespace Prisma {
   export type QuestionCreateWithoutAnswerInput = {
     content: string
     explanation: string
-    type: string
+    category: string
+    sub_category: string
     Choice?: ChoiceCreateNestedManyWithoutQuestionInput
     Study_Set_Questions_List?: Study_Set_Questions_ListCreateNestedManyWithoutQuestionInput
     User_Answer?: User_AnswerCreateNestedManyWithoutQuestionInput
@@ -12282,7 +12319,8 @@ export namespace Prisma {
     id?: number
     content: string
     explanation: string
-    type: string
+    category: string
+    sub_category: string
     Choice?: ChoiceUncheckedCreateNestedManyWithoutQuestionInput
     Study_Set_Questions_List?: Study_Set_Questions_ListUncheckedCreateNestedManyWithoutQuestionInput
     User_Answer?: User_AnswerUncheckedCreateNestedManyWithoutQuestionInput
@@ -12327,7 +12365,8 @@ export namespace Prisma {
   export type QuestionUpdateWithoutAnswerInput = {
     content?: StringFieldUpdateOperationsInput | string
     explanation?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    sub_category?: StringFieldUpdateOperationsInput | string
     Choice?: ChoiceUpdateManyWithoutQuestionNestedInput
     Study_Set_Questions_List?: Study_Set_Questions_ListUpdateManyWithoutQuestionNestedInput
     User_Answer?: User_AnswerUpdateManyWithoutQuestionNestedInput
@@ -12337,7 +12376,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     explanation?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    sub_category?: StringFieldUpdateOperationsInput | string
     Choice?: ChoiceUncheckedUpdateManyWithoutQuestionNestedInput
     Study_Set_Questions_List?: Study_Set_Questions_ListUncheckedUpdateManyWithoutQuestionNestedInput
     User_Answer?: User_AnswerUncheckedUpdateManyWithoutQuestionNestedInput
@@ -12446,7 +12486,8 @@ export namespace Prisma {
   export type QuestionCreateWithoutStudy_Set_Questions_ListInput = {
     content: string
     explanation: string
-    type: string
+    category: string
+    sub_category: string
     Choice?: ChoiceCreateNestedManyWithoutQuestionInput
     Answer?: AnswerCreateNestedManyWithoutQuestionInput
     User_Answer?: User_AnswerCreateNestedManyWithoutQuestionInput
@@ -12456,7 +12497,8 @@ export namespace Prisma {
     id?: number
     content: string
     explanation: string
-    type: string
+    category: string
+    sub_category: string
     Choice?: ChoiceUncheckedCreateNestedManyWithoutQuestionInput
     Answer?: AnswerUncheckedCreateNestedManyWithoutQuestionInput
     User_Answer?: User_AnswerUncheckedCreateNestedManyWithoutQuestionInput
@@ -12499,7 +12541,8 @@ export namespace Prisma {
   export type QuestionUpdateWithoutStudy_Set_Questions_ListInput = {
     content?: StringFieldUpdateOperationsInput | string
     explanation?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    sub_category?: StringFieldUpdateOperationsInput | string
     Choice?: ChoiceUpdateManyWithoutQuestionNestedInput
     Answer?: AnswerUpdateManyWithoutQuestionNestedInput
     User_Answer?: User_AnswerUpdateManyWithoutQuestionNestedInput
@@ -12509,7 +12552,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     explanation?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    sub_category?: StringFieldUpdateOperationsInput | string
     Choice?: ChoiceUncheckedUpdateManyWithoutQuestionNestedInput
     Answer?: AnswerUncheckedUpdateManyWithoutQuestionNestedInput
     User_Answer?: User_AnswerUncheckedUpdateManyWithoutQuestionNestedInput

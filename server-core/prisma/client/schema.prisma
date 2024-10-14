@@ -68,7 +68,8 @@ model Question {
   id                       Int                        @id @default(autoincrement())
   content                  String                     @db.Text
   explanation              String                     @db.Text
-  type                     String                     @db.VarChar(255)
+  category                 String                     @db.VarChar(255)
+  sub_category             String                     @db.VarChar(255)
   Choice                   Choice[]
   Study_Set_Questions_List Study_Set_Questions_List[]
   Answer                   Answer[]

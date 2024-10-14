@@ -9,7 +9,8 @@ type AI_QUESTION = {
 	options: string[];
 	answer: number;
 	explanation: string;
-	type: string;
+	question_category: string;
+	question_subcategory: string;
 };
 
 export { AI_JSON_TYPE, AI_QUESTION };

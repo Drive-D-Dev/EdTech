@@ -13,7 +13,8 @@ const createStudySet = async (data: AI_JSON_TYPE) => {
 							create: {
 								content: q.question,
 								explanation: q.explanation,
-								type: q.type,
+								category: q.question_category,
+								sub_category: q.question_subcategory,
 								Choice: {
 									createMany: {
 										data: q.options.map((o: string, index: number) => ({

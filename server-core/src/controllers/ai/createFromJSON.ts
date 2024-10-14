@@ -24,8 +24,12 @@ const createFromJSONController = async (c: Context) => {
 				throw `StudySet ${sIndex + 1} Question ${qIndex + 1} is missing answer`;
 			if (!question.explanation)
 				throw `StudySet ${sIndex + 1} Question ${qIndex + 1} is missing explanation`;
-			if (typeof question.type !== 'string')
-				throw `StudySet ${sIndex + 1} Question ${qIndex + 1} is missing type`;
+			if (typeof question.question_category !== 'string')
+				throw `StudySet ${sIndex + 1} Question ${qIndex + 1} is missing question_category`;
+			if (typeof question.question_subcategory !== 'string')
+				throw `StudySet ${sIndex + 1} Question ${
+					qIndex + 1
+				} is missing question_subcategory`;
 		});
 	});
 
